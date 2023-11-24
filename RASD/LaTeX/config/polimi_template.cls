@@ -1,7 +1,6 @@
-% Template Polimi
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Configuration_Files/PoliMi3i_thesis}[2021/6/30 PoliMi3i thesis submission class]
+\ProvidesClass{config/polimi_template}[2021/6/30 PoliMi3i thesis submission class]
 \ProcessOptions\relax
 
 %--------------------------------------------------------------------------

@@ -1,0 +1,295 @@
+Climate change is a topical issue for everybody these days, and it's leading a change not only in our habits but also in consumes, which implies a change in the production model our society adopted until now.
+Private mobility is one of the market sectors which is changing the most, depending directly from fossil fuel.
+
+In order to keep global warming below 1.5°C, Europe have decided to reduce greenhouse gas emissions of CO2 per
+person per year by 2030, and, by the same year, the IEA predicts that electric vehicles will have a market share of roughly 30 percent, with a total number of 23 million e-cars on the roads: electric vehicles represent eco-friendly mobility solutions that are, and will be on our roads in the next future.
+
+Most of the current electric cars can travel between 150 and 350 kilometers on a single charge, but premium-brand models can currently cover more than 500 kilometers.
+This being said, it's obvious that, when people use an electric vehicle, knowing where to charge it and carefully planning the
+charging process in such a way that it introduces minimal interference and constraints on our daily schedule
+is of great importance.
+
+That's were \verb|eMALL| operates: it can find charging stations owned by several Charging Point Operators - CPO - and,
+considering the activities in user's schedule, it can propose the best possible path of charging process
+in order to minimize the cost and the waisted time at the station.
+\newpage
+
+
+\section{Purpose}
+\label{sec:purpose}%
+
+\subsection{Goals}
+\label{subsec:goals}%
+\newcounter{g}
+\setcounter{g}{1}
+\newcommand{\cg}{\theg\stepcounter{g}}
+\verb|eMALL| system is thought, designed and proposed to two types of users: EVDs (Electric Vehicle Drivers) and CPOs (Charging Point Operators).
+
+The firsts, will be able to easily book a charge for their EV (Electric Vehicle), in addition to knowing their location and information about charging stations, any active special offers proposed by CPOs. Furthermore, EVDs will be able to receive suggestions of charge, smartly elaborated by the system in order to minimize the costs and the time needed to charge the battery
+of the EV\@.
+
+CPOs instead, are companies that subscribe to the system after choosing a buy-strategy instead of developing
+the CPMS on their own.
+So they are looking for a system already implemented, and want to obtain it as a SaaS (Software as a Service).
+The main functionalities that \verb|eMALL| offers to CPOs are charging stations management, interfaces with DSO, and energy
+usage data and/or storage strategy.
+
+Below there's a table that lists all the goals of the \verb|eMALL| system:
+\begin{center}
+    \begin{longtable}{ |l|p{0.9\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                   \\
+        \hline
+        G\cg        & The EVD can get information about charging stations.                                   \\
+        \hline
+        G\cg        & The EVD can search for special offer provided by CPO.                                  \\
+        \hline
+        G\cg        & The EVD can book a charge for his EV at a charging station for a specified time frame. \\
+        \hline
+        G\cg        & The EVD can charge his EV.                                                             \\
+        \hline
+        G\cg        & The EVD can manage activities thanks to a calendar.                                    \\
+        \hline
+        G\cg        & The CPO can manage its charging stations and its charging points.                      \\
+        \hline
+        G\cg        & The CPO can manage a charging session.                                                 \\
+        \hline
+        G\cg        & The CPO can manage its promotions.                                                     \\
+        \hline
+        G\cg        & The CPO can manage the electricity supply.                                             \\
+        \hline
+        \caption{The goals.}
+        \label{tab:goals_tab}%
+    \end{longtable}
+\end{center}
+
+\newpage
+
+
+\section{Scope}
+\label{sec:scope}%
+The scope of the requirements analysis and specification document - RASD - is to provide a detailed description of the requirements for the project.
+It outlines what the system or product should do and how it should behave, as well as any constraints or limitations on its design and implementation.
+The RASD is based on a thorough analysis of the needs and requirements of the stakeholders.
+The scope of the RASD will cover all of the essential aspects of the system and provide a clear and detailed roadmap for its development.
+
+\subsection{World phenomena}
+\label{subsec:world_phenomena}%
+\newcounter{wp}
+\setcounter{wp}{1}
+\newcommand{\cwp}{\thewp\stepcounter{wp}}
+\begin{center}
+    \begin{longtable}{ |l|p{0.8\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Description}                                                \\
+        \hline
+        WP\cwp      & The EVD wants to charge his EV's battery.                           \\
+        \hline
+        WP\cwp      & The EVD wants to know information of a specific charging station.   \\
+        \hline
+        WP\cwp      & The EVD wants to know if there are any special offer he can redeem. \\
+        \hline
+        WP\cwp      & The EVD connects the plug of the charging point to the EV.          \\
+        \hline
+        WP\cwp      & The EV reaches the desired level of battery charge.                 \\
+        \hline
+        WP\cwp      & Charging Points are distributed in the territory.                   \\
+        \hline
+        WP\cwp      & A charging point breaks.                                            \\
+        \hline
+        WP\cwp      & It is released an update for the firmware of a charging point.      \\
+        \hline
+        WP\cwp      & CPO defines the selling price of electricity.                       \\
+        \hline
+        WP\cwp      & CPO defines the features of a new special offers for its customers. \\
+        \hline
+        WP\cwp      & The DSO provides energy to charging stations.                       \\
+        \hline
+        \caption{World Phenomenas.}
+        \label{tab:worldph_tab}%
+    \end{longtable}
+\end{center}
+
+\subsection{Shared phenomena}
+\label{subsec:shared_phenomena}%
+\newcounter{sp}
+\setcounter{sp}{1}
+\newcommand{\csp} {\thesp\stepcounter{sp}}
+\begin{center}
+    \begin{longtable}{ |l|p{0.5\linewidth}|l|l| }
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                                                          & \textbf{Controller} & \textbf{Observer} \\
+        \hline
+        SP\csp      & The EVD creates an account in the eMALL system.\                                                                               & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD logs in eMALL.                                                                                                        & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD registers an EV in his/her profile.\                                                                                   & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL gets EVD's current position.\                                                                                            & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for the list of charging stations nearby to his/her position to eMALL.                                            & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the list of all the charging stations nearby his/her position to the EVD.                                        & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for detailed information about a specific charging station to eMALL.                                              & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the charging cost per kWh of the charging station specified by the EVD.                                          & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the charging cost per minute of the charging station specified by the EVD.                                       & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the cost per minute of the additional fare for late unplugging of the charging station specified by the EVD.     & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the charging power of the charging station specified by the EVD.                                                 & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the types of connectors accepted by the charging points of the charging station specified by the EVD.            & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the number of charging points of the charging station specified by the EVD.                                      & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the current status (available, occupied, maintenance) of the charging station specified by the EVD.              & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for special offers that he/she can redeem to eMALL.                                                              & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns all the active special offers to the EVD.                                                                       & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for the schedule of a specific charging station to eMALL.                                                        & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the schedule of the charging station specified by the EVD.                                                      & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD specifies the timeframe he/she wants to be reserved for his booking.\                                                  & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD books a charging point for a specific plug through eMALL.                                                             & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD pays for a caution before booking a charging session through eMALL.                                                    & EVD                 & eMALL            \\
+        \hline
+        SP\csp      & The EVD inserts a new payment method and the required information into eMALL.                                                  & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the outcome of the validity of the payment method inserted by the EVD.                                           & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks to unlock the charging point he/she has booked to eMALL.                                                         & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD connect the EV to the charging point and starts the charging process.\                                                 & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL notifies the EVD of the current state of the charging process (battery's level, current cost, estimated time, \ldots).\  & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD pauses the charging session.\                                                                                          & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD ends the charging session.\                                                                                            & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL notifies the EVD that the battery of his/her EV is charged.\                                                             & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL suggests the EVD to end the charging session after a defined level of the EV's battery is reached.\                      & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD pays for the charging session using the module offered by eMALL.                                                      & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the outcome of the payment done by the EVD.                                                                     & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL notifies the EVD about the need of charging the EV.                                                                     & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The CPO creates a Charging Point Operator account on eMALL.                                                                   & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & The CPO adds a new charging station in its profile specifying all the needed information.\                                     & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & The CPO updates information of an existing charging station.\                                                                  & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & The CPO activates a new special offer for its charging stations.\                                                              & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & The CPO manually updates the DSO which provides it energy.\                                                                    & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & The CPO updates the selling price of its electricity.\                                                                         & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & The CPO sets the battery capacity of a charging station.\                                                                      & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & The CPO asks for information about the DSOs to eMALL.\                                                                         & CPO                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the information about the DSOs to the CPO.\                                                                      & eMALL               & CPO               \\
+        \hline
+        SP\csp      & eMALL gets EVD's current schedule from his/her calendar.\                                                                      & eMALL               & EVD               \\
+        \hline
+        \caption{Shared Phenomenas.}
+        \label{tab:sharedph_tab}%
+    \end{longtable}
+\end{center}
+
+
+\section{Definition, Acronyms, Abbreviations}
+\label{sec:definition_acronyms_abbreviations}%
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |l|l| }
+            \hline
+            \textbf{Acronyms} & \textbf{Definition}                              \\
+            \hline
+            eMSP              & e-Mobility Service Provider                      \\
+            \hline
+            CPO               & Charging Point Operator                          \\
+            \hline
+            CPMS              & Charge Point Management System                   \\
+            \hline
+            DSO               & Distribution System Operator                     \\
+            \hline
+            RASD              & Requirements Analysis and Specification Document \\
+            \hline
+            WPX               & World Phenomena X                                \\
+            \hline
+            SPX               & Shared Phenomena X                               \\
+            \hline
+            GX                & Goal Number X                                    \\
+            \hline
+            DAX               & Domain Assumptions X                             \\
+            \hline
+            UCX               & Use Case X                                       \\
+            \hline
+            EVD               & Electric Vehicle Driver                          \\
+            \hline
+            EV                & Electric Vehicle                                 \\
+            \hline
+        \end{tabular}
+        \caption{Acronyms used in the document.}
+        \label{tab:acronyms}%
+    \end{center}
+\end{table}
+
+
+\section{Revision history}
+\label{sec:revision_history}%
+This version of RASD differs from the previous one for:
+\begin{itemize}
+    \item In section 1.2, we have inserted a brief description about the scope of the document.
+    \item In section 3.1.3, we have added the Navigator System software interface.
+    \item In section 3.2.1, we have added the requirements R70 to the table and updated the requirement R39.
+    \item In section 3.4, we have updated some sequence diagrams to make them coherent with the ones presented in the DD\@.
+\end{itemize}
+
+
+\section{Reference Documents}
+\label{sec:reference_documents}%
+\begin{itemize}
+    \item \href{https://polimi365-my.sharepoint.com/:b:/g/personal/10685242_polimi_it/EWPABzzjfF9EsgYvSiuvdAIBAz6qnjdfLuPE8kwQSxeyCg?e=6qasKD}{The specification document Assignment RDD AY 2022--2023.pdf}
+    \item \href{https://www.platformelectromobility.eu/2022/05/17/ev-charging-how-to-tap-in-the-grid-smartly/}{Platform for Electromobility. EV Charging: How to tap in the grid smartly?}
+    \item \href{https://mobilityintegrationsymposium.org/wp-content/uploads/sites/10/2018/11/4A_3_Emob18_024_paper_Filipe_Campos.pdf}{F. Campos, L. Marques, and K. Kotsalos, Electric Vehicle CPMS and Secondary Substation Management. 2nd E-Mobility Power System Integration Symposium,  Stockholm,  Sweden,  15 October 2018. }
+    \item \href{https://polimi365-my.sharepoint.com/:b:/g/personal/10685242_polimi_it/EfCXzQWCkK1Lsdtr4suEMp8B7YR3drdGqkArs7hnEx-bqA?e=xy1OTu}{Shu Su, Hui Yan, and Ning Ding. 2018. Machine Learning-Based Charging Network Operation Service Platform Reservation Charging Service System}
+    \item \href{https://www.motus-e.org/analisi-di-mercato/settembre-2022-troppa-incertezza-consumatori-preoccupati-non-acquistano/}{September 2022 Market Analysis - MOTUS-E}
+\end{itemize}
+
+
+\section{Document Structure}
+\label{sec:document_structure}%
+The document is structured in six sections, as described below.
+
+First section introduce the goals of the project, purposes, and a brief analysis on world and shared phenomena;
+abbreviations and definitions useful to understand the problem are listed as well.
+
+The following section, the second one, provides an overall description of the problem: here further
+details on domain and scenarios are included, aside from more product and user characteristics, assumptions,
+dependencies and constraints.
+
+Later on, the third section focuses on the specific requirements and provides a more detailed analysis of external
+interface requirements, functional requirements and performance requirements.
+
+Lastly, the fourth section provides a formal analysis, using alloy.
+This chapter is crucial to prove the correctness of the model described in the previous sections, and should focus on
+reporting results of the checks performed and meaningful assertions.
+
+Section five reports the effort spent by each group member in the redaction of this document, meanwhile the last
+section simply lists bibliography references and other resources used to redact this document.
