@@ -1,17 +1,14 @@
-Climate change is a topical issue for everybody these days, and it's leading a change not only in our habits but also in consumes, which implies a change in the production model our society adopted until now.
-Private mobility is one of the market sectors which is changing the most, depending directly from fossil fuel.
+CodeKataBattle (CKB) emerges as a pivotal platform in the evolving landscape of software development education. 
+As the paradigm shifts towards enhancing coding proficiency, CKB provides a dynamic arena where students engage in collaborative code kata battles, 
+refining their skills through hands-on challenges. 
 
-In order to keep global warming below 1.5°C, Europe have decided to reduce greenhouse gas emissions of CO2 per
-person per year by 2030, and, by the same year, the IEA predicts that electric vehicles will have a market share of roughly 30 percent, with a total number of 23 million e-cars on the roads: electric vehicles represent eco-friendly mobility solutions that are, and will be on our roads in the next future.
+Educators orchestrate these battles within tournaments, defining parameters such as group sizes, deadlines, and scoring configurations. 
+Facilitating a test-first approach, CKB seamlessly integrates with GitHub, automating workflows and enabling real-time evaluations. 
+As scores evolve, students and educators gain insights into individual and team performances, fostering a competitive yet collaborative learning environment. 
 
-Most of the current electric cars can travel between 150 and 350 kilometers on a single charge, but premium-brand models can currently cover more than 500 kilometers.
-This being said, it's obvious that, when people use an electric vehicle, knowing where to charge it and carefully planning the
-charging process in such a way that it introduces minimal interference and constraints on our daily schedule
-is of great importance.
-
-That's were \verb|eMALL| operates: it can find charging stations owned by several Charging Point Operators - CPO - and,
-considering the activities in user's schedule, it can propose the best possible path of charging process
-in order to minimize the cost and the waisted time at the station.
+Beyond individual battles, CKB aggregates personal tournament scores, offering a comprehensive view of students' progress. 
+Introducing gamification with badges, educators recognize achievements, enhancing the overall learning experience. 
+In essence, CodeKataBattle propels software development education into a new era, blending competition, collaboration, and skill refinement within a cutting-edge platform.
 \newpage
 
 
@@ -23,47 +20,47 @@ in order to minimize the cost and the waisted time at the station.
 \newcounter{g}
 \setcounter{g}{1}
 \newcommand{\cg}{\theg\stepcounter{g}}
-\verb|eMALL| system is thought, designed and proposed to two types of users: EVDs (Electric Vehicle Drivers) and CPOs (Charging Point Operators).
+\verb|CodeKataBattle(CKB)| platform serves as a dynamic and interactive space for students and educators, 
+promoting continuous learning, healthy competition, and recognition of individual and team accomplishments in the realm of software development.
 
-The firsts, will be able to easily book a charge for their EV (Electric Vehicle), in addition to knowing their location and information about charging stations, any active special offers proposed by CPOs. Furthermore, EVDs will be able to receive suggestions of charge, smartly elaborated by the system in order to minimize the costs and the time needed to charge the battery
-of the EV\@.
+Students can engage in coding challenges by joining battles individually or forming teams within specified limits.
+By actively contributing to code repositories on GitHub, following a test-first approach, they strive to achieve high scores in battles, contributing to their personal tournament ranking.
+Eventually work towards earning gamification badges based on their performance and achievements in tournaments.
 
-CPOs instead, are companies that subscribe to the system after choosing a buy-strategy instead of developing
-the CPMS on their own.
-So they are looking for a system already implemented, and want to obtain it as a SaaS (Software as a Service).
-The main functionalities that \verb|eMALL| offers to CPOs are charging stations management, interfaces with DSO, and energy
-usage data and/or storage strategy.
+Educators instead, develop and publish code kata battles, setting criteria for evaluation and deadlines.
+They will assess student submissions, providing manual scores if required and shaping the final rankings, also defining gamification badges with specific rules and criteria to recognize outstanding achievements.
+Further more they will oversee the progression of tournaments, including opening, closing, and notifying participants.
 
-Below there's a table that lists all the goals of the \verb|eMALL| system:
+Below there's a table that lists all the goals of the \verb|CKB| platform:
 \begin{center}
     \begin{longtable}{ |l|p{0.9\linewidth}| }
         \hline
         \textbf{ID} & \textbf{Description}                                                                   \\
         \hline
-        G\cg        & The EVD can get information about charging stations.                                   \\
+        G\cg        & Enable students to enhance their software development skills through coding challenges.                                   \\
         \hline
-        G\cg        & The EVD can search for special offer provided by CPO.                                  \\
+        G\cg        & Facilitate peer learning and collaboration by allowing students to form teams and work together on coding exercises.                                  \\
         \hline
-        G\cg        & The EVD can book a charge for his EV at a charging station for a specified time frame. \\
+        G\cg        & Provide educators with a platform to create and manage coding challenges tailored to specific learning objectives. \\
         \hline
-        G\cg        & The EVD can charge his EV.                                                             \\
+        G\cg        & Implement automated evaluation of code submissions, considering factors such as functional correctness, timeliness, and code quality.                                                             \\
         \hline
-        G\cg        & The EVD can manage activities thanks to a calendar.                                    \\
+        G\cg        & Introduce a competitive element through tournament-based coding challenges, motivating students to strive for excellence.                                  \\
         \hline
-        G\cg        & The CPO can manage its charging stations and its charging points.                      \\
+        G\cg        & Assign scores to teams based on automated and manual evaluation, creating a transparent and fair ranking system.                      \\
         \hline
-        G\cg        & The CPO can manage a charging session.                                                 \\
+        G\cg        & Notify participants when a tournament concludes, providing closure and allowing reflection on performance.                                                \\
         \hline
-        G\cg        & The CPO can manage its promotions.                                                     \\
+        G\cg        & Enable students and educators to visualize and compare profiles, showcasing individual and team achievements.                                                     \\
         \hline
-        G\cg        & The CPO can manage the electricity supply.                                             \\
+        G\cg        & Integrate gamification badges to recognize and reward outstanding achievements in coding challenges.                                             \\
         \hline
         \caption{The goals.}
         \label{tab:goals_tab}%
     \end{longtable}
 \end{center}
 
-\newpage
+%\newpage
 
 
 \section{Scope}
@@ -83,27 +80,27 @@ The scope of the RASD will cover all of the essential aspects of the system and 
         \hline
         \textbf{ID} & \textbf{Description}                                                \\
         \hline
-        WP\cwp      & The EVD wants to charge his EV's battery.                           \\
+        WP\cwp      & Educators create new tournaments for coding challenges.                          \\
         \hline
-        WP\cwp      & The EVD wants to know information of a specific charging station.   \\
+        WP\cwp      & Students seek opportunities to improve their software development skills.   \\
         \hline
-        WP\cwp      & The EVD wants to know if there are any special offer he can redeem. \\
+        WP\cwp      & Educators define code kata battles with project details and evaluation criteria. \\
         \hline
-        WP\cwp      & The EVD connects the plug of the charging point to the EV.          \\
+        WP\cwp      & Students aim to participate in code kata battles individually or form teams.          \\
         \hline
-        WP\cwp      & The EV reaches the desired level of battery charge.                 \\
+        WP\cwp      & Students are informed of upcoming battles when subscribed to a tournament.                \\
         \hline
-        WP\cwp      & Charging Points are distributed in the territory.                   \\
+        WP\cwp      & Students form teams within specified limits for a code kata battle.                 \\
         \hline
-        WP\cwp      & A charging point breaks.                                            \\
+        WP\cwp      & Students aim to visualize their personal tournament scores and earned badges.         \\
         \hline
-        WP\cwp      & It is released an update for the firmware of a charging point.      \\
+        WP\cwp      & Educators define gamification badges and rules when creating a tournament.      \\
         \hline
-        WP\cwp      & CPO defines the selling price of electricity.                       \\
+        WP\cwp      & At the end of each battle, the CKB platform notifies students of the final battle rank and updates personal tournament scores.                       \\
         \hline
-        WP\cwp      & CPO defines the features of a new special offers for its customers. \\
+        WP\cwp      & Educators can close tournaments, and the platform notifies all students when the final tournament rank becomes available. \\
         \hline
-        WP\cwp      & The DSO provides energy to charging stations.                       \\
+        WP\cwp      & Students and educators seek information about ongoing tournaments, ranks, and profiles with badges.                      \\
         \hline
         \caption{World Phenomenas.}
         \label{tab:worldph_tab}%
@@ -120,92 +117,43 @@ The scope of the RASD will cover all of the essential aspects of the system and 
         \hline
         \textbf{ID} & \textbf{Description}                                                                                                          & \textbf{Controller} & \textbf{Observer} \\
         \hline
-        SP\csp      & The EVD creates an account in the eMALL system.\                                                                               & EVD                 & eMALL             \\
+        SP\csp      & Student subscribes to the CKB platform for notifications.\                                                                    & Student                 & CKB Platform             \\
         \hline
-        SP\csp      & The EVD logs in eMALL.                                                                                                        & EVD                 & eMALL             \\
+        SP\csp      & Educator creates a new tournament, specifying details and criteria.\                                                          & Educator                 & CKB Platform            \\
         \hline
-        SP\csp      & The EVD registers an EV in his/her profile.\                                                                                   & EVD                 & eMALL             \\
+        SP\csp      & CKB Platform notifies subscribed students about a new tournament.\                                                            & CKB Platform                & Student             \\
         \hline
-        SP\csp      & eMALL gets EVD's current position.\                                                                                            & eMALL               & EVD               \\
+        SP\csp      & Student forms a team within specified limits for a code kata battle.\                                                         & Student               & CKB Platform               \\
         \hline
-        SP\csp      & The EVD asks for the list of charging stations nearby to his/her position to eMALL.                                            & EVD                 & eMALL             \\
+        SP\csp      & Educator sets up a code kata battle, including project details and evaluation criteria.\                                      & Educator                 & CKB Platform            \\
         \hline
-        SP\csp      & eMALL returns the list of all the charging stations nearby his/her position to the EVD.                                        & eMALL               & EVD               \\
+        SP\csp      & CKB Platform generates a GitHub repository for a code kata battle.                                                            & CKB Platform               & Student               \\
         \hline
-        SP\csp      & The EVD asks for detailed information about a specific charging station to eMALL.                                              & EVD                 & eMALL             \\
+        SP\csp      & Student forks the GitHub repository and sets up automated workflows.                                                          & Student                 & CKB Platform             \\
         \hline
-        SP\csp      & eMALL returns the charging cost per kWh of the charging station specified by the EVD.                                          & eMALL               & EVD               \\
+        SP\csp      & Student pushes commits to GitHub, triggering automated evaluation.                                                            & Student              & CKB Platform               \\
         \hline
-        SP\csp      & eMALL returns the charging cost per minute of the charging station specified by the EVD.                                       & eMALL               & EVD               \\
+        SP\csp      & Automated evaluation includes functional correctness, timeliness, and code quality.                                           & CKB Platform               & Student               \\
         \hline
-        SP\csp      & eMALL returns the cost per minute of the additional fare for late unplugging of the charging station specified by the EVD.     & eMALL               & EVD               \\
+        SP\csp      & Educator manually evaluates optional factors, such as personal scores.                                                        & Educator               & CKB Platform              \\
         \hline
-        SP\csp      & eMALL returns the charging power of the charging station specified by the EVD.                                                 & eMALL               & EVD               \\
+        SP\csp      & CKB Platform updates battle scores in real-time based on new commits.                                                         & CKB Platform              & Student               \\
         \hline
-        SP\csp      & eMALL returns the types of connectors accepted by the charging points of the charging station specified by the EVD.            & eMALL               & EVD               \\
+        SP\csp      & Students and educators observe the evolving rank during a battle.                                                             & Student               & CKB Platform             \\
         \hline
-        SP\csp      & eMALL returns the number of charging points of the charging station specified by the EVD.                                      & eMALL               & EVD               \\
+        SP\csp      & CKB Platform notifies students when the final battle rank is available.                                                       & CKB Platform              & Student               \\
         \hline
-        SP\csp      & eMALL returns the current status (available, occupied, maintenance) of the charging station specified by the EVD.              & eMALL               & EVD               \\
+        SP\csp      & CKB Platform updates personal tournament scores at the end of a battle.                                                       & CKB Platform               & Student              \\
         \hline
-        SP\csp      & The EVD asks for special offers that he/she can redeem to eMALL.                                                              & EVD                 & eMALL             \\
+        SP\csp      & Educator closes a tournament, and the platform notifies students of the final rank.                                           & Educator                & CKB Platform            \\
         \hline
-        SP\csp      & eMALL returns all the active special offers to the EVD.                                                                       & eMALL               & EVD               \\
+        SP\csp      & Educator defines gamification badges and rules when creating a tournament.                                                    & Educator              & CKB Platform              \\
         \hline
-        SP\csp      & The EVD asks for the schedule of a specific charging station to eMALL.                                                        & EVD                 & eMALL             \\
+        SP\csp      & Students earn gamification badges based on their performance and achievements.                                                & Student                 & CKB Platform            \\
         \hline
-        SP\csp      & eMALL returns the schedule of the charging station specified by the EVD.                                                      & eMALL               & EVD               \\
+        SP\csp      & Students and educators visualize ongoing tournaments, ranks, and profiles with badges.                                        & Student               & CKB Platform             \\
         \hline
-        SP\csp      & The EVD specifies the timeframe he/she wants to be reserved for his booking.\                                                  & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & The EVD books a charging point for a specific plug through eMALL.                                                             & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & The EVD pays for a caution before booking a charging session through eMALL.                                                    & EVD                 & eMALL            \\
-        \hline
-        SP\csp      & The EVD inserts a new payment method and the required information into eMALL.                                                  & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & eMALL returns the outcome of the validity of the payment method inserted by the EVD.                                           & eMALL               & EVD               \\
-        \hline
-        SP\csp      & The EVD asks to unlock the charging point he/she has booked to eMALL.                                                         & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & The EVD connect the EV to the charging point and starts the charging process.\                                                 & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & eMALL notifies the EVD of the current state of the charging process (battery's level, current cost, estimated time, \ldots).\  & eMALL               & EVD               \\
-        \hline
-        SP\csp      & The EVD pauses the charging session.\                                                                                          & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & The EVD ends the charging session.\                                                                                            & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & eMALL notifies the EVD that the battery of his/her EV is charged.\                                                             & eMALL               & EVD               \\
-        \hline
-        SP\csp      & eMALL suggests the EVD to end the charging session after a defined level of the EV's battery is reached.\                      & eMALL               & EVD               \\
-        \hline
-        SP\csp      & The EVD pays for the charging session using the module offered by eMALL.                                                      & EVD                 & eMALL             \\
-        \hline
-        SP\csp      & eMALL returns the outcome of the payment done by the EVD.                                                                     & eMALL               & EVD               \\
-        \hline
-        SP\csp      & eMALL notifies the EVD about the need of charging the EV.                                                                     & eMALL               & EVD               \\
-        \hline
-        SP\csp      & The CPO creates a Charging Point Operator account on eMALL.                                                                   & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & The CPO adds a new charging station in its profile specifying all the needed information.\                                     & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & The CPO updates information of an existing charging station.\                                                                  & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & The CPO activates a new special offer for its charging stations.\                                                              & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & The CPO manually updates the DSO which provides it energy.\                                                                    & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & The CPO updates the selling price of its electricity.\                                                                         & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & The CPO sets the battery capacity of a charging station.\                                                                      & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & The CPO asks for information about the DSOs to eMALL.\                                                                         & CPO                 & eMALL             \\
-        \hline
-        SP\csp      & eMALL returns the information about the DSOs to the CPO.\                                                                      & eMALL               & CPO               \\
-        \hline
-        SP\csp      & eMALL gets EVD's current schedule from his/her calendar.\                                                                      & eMALL               & EVD               \\
-        \hline
+        
         \caption{Shared Phenomenas.}
         \label{tab:sharedph_tab}%
     \end{longtable}
@@ -220,29 +168,9 @@ The scope of the RASD will cover all of the essential aspects of the system and 
             \hline
             \textbf{Acronyms} & \textbf{Definition}                              \\
             \hline
-            eMSP              & e-Mobility Service Provider                      \\
-            \hline
-            CPO               & Charging Point Operator                          \\
-            \hline
-            CPMS              & Charge Point Management System                   \\
-            \hline
-            DSO               & Distribution System Operator                     \\
+            CKB              & Code Kata Battle                      \\
             \hline
             RASD              & Requirements Analysis and Specification Document \\
-            \hline
-            WPX               & World Phenomena X                                \\
-            \hline
-            SPX               & Shared Phenomena X                               \\
-            \hline
-            GX                & Goal Number X                                    \\
-            \hline
-            DAX               & Domain Assumptions X                             \\
-            \hline
-            UCX               & Use Case X                                       \\
-            \hline
-            EVD               & Electric Vehicle Driver                          \\
-            \hline
-            EV                & Electric Vehicle                                 \\
             \hline
         \end{tabular}
         \caption{Acronyms used in the document.}
@@ -264,13 +192,8 @@ This version of RASD differs from the previous one for:
 
 \section{Reference Documents}
 \label{sec:reference_documents}%
-\begin{itemize}
-    \item \href{https://polimi365-my.sharepoint.com/:b:/g/personal/10685242_polimi_it/EWPABzzjfF9EsgYvSiuvdAIBAz6qnjdfLuPE8kwQSxeyCg?e=6qasKD}{The specification document Assignment RDD AY 2022--2023.pdf}
-    \item \href{https://www.platformelectromobility.eu/2022/05/17/ev-charging-how-to-tap-in-the-grid-smartly/}{Platform for Electromobility. EV Charging: How to tap in the grid smartly?}
-    \item \href{https://mobilityintegrationsymposium.org/wp-content/uploads/sites/10/2018/11/4A_3_Emob18_024_paper_Filipe_Campos.pdf}{F. Campos, L. Marques, and K. Kotsalos, Electric Vehicle CPMS and Secondary Substation Management. 2nd E-Mobility Power System Integration Symposium,  Stockholm,  Sweden,  15 October 2018. }
-    \item \href{https://polimi365-my.sharepoint.com/:b:/g/personal/10685242_polimi_it/EfCXzQWCkK1Lsdtr4suEMp8B7YR3drdGqkArs7hnEx-bqA?e=xy1OTu}{Shu Su, Hui Yan, and Ning Ding. 2018. Machine Learning-Based Charging Network Operation Service Platform Reservation Charging Service System}
-    \item \href{https://www.motus-e.org/analisi-di-mercato/settembre-2022-troppa-incertezza-consumatori-preoccupati-non-acquistano/}{September 2022 Market Analysis - MOTUS-E}
-\end{itemize}
+%%\begin{itemize}
+%%\end{itemize}
 
 
 \section{Document Structure}
