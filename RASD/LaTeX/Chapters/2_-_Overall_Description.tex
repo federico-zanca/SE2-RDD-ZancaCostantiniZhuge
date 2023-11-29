@@ -6,7 +6,7 @@
 The diagram below represents and describes the classes involved in the system, their basic functionalities, attributes,
 and the relationships between them.
 From the diagram, it is easy to see how the tournament entity function as a bridge between different
-components. MOre specifically, in our design we assigned to this entity the task to hold track 
+components. More specifically, in our design we assigned to this entity the task to hold track 
 of battles, leaderboard of the tournament itself and badge assignment.
 All the other functionalities are esily understandable from within the diagram or 
 will be later discussed. \newline
@@ -25,3 +25,32 @@ More specifically, some design pattern can be taken into consideration:
         \label{fig:class_diagram}%
     \end{center}
 \end{figure}
+
+\subsection{State Diagrams}
+\label{subsec:state_diagrams}%
+
+
+\subsection{Scenarios}
+\label{subsec:scenarios}%
+
+\paragraph{Unregistered student creates an account.}
+Gianmarco is a computer science student from Politecnico of Milan. After attending several courses about software engineering, 
+he is looking for a way to practice his skills. Fortunately, one of his professor suggests him the CodeKataBattle CKB platform.
+Gianmarco immediately proceeds to create an account. He navigates to the platform and goes to the "sign up" section. 
+The system asks Gianmarco some personal information such as first and last name, an email linked 
+to an institutional profile (for example name.surname@mail.polimi.it). He receives an e-mail with a 
+6-digit code to be in inserted in the web page to confirm his e-mail address. In the meanwhile, the platform 
+receives information about the status of Gianmarco from the university (whether he is a techer or a student). 
+After accepting the terms \& conditions 
+and submitting an username for his profile, the system creates his account, and Gianmarco can begin to use the platform.
+
+\paragraph{Professor creates a tournament. }
+Achille is a cyber security professor from university of Milan. He has an active profile one the CKB platform. 
+During his last lesson, he annouced to his students that he will create monthly tournaments with weekly Battle for them to practise. 
+He then proceeds to create the first tournament. He logs in the CKB platform from the "sign-in" page. 
+Then, from the menu option in the home page, he selects "Create a new tournament". He is prompted with the page of the setup for the tournament itself. 
+Achille enters a name for the tournament and the registration deadline. He then toggles the "advanced options" section. 
+From here, he can decide wheter to include or not badges, and, in the first case, which badges are available in the tournament. 
+Achille is prompted with a set of pre-existing badges (created from the platform or in previous tournaments). He can decide to 
+create new badges in addition to the ones already present. When choosing to create a new badge, a pop-up window appears where he can select and combine 
+variables and rules to obtain the new badge. Once he finishes setting up everything, he pushes the "Create tournament" button at the bottom of the page. 
