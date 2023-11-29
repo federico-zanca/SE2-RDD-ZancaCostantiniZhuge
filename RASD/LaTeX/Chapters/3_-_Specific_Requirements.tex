@@ -1,1 +1,99 @@
-Hey
+\section{External Interface Requirements}
+\label{sec:external_interface_requirements}%
+
+\subsection{User Interfaces}
+\label{subsec:user_interfaces}%
+The \verb|CodeKataBattle (CKB)| platform is accessed via an intuitive and responsive web interface compatible with major browsers (Chrome, Firefox, Safari, etc.).
+Educators enjoy a dedicated dashboard for effortless creation and management of tournaments, battles, and badges. This dashboard provides a comprehensive view of ongoing battles, tournament scores, and badge achievements.
+Students utilize a user-friendly dashboard for team formation, battle participation, and progress tracking. It streamlines team formation, displays upcoming battles, current ranks, and summarizes earned badges.
+GitHub seamlessly integrates into the platform for code versioning and automated testing. Students can easily fork repositories, set up GitHub Actions, and monitor build and test results within the \verb|CKB| platform.
+To keep all stakeholders informed, the platform employs a robust notification system. This system supports both email notifications and in-platform alerts, 
+ensuring timely updates for educators and students on critical events like upcoming deadlines or changes in battle status.
+
+\subsection{Hardware Interfaces}
+\label{subsec:hardware_interfaces}%
+The \verb|CKB| platform prioritizes accessibility by ensuring compatibility across a diverse range of devices. 
+Users can seamlessly access the platform from desktop computers, laptops, tablets, and smartphones. This inclusivity caters to the varied preferences and device usage patterns of our user base. 
+The platform's responsive design ensures that the user interface adapts fluidly to different screen sizes, providing an optimal experience regardless of the device used. 
+This commitment to device compatibility aims to enhance user convenience and flexibility, promoting a versatile and user-centric engagement with the \verb|CKB| platform.
+
+\subsection{Software Interfaces}
+\label{subsec:software_interfaces}%
+The \verb|CKB| platform seamlessly communicates with GitHub via APIs, enabling functionalities such as repository creation, commit tracking, and automated test processes.
+To ensure a secure integration, the platform should smoothly connect with GitHub APIs, facilitating automated workflows triggered by student commits.
+Additionally, the platform harnesses static analysis tools to assess code quality comprehensively.
+Incorporating these tools seamlessly, educators can tailor automated evaluations by configuring specific aspects like security, reliability, and maintainability. This flexibility ensures a nuanced understanding of the code's overall quality.
+
+\subsection{Communication Interfaces}
+\label{subsec:communication_interfaces}%
+The platform actively engages in communication with students, delivering notifications, battle updates, and final results in a secure manner through HTTPS. A reliable messaging system ensures timely information dissemination to students.
+Similarly, educators stay well-informed through the platform, receiving notifications and updates on battle progress and final results. Secure communication channels, similar to those used for students, guarantee the confidentiality and reliability of information relayed to educators.
+For the configuration of badges and rules, educators seamlessly use the platform to define new badges, rules, and associated variables. Ensuring a user-friendly interface, educators can make real-time adjustments, with changes promptly reflecting across the platform. This intuitive process empowers educators to tailor the platform to their evolving requirements effortlessly.
+
+\section{Functional Requirements}
+\label{sec:functional_requirements}%
+
+\subsection{Requirements}
+\label{subsec: requirements}%
+The \verb|eMALL| system offers several functionalities to both EVDs and CPOs.
+In the following table they are listed all the detected requirements that the system should respect in order to guarantee
+the satisfiability of the goals:
+\newpage
+\newcounter{req}
+\setcounter{req}{1}
+\newcommand{\creq}{\thereq\stepcounter{req}}
+\begin{center}
+    \begin{longtable}{|l|p{0.9\linewidth}|}
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                                                                             \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to create an account.                                                                    \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to log in.                                                                                 \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to create a new tournament.                                                                \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to set the minimum and maximum number of students per group for a tournament.                                                        \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to upload a code kata, including a description and a software project with test cases.                                                                           \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to set a registration deadline for a battle within a tournament.                                          \\
+        \hline
+        R\creq      & The \verb|CKB| platform  shall allow educators to set a final submission deadline for a battle within a tournament.                                                                  \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to set additional configurations for scoring, including functional aspects and quality level criteria.                               \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall notify all subscribed students of a new tournament and its details.                               \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow students to subscribe to a tournament within a specified deadline.                                                  \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow students to form teams for a specific battle within a tournament.                                                      \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall create a GitHub repository for each battle and send the link to all members of subscribed teams.                                         \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall support a test-first approach, requiring students to complete the project by passing the provided test cases.                                            \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall inform students of the mandatory automated evaluation criteria, including functional aspects, timeliness, and source code quality.                                        \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall automatically update the battle score of a team based on GitHub commits and test results.                                   \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall calculate and update the personal tournament score of each student based on their performance in battles.                    \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams for optional criteria.                                           \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final rank is available.                                                       \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall include gamification badges defined by educators for achievements in tournaments.                                                             \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall display collected badges on the profile of both students and educators.                                                                    \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to define new badges, rules, and variables for gamification.                                                             \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users.                                                                 \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall notify all students involved in a tournament when the final rank becomes available.                                                   \\
+        \hline
+        \caption{Requirements.}
+        \label{tab: req}%
+    \end{longtable}
+\end{center}
