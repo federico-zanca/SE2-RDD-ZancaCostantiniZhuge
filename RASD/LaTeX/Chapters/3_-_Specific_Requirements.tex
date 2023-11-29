@@ -95,9 +95,15 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team.                                                      \\
         \hline
-        R\creq      & The \verb|CKB| platform shall create a GitHub repository for each battle and send the link to all members of subscribed teams.                                         \\
+        R\creq      & The \verb|CKB| platform shall create a GitHub repository for each battle.                                        \\
         \hline
-        R\creq      & The \verb|CKB| platform shall support a test-first approach, requiring students to complete the project by passing the provided test cases.                                            \\
+        R\creq      &  send a link to the Github repository associated to a battle to all members of subscribed teams upon expiration of the registration deadline. \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall be able to be informed of new students' commits by Github Actions workflows. \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall be able to pull the latest sources from the forks of the Github repository provided. \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall be able to run the testcases on the code uploaded by students and determine if the code is a valid solution for the exercise.\\
         \hline
         R\creq      & The \verb|CKB| platform shall inform students of the mandatory automated evaluation criteria, including functional aspects, timeliness, and source code quality.                                        \\
         \hline
@@ -105,19 +111,25 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|CKB| platform shall automatically close a finished battle.                                                      \\
         \hline
-        R\creq      & The \verb|CKB| platform shall assign the final battle scores to each team of the battle.                                                      \\
+        R\creq      & The \verb|CKB| platform shall assign or update battle scores to each team of the battle.                                                      \\
         \hline
         R\creq      & The \verb|CKB| platform shall calculate and update the personal tournament score of each student based on their performance in battles.                    \\
         \hline
-        R\creq      & The \verb|CKB| platform shall be able to create a ranking for a tournament.                                                      \\
+        R\creq      & The \verb|CKB| platform shall be able to create a ranking of teams for every tournament.                                                      \\
         \hline
         R\creq      & The \verb|CKB| platform shall allow educators to close a tournament.                                                  \\
         \hline
-        R\creq      & The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams for optional criteria.                                           \\
+        R\creq      & The \verb|CKB| platform shall allow an educator to define optional manual evaluation criteria for score assignment in battles.   \\
         \hline
-        R\creq      & The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final rank is available.                                                       \\
+        R\creq      & The \verb|CKB| platform shall keep track of time elapsed from the start of a CKB and the final submissions of each team \\
         \hline
-        R\creq      & The \verb|CKB| platform shall include gamification badges defined by educators for achievements in tournaments.                                                             \\
+        R\creq      & The \verb|CKB| platform shall be able to use static analysis tools to evaluate the quality of the code submitted by teams in terms of security, reliability, maintainability and other aspects defined by the educator who created the battle \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams.                                           \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final ranking is available.                                                       \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.\\
         \hline
         R\creq      & The \verb|CKB| platform shall display collected badges on the profile of both students and educators.                                                                    \\
         \hline
@@ -129,11 +141,7 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users.                                                                 \\
         \hline
-        R\creq      & The \verb|CKB| platform shall notify all students involved in a tournament when the final rank becomes available.                                                   \\
-        \hline
-        R\creq      & The \verb|CKB| platform shall allow educators to visualize the gamification badges.                                                      \\
-        \hline
-        R\creq      & The \verb|CKB| platform shall allow students to visualize the gamification badges.                                                      \\
+        R\creq      & The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.                                                      \\
         \hline
         \caption{Requirements.}
         \label{tab: req}%
