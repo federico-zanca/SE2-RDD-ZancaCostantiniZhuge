@@ -1,39 +1,86 @@
-abstract sig User {}
+// Alloy model for CodeKataBattle platform - Entities and Facts
+
+// Signatures
+abstract sig User {
+    id: Int,
+}
 
 sig Student extends User {
-    teams: set Team
+    subscribedTournaments: set Tournament,
+    participatedBattles: set Battle,
+    scores: set Score,
+    badges: set Badge
 }
+sig Educator extends User {}
 
-sig Educator extends User {
-    tournaments: set Tournament,
-    battles: set Battle
-}
-
-sig Team {
-    students: set Student,
-    battle: Battle,
-    score: Int
+sig Tournament {
+    battles: set Battle,
+    scores: set Score,
+    badges: set Badge
 }
 
 sig Battle {
-    minStudents: Int,
-    maxStudents: Int,
-    registrationDeadline: Time,
-    submissionDeadline: Time,
-    tournament: Tournament,
-    teams: set Team
+  participants: set Student,
+  teams: set Student,
+  repository: one GitHubRepository,
+  deadline: Int, //replace with Date sig?
+  codeKata: one CodeKata,
+  scores: set Score
 }
 
-sig Tournament {
-    creator: Educator,
-    battles: set Battle,
-    students: set Student
+sig GitHubRepository {
+    codeKata: one CodeKata
 }
 
-sig Time {}
-
-fact {
-    all b: Battle | b.minStudents <= #b.teams.students and #b.teams.students <= b.maxStudents
-    all t: Tournament | all b: t.battles | b.tournament = t
-    all s: Student | all t: s.teams | some b: t.battle | b in s.teams.battle.tournament.battles
+sig CodeKata {
+    description: String,
+    // Gradle Project? Software Project including Gradle Project + testCases?
+    testCases: set TestCase
 }
+
+sig TestCase {
+    provided_input: String,
+    expected_output: String
+}
+
+sig Score {
+    student: one Student,
+    battle: one Battle,
+    functionalAspects: Int,
+    timeliness: Int,
+    qualityLevel: Int,
+    optionalScore: Int
+}
+
+sig Badge {
+    title: String,
+    rules: BadgeRules
+}
+
+abstract sig BadgeRules {}
+
+// Facts and Constraints
+fact UsersHaveUniqueIDs {
+    all u1, u2: User | u1.id != u2.id
+}
+
+fact EachBattleHasUniqueRepository {
+    all b1, b2: Battle | b1 != b2 implies b1.repository != b2.repository
+}
+
+fact EachCodeKataHasUniqueDescription {
+    all ck1, ck2: CodeKata | ck1 != ck2 implies ck1.description != ck2.description
+}
+
+fact EachTestCaseHasUniqueDescription {
+  all tc1, tc2: TestCase | tc1 != tc2 implies tc1.description != tc2.description
+}
+
+fact ScoresInRange {
+  all s: Score | s.functionalAspects >= 0 and s.functionalAspects <= 100
+  all s: Score | s.timeliness >= 0
+  all s: Score | s.qualityLevel >= 0
+  all s: Score | s.optionalScore >= 0
+}
+
+// Add more facts as needed...
