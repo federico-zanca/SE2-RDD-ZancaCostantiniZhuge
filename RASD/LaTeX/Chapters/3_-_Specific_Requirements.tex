@@ -35,13 +35,14 @@ For the configuration of badges and rules, educators seamlessly use the platform
 
 \subsection{Requirements}
 \label{subsec: requirements}%
-The \verb|eMALL| system offers several functionalities to both EVDs and CPOs.
-In the following table they are listed all the detected requirements that the system should respect in order to guarantee
+The \verb|CKB| platform offers several functionalities to both educators and students.
+In the following table they are listed all the detected requirements that the platform should respect in order to guarantee
 the satisfiability of the goals:
 \newpage
 \newcounter{req}
 \setcounter{req}{1}
 \newcommand{\creq}{\thereq\stepcounter{req}}
+\textbf{Educators}
 \begin{center}
     \begin{longtable}{|l|p{0.9\linewidth}|}
         \hline
@@ -71,9 +72,32 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|CKB| platform shall allow educators to set additional configurations for scoring, including functional aspects and quality level criteria.                               \\
         \hline
-        R\creq      & The \verb|CKB| platform shall notify all subscribed students of a new tournament and its details.                               \\
+        R\creq      & The \verb|CKB| platform shall allow educators to close a tournament.                                                  \\
         \hline
-        R\creq      & The \verb|CKB| platform shall notify all subscribed students of a new battle and its details within a specific tournament.                               \\
+        R\creq      & The \verb|CKB| platform shall allow an educator to define optional manual evaluation criteria for score assignment in battles.   \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams.                                           \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.                                                      \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to define new badges for gamification.                                                             \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to define new rules associated with the badges.                                                      \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow educators to define new variables associated with the badges.                                                      \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.\\
+        \hline
+        \caption{Educator Requirements.}
+        \label{tab: req}%
+    \end{longtable}
+\end{center}
+
+\textbf{Students}
+\begin{center}
+    \begin{longtable}{|l|p{0.9\linewidth}|}
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                                                                             \\
         \hline
         R\creq      & The \verb|CKB| platform shall not allow students to participate a tournament after the registration deadline.                                                      \\
         \hline
@@ -95,9 +119,24 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team.                                                      \\
         \hline
+        \caption{Student Requirements.}
+        \label{tab: req}%
+    \end{longtable}
+\end{center}
+
+\textbf{Platform}
+\begin{center}
+    \begin{longtable}{|l|p{0.9\linewidth}|}
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                                                                             \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall notify all subscribed students of a new battle and its details within a specific tournament.                               \\
+        \hline
+        R\creq      & The \verb|CKB| platform shall notify all subscribed students of a new tournament and its details.                               \\
+        \hline
         R\creq      & The \verb|CKB| platform shall create a GitHub repository for each battle.                                        \\
         \hline
-        R\creq      &  send a link to the Github repository associated to a battle to all members of subscribed teams upon expiration of the registration deadline. \\
+        R\creq      & send a link to the Github repository associated to a battle to all members of subscribed teams upon expiration of the registration deadline. \\
         \hline
         R\creq      & The \verb|CKB| platform shall be able to be informed of new students' commits by Github Actions workflows. \\
         \hline
@@ -117,33 +156,17 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|CKB| platform shall be able to create a ranking of teams for every tournament.                                                      \\
         \hline
-        R\creq      & The \verb|CKB| platform shall allow educators to close a tournament.                                                  \\
-        \hline
-        R\creq      & The \verb|CKB| platform shall allow an educator to define optional manual evaluation criteria for score assignment in battles.   \\
-        \hline
         R\creq      & The \verb|CKB| platform shall keep track of time elapsed from the start of a CKB and the final submissions of each team \\
         \hline
         R\creq      & The \verb|CKB| platform shall be able to use static analysis tools to evaluate the quality of the code submitted by teams in terms of security, reliability, maintainability and other aspects defined by the educator who created the battle \\
         \hline
-        R\creq      & The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams.                                           \\
-        \hline
         R\creq      & The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final ranking is available.                                                       \\
-        \hline
-        R\creq      & The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.\\
-        \hline
-        R\creq      & The \verb|CKB| platform shall display collected badges on the profile of both students and educators.                                                                    \\
-        \hline
-        R\creq      & The \verb|CKB| platform shall allow educators to define new badges for gamification.                                                             \\
-        \hline
-        R\creq      & The \verb|CKB| platform shall allow educators to define new rules associated with the badges.                                                      \\
-        \hline
-        R\creq      & The \verb|CKB| platform shall allow educators to define new variables associated with the badges.                                                      \\
         \hline
         R\creq      & The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users.                                                                 \\
         \hline
-        R\creq      & The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.                                                      \\
+        R\creq      & The \verb|CKB| platform shall display collected badges on the profile of both students and educators.                                                                    \\
         \hline
-        \caption{Requirements.}
+        \caption{Platform Requirements.}
         \label{tab: req}%
     \end{longtable}
 \end{center}
