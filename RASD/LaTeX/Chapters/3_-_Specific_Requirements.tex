@@ -171,133 +171,102 @@ the satisfiability of the goals:
     \end{longtable}
 \end{center}
 
-\subsection{Mapping on goals}
-\label{subsec: map_on_g}%
-In the following section it is shown how the relation $R\land D \models G$ holds.
-In particular, at first it is shown a traceability matrix that associates domain assumptions and requirements to each goal.
-After that, to facilitate reading, the section reports the text of all the assumptions and all the requirements related to each goal.
-\newcounter{mg}
-\setcounter{mg}{1}
-\newcommand{\cmg}{\themg\stepcounter{mg}}
-\begin{center}
-    \begin{longtable}{|p{0.06\linewidth}|p{0.34\linewidth}|p{0.6\linewidth}|}
-        \hline
-        \textbf{Goal} & \textbf{Domain assumptions}                       & \textbf{Requirements}                                                               \\
-        \hline
-        G\cmg         &                             & R23, R24, R25, R29, R30                        \\
-        \hline
-        G\cmg         &                             & R24, R25, R26, R27, R28                                      \\
-        \hline
-        G\cmg         &                             & R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19, R20                                \\
-        \hline
-        G\cmg         &                             & R33, R34, R35, R36, R37, R38, R39              \\
-        \hline
-        G\cmg         &                             & R20, R29, R30, R44                               \\
-        \hline
-        G\cmg         &                             & R41, R42, R45                     \\
-        \hline
-        G\cmg         &                             & R46, R47                                \\
-        \hline
-        G\cmg         &                             & R48                                                   \\
-        \hline
-        G\cmg         &                             & R16, R17, R18, R19, R48                                               \\
-        \hline
-        \caption{Mapping on goals.}
-        \label{tab: map_on_g}%
-    \end{longtable}
-\end{center}
 
-In this section, it will be shown the functional requirements and the domain assumption related to each goal.
-\begin{itemize}
+\section{Performance Requirements}
+\label{subsec:performance_requirements}%
 
-    \item \textbf{{[G.1]} Enable students to enhance their software development skills through coding challenges.}
-    \begin{itemize}
-        \item \textbf{[R.23]} The \verb|CKB| platform shall allow students to subscribe to a tournament within a specified deadline.
-        \item \textbf{[R.24]} The \verb|CKB| platform shall allow students to create teams for a specific battle within a tournament.
-        \item \textbf{[R.25]} The \verb|CKB| platform shall allow students to join teams for a specific battle within a tournament. 
-        \item \textbf{[R.29]} The \verb|CKB| platform shall allow students to join a battle without a team. 
-        \item \textbf{[R.30]} The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team.
-        \item \textbf{[D.1]}
-    \end{itemize}
+\subsection*{1. Response Time:}
+   - The \verb|CKB| platform shall respond to user interactions within an average time of 2 seconds, measured from the user action initiation to the completion of the corresponding operation.
 
-    \item \textbf{{[G.2]} Facilitate peer learning and collaboration by allowing students to form teams and work together on coding exercises. }
-        \begin{itemize}
-            \item \textbf{[R.24]} The \verb|CKB| platform shall allow students to create teams for a specific battle within a tournament.
-            \item \textbf{[R.25]} The \verb|CKB| platform shall allow students to join teams for a specific battle within a tournament.
-            \item \textbf{[R.26]} The \verb|CKB| platform shall allow students to invite other participants to the same group. 
-            \item \textbf{[R.27]} The \verb|CKB| platform shall allow students to join a battle without a team.
-            \item \textbf{[R.28]} The \verb|CKB| platform shall allow students to reject an invitation.
-            \item \textbf{[D.1]}
-        \end{itemize}
+\subsection*{2. Concurrent Users:}
+   - The platform should support at least 1000 concurrent users without a significant degradation in response time.
 
-        \item \textbf{{[G.3]} Provide educators with a platform to create and manage coding challenges tailored to specific learning objectives. }
-        \begin{itemize}
-            \item \textbf{[R.1]} The \verb|CKB| platform shall allow educators to create an account.
-            \item \textbf{[R.2]} The \verb|CKB| platform shall allow educators to log in. 
-            \item \textbf{[R.3]} The \verb|CKB| platform shall allow educators to create a new tournament.
-            \item \textbf{[R.4]} The \verb|CKB| platform shall allow educators to set the minimum and maximum number of students per group for a tournament.
-            \item \textbf{[R.5]} The \verb|CKB| platform shall allow educators to upload a code kata battle.
-            \item \textbf{[R.6]} The \verb|CKB| platform shall allow educators to grant permissions to other educators to create battles within a specific tournament.
-            \item \textbf{[R.7]} The \verb|CKB| platform shall enable educators to include a battle to a specific tournament. 
-            \item \textbf{[R.8]} The \verb|CKB| platform shall allow educators to include a description for a battle.
-            \item \textbf{[R.9]} The \verb|CKB| platform shall allow educators to include a software project with test cases.  
-            \item \textbf{[R.10]} The \verb|CKB| platform shall allow educators to set a registration deadline for a battle within a tournament.
-            \item \textbf{[R.11]} The \verb|CKB| platform shall allow educators to set a final submission deadline for a battle within a tournament.
-            \item \textbf{[R.12]} The \verb|CKB| platform shall allow educators to set additional configurations for scoring, including functional aspects and quality level criteria.
-            \item \textbf{[R.13]} The \verb|CKB| platform shall allow educators to close a tournament. 
-            \item \textbf{[R.14]} The \verb|CKB| platform shall allow an educator to define optional manual evaluation criteria for score assignment in battles.
-            \item \textbf{[R.15]} The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams. 
-            \item \textbf{[R.16]} The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.
-            \item \textbf{[R.17]} The \verb|CKB| platform shall allow educators to define new badges for gamification.
-            \item \textbf{[R.18]} The \verb|CKB| platform shall allow educators to define new rules associated with the badges.
-            \item \textbf{[R.19]} The \verb|CKB| platform shall allow educators to define new variables associated with the badges.
-            \item \textbf{[R.20]} The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.
-        \end{itemize}
+\subsection*{3. GitHub Integration:}
+   - GitHub repository creation and updates triggered by student commits shall be processed within 5 minutes of the GitHub action.
 
-        \item \textbf{{[G.4]} Implement automated evaluation of code submissions, considering factors such as functional correctness, timeliness, and code quality. }
-        \begin{itemize}
-            \item \textbf{[R.33]} The \verb|CKB| platform shall create a GitHub repository for each battle.
-            \item \textbf{[R.34]} send a link to the Github repository associated to a battle to all members of subscribed teams upon expiration of the registration deadline.
-            \item \textbf{[R.35]} The \verb|CKB| platform shall be able to be informed of new students' commits by Github Actions workflows. 
-            \item \textbf{[R.36]} The \verb|CKB| platform shall be able to pull the latest sources from the forks of the Github repository provided.
-            \item \textbf{[R.37]} The \verb|CKB| platform shall be able to run the testcases on the code uploaded by students and determine if the code is a valid solution for the exercise.
-            \item \textbf{[R.38]} The \verb|CKB| platform shall inform students of the mandatory automated evaluation criteria, including functional aspects, timeliness, and source code quality.  
-            \item \textbf{[R.39]} The \verb|CKB| platform shall automatically update the battle score of a team based on GitHub commits and test results.
-        \end{itemize}
+\subsection*{4. Automated Evaluation:}
+   - Automated evaluation of submitted code shall be completed within 1 minute of each GitHub push action.
 
-        \item \textbf{{[G.5]} Introduce a competitive element through tournament-based coding challenges, motivating students to strive for excellence. }
-        \begin{itemize}
-            \item \textbf{[R.20]} The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.
-            \item \textbf{[R.29]} The \verb|CKB| platform shall allow students to join a battle without a team.
-            \item \textbf{[R.30]} The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team. 
-            \item \textbf{[R.44]} The \verb|CKB| platform shall keep track of time elapsed from the start of a CKB and the final submissions of each team
-        \end{itemize}
+\subsection*{5. Scalability:}
+   - The platform should accommodate at least a 20\% annual increase in user base and battle participation.
 
-        \item \textbf{{[G.6]} Assign scores to teams based on automated and manual evaluation, creating a transparent and fair ranking system. }
-        \begin{itemize}
-            \item \textbf{[R.41]} The \verb|CKB| platform shall assign or update battle scores to each team of the battle.
-            \item \textbf{[R.42]} The \verb|CKB| platform shall calculate and update the personal tournament score of each student based on their performance in battles.
-            \item \textbf{[R.45]} The \verb|CKB| platform shall be able to use static analysis tools to evaluate the quality of the code submitted by teams in terms of security, reliability, maintainability and other aspects defined by the educator who created the battle
-        \end{itemize}
+\subsection*{6. Data Retrieval Time:}
+   - Information retrieval for ongoing tournaments, tournament ranks, and personal scores should be performed within an average time of 3 seconds.
 
-        \item \textbf{{[G.7]} Notify participants when a tournament concludes, providing closure and allowing reflection on performance. }
-        \begin{itemize}
-            \item \textbf{[R.46]} The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final ranking is available.   
-            \item \textbf{[R.47]} The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users. 
-        \end{itemize}
+\subsection*{7. Consolidation Stage:}
+   - The consolidation stage, where manual evaluation is required, should be completed within 3 days after the submission deadline of a battle.
 
-        \item \textbf{{[G.8]} Educators can close tournaments, and the platform notifies all students when the final tournament rank becomes available. }
-        \begin{itemize}
-            \item \textbf{[R.48]} The \verb|CKB| platform shall display collected badges on the profile of both students and educators.   
-        \end{itemize}
+\subsection*{8. Badge Assignment:}
+   - Badge assignment based on rules and variables should be executed within 1 day after the final tournament rank becomes available.
 
-        \item \textbf{{[G.9]} Students and educators seek information about ongoing tournaments, ranks, and profiles with badges.}
-        \begin{itemize}
-            \item \textbf{[R.16]} The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.
-            \item \textbf{[R.17]} The \verb|CKB| platform shall allow educators to define new badges for gamification.
-            \item \textbf{[R.18]} The \verb|CKB| platform shall allow educators to define new rules associated with the badges.
-            \item \textbf{[R.19]} The \verb|CKB| platform shall allow educators to define new variables associated with the badges.
-            \item \textbf{[R.48]} The \verb|CKB| platform shall display collected badges on the profile of both students and educators.   
-            \item \textbf{[D.1]}
-        \end{itemize}
-\end{itemize}
+\subsection*{9. Platform Uptime:}
+   - The platform should maintain a minimum of 99.9\% uptime over any given month.
+
+\subsection*{10. Notification Latency:}
+    - Notifications should be sent to all relevant users within 1 minute of the triggering event.
+
+\subsection*{11. Gamification Features:}
+    - Display of badges on user profiles and visualization of tournament-related achievements should be accessible within a response time of 3 seconds.
+
+\subsection*{12. API Response Time:}
+    - External APIs used for integrations should respond within 5 seconds.
+
+\subsection*{13. Load Testing:}
+    - The platform should undergo periodic load testing to handle peak loads without compromising performance.
+
+\subsection*{14. Security Scan Duration:}
+    - Security scans during code quality evaluation should not exceed 2 minutes.
+
+
+
+
+
+
+
+\begin{comment}
+\section{Performance Requirements}
+\label{subsec:performance_requirements}%
+
+\subsection*{1. Response Time:}
+   - The CKB platform shall respond to user interactions (e.g., creating a battle, joining a battle, submitting code) within an average time of 2 seconds, measured from the user action initiation to the completion of the corresponding operation.
+
+\subsection*{2. Concurrent Users:}
+   - The platform should support at least 1000 concurrent users participating in different battles and tournaments without a significant degradation in response time.
+
+\subsection*{3. GitHub Integration:}
+   - GitHub repository creation and updates triggered by student commits shall be processed and reflected in the CKB platform within 5 minutes of the GitHub action.
+
+\subsection*{4. Automated Evaluation:}
+   - The automated evaluation of submitted code, including functional aspects, timeliness, and quality level, shall be completed within 1 minute of each GitHub push action.
+
+\subsection*{5. Scalability:}
+   - The CKB platform should be designed to handle a growth in the number of users, battles, and tournaments. It should accommodate at least a 20\% annual increase in user base and battle participation.
+
+\subsection*{6. Data Retrieval Time:}
+   - Information retrieval for ongoing tournaments, tournament ranks, and personal scores should be performed within an average time of 3 seconds.
+
+\subsection*{7. Consolidation Stage:}
+   - The consolidation stage, where manual evaluation is required, should be completed within 3 days after the submission deadline of a battle.
+
+\subsection*{8. Badge Assignment:}
+   - Badge assignment based on rules and variables should be executed within 1 day after the final tournament rank becomes available.
+
+\subsection*{9. Platform Uptime:}
+   - The CKB platform should maintain a minimum of 99.9\% uptime over any given month to ensure continuous availability for users.
+
+\subsection*{10. Notification Latency:}
+    - Notifications, such as battle creation, submission deadlines, and tournament closure, should be sent to all relevant users within 1 minute of the triggering event.
+
+\subsection*{11. Gamification Features:}
+    - The display of badges on user profiles and the visualization of tournament-related achievements should be accessible with a response time of 3 seconds.
+
+\subsection*{12. API Response Time:}
+    - Any external APIs used for integrations, such as GitHub Actions and static analysis tools, should respond within 5 seconds to avoid delays in platform functionalities.
+
+\subsection*{13. Load Testing:}
+    - The platform should undergo periodic load testing to ensure it can handle peak loads and unexpected spikes in user activity without compromising performance.
+
+\subsection*{14. Security Scan Duration:}
+    - The time required for security scans during the evaluation of code quality should not exceed 2 minutes.
+
+\end{comment}
