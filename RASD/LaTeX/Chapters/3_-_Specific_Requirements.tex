@@ -401,3 +401,73 @@ In this section, it will be shown the functional requirements and the domain ass
     - The time required for security scans during the evaluation of code quality should not exceed 2 minutes.
 
 \end{comment}
+
+
+\section{Design Constraints}
+\label{sec:design_constraints}%
+
+\subsection{Standards Compliance}
+\label{subsec:standards_compliance}%
+The Code Kata Battle (CKB) platform must conform to established standards and legal requirements to ensure ethical and lawful operation. Key considerations include:
+
+\begin{enumerate}
+    \item \textbf{Privacy and Data Laws:}
+          \begin{itemize}
+              \item The platform must adhere to all laws governing privacy and data treatment, especially regarding user information and data exchange with third parties, such as CodeKata educators.
+              \item Compliance with the European Union General Data Protection Regulation (EU GDPR) is mandatory to ensure the privacy and rights of users are protected.
+          \end{itemize}
+
+    \item \textbf{EU GDPR Principles:}
+          \begin{itemize}
+              \item The system design should align with the principles outlined in Article 5 of the GDPR document, emphasizing the lawful, fair, and transparent processing of personal data.
+          \end{itemize}
+\end{enumerate}
+
+\subsection{Hardware Limitations}
+\label{subsec:hardware_limitations}%
+The design and functionality of the CKB platform need to consider specific limitations for optimal user experience:
+
+\begin{enumerate}
+    \item \textbf{Cross-Platform Accessibility:}
+          \begin{itemize}
+              \item The platform should be accessible from both web browsers and mobile applications. Mobile applications will be implemented for Android and iOS operating systems.
+          \end{itemize}
+\end{enumerate}
+\textbf{Note:} Cross-platform accessibility, although listed under hardware limitations, primarily involves software compatibility rather than hardware constraints. It highlights the need for the platform to function seamlessly across different operating systems.
+
+\subsection{Other Constraints}
+While considering standard compliance and hardware limitations, additional constraints specific to the CKB project should be acknowledged:
+
+\begin{enumerate}
+    \item \textbf{Educator Configuration:}
+          \begin{itemize}
+              \item The design should facilitate easy configuration by educators, allowing them to customize scoring criteria, badge rules, and associated variables according to their preferences and requirements.
+          \end{itemize}
+
+    \item \textbf{Automated Testing Tools:}
+          \begin{itemize}
+              \item Seamless integration with automated testing tools is essential. The platform should be designed to accommodate any constraints or limitations imposed by these tools during code evaluation.
+          \end{itemize}
+
+    \item \textbf{Scalability:}
+          \begin{itemize}
+              \item The platform must be scalable to handle a growing user base, increasing numbers of battles, and additional features without compromising performance. Consideration should be given to both the user interface and backend infrastructure.
+          \end{itemize}
+
+    \item \textbf{Educator Workload:}
+          \begin{itemize}
+              \item The design should optimize the educator's workload, particularly during the manual evaluation stage. Streamlining the evaluation process will enhance efficiency and user satisfaction.
+          \end{itemize}
+
+    \item \textbf{Gamification Logic:}
+          \begin{itemize}
+              \item Constraints associated with the gamification logic, including badge creation, rule definition, and variable association, should be carefully considered to maintain system flexibility without compromising integrity.
+          \end{itemize}
+
+    \item \textbf{Integration with External Systems:}
+          \begin{itemize}
+              \item The platform needs to seamlessly integrate with external systems, such as GitHub, while considering any constraints or limitations imposed by these external systems on data exchange and interactions.
+          \end{itemize}
+\end{enumerate}
+
+These design constraints are vital to guide the development of the Code Kata Battle platform, ensuring legal compliance, optimal user experience, and consideration of specific project-related constraints.
