@@ -488,3 +488,42 @@ While considering standard compliance and hardware limitations, additional const
 \end{enumerate}
 
 These design constraints are vital to guide the development of the Code Kata Battle platform, ensuring legal compliance, optimal user experience, and consideration of specific project-related constraints.
+
+
+
+
+\section{Software System Attributes}
+\label{sec:software_system_attributes}%
+
+\subsection{Reliability}
+\label{subsec:reliability}%
+The reliability of the Code Kata Battle (CKB) platform is crucial for its users, especially during critical operations such as code evaluations and scoring. 
+While the platform doesn't require absolute perfection in every operation, it must maintain a high level of reliability to instill confidence in educators and students. 
+Considering the nature of the platform, a failure rate between $0.1\%$ and $1\%$ is deemed acceptable. 
+This range positions the CKB system as a robust and dependable tool for code kata battles.
+
+\subsection{Availability}
+\label{subsec:availability}%
+Availability is a key attribute for the CKB platform, particularly for educators who rely on its functionalities for managing tournaments, battles, and student assessments. 
+Downtime, especially during crucial periods like ongoing battles or tournament deadlines, is unacceptable. Therefore, the platform aims to achieve a remarkable $99.9\%$ uptime, ensuring educators have uninterrupted access to critical features. 
+This commitment to high availability enhances the overall user experience and reinforces the platform's reliability.
+
+\subsection{Security}
+\label{subsec:security}%
+Security is paramount for the CKB platform, given its involvement in handling code submissions, communication with external systems like GitHub, and the storage of sensitive user information. 
+The platform ensures data privacy by employing HTTPS for secure communication. Additionally, all stored information is encrypted, providing an extra layer of protection against potential security threats. 
+By prioritizing these security measures, the CKB platform safeguards the integrity and confidentiality of user data, fostering trust among educators and students.
+
+\subsection{Maintainability}
+\label{subsec:maintainability}%
+Maintainability is a critical aspect of the CKB platform's design philosophy. The platform is structured into modular components to facilitate efficient maintenance, updates, and future extensions. 
+Each implemented functionality is meticulously documented, ensuring clarity for developers involved in maintenance tasks. 
+The design emphasizes a modular approach, allowing updates to specific components without adversely affecting the entire system. 
+This commitment to maintainability ensures that the CKB platform can adapt to evolving requirements and technologies without compromising its stability.
+
+\subsection{Portability}
+\label{subsec:portability}%
+The CKB platform prioritizes portability to accommodate a diverse user base. Users can access the platform seamlessly from web browsers and mobile applications on both Android and iOS devices. 
+The choice of programming languages and development tools is a strategic decision, with the goal of providing a consistent user experience across different platforms. 
+While cross-platform development tools offer efficiency, separate implementations for Android and iOS are considered for a more tailored user experience. 
+This flexibility in portability ensures that the CKB platform remains accessible and user-friendly, regardless of the chosen device or operating system.
