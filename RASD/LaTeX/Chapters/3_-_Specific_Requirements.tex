@@ -736,6 +736,48 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+% When the submission deadline of a CKB expires, there is a consolidation stage in
+%which, if manual evaluation is required, the educator uses the CKB platform to go through the sources
+%produced by each team to assign his/her score. Once the consolidation stage finishes, all students
+%participating in the battle are notified when the final battle rank becomes available.
+\subsubsection*{UC\cuc . Educator manually evaluates teams in a CKB}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Educator \\
+        \hline
+        Entry conditions & The educator is logged in on the \verb|CKB| platform and is on a CKB's details page. The educator is the creator of the CKB and the CKB has ended.\\
+        \hline
+        Event Flow      
+        & 1. The educator clicks on the "Manually Evaluate Teams" button\\
+        & 2. The \verb|CKB| platform shows the list of teams involved in the CKB\\
+        & 3. The educator clicks on a team for which he wishes to perform a manual evaluation\\
+        & 4. The \verb|CKB| platform shows the team's sources\\
+        & 5. The educator assigns a score to the team\\
+        & 6. The educator clicks on the "Save" button\\
+        & 7. The \verb|CKB| platform communicates the outcome of the operation\\
+        \hline
+        Exit condition   & The score of the team is updated.   \\        
+        \hline
+        \caption{New Badge creation Use Case.}
+        \label{tab: manual_evaluation_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/manual_evaluation}
+   %             \caption{Manual Evaluation Sequence Diagram}
+%                \label{fig: manual_evaluation_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
+
+
 \section{Performance Requirements}
 \label{subsec:performance_requirements}%
 
