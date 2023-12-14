@@ -844,6 +844,44 @@ This comprehensive representation aims to capture the essential aspects of each 
 \end{center}
 
 
+% The CKB platform automatically updates the battle score of a team as soon as new push actions on
+% GitHub are performed. So, both students and educators involved in the battle can see the current rank evolving during the battle. 
+
+\subsubsection*{UC\cuc . User visualizes a CKB's current ranking}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Educator/Student \\
+        \hline
+        Entry conditions & The user is logged in on the \verb|CKB| platform. The user is either an educator who administrates the CKB or a student who is participating in the CKB. \\
+        \hline
+        Event Flow      
+        & 1. The user clicks on a tournament in which they are involved from the list of tournaments in the "Tournaments" page\\
+        & 2. The \verb|CKB| platform shows the tournament's details page\\
+        & 3. The user clicks on a CKB in which they are involved from the list of CKBs in the tournament's CKB list page\\
+        & 4. The \verb|CKB| platform shows the CKB's details page\\
+        & 5. The user clicks on the "Ranking" button\\
+        & 6. The \verb|CKB| platform shows the CKB's current ranking\\
+        \hline
+        Exit condition   & The user visualizes the CKB's current ranking.   \\
+        \hline
+        \caption{Visualization of tournament's leaderboard.}
+        \label{tab: ckb_ranking_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+    %            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/ckb_ranking}
+    %            \caption{Visualization of CKB leaderboard Sequence Diagram}
+    %            \label{fig: ckb_ranking_use_case}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
 \section{Performance Requirements}
 \label{subsec:performance_requirements}%
 
