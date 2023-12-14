@@ -393,6 +393,75 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+\subsubsection*{UC\cuc . Educator creates a tournament}
+%CKB platform from the "sign-in" page. Then, from the menu option in the home page,
+%he selects "Create a new tournament". He is prompted with the page of the setup for
+%the tournament itself. Achille enters a name for the tournament and the registration
+%deadline. He then toggles the "advanced options" section. From here, he can decide
+%wheter to include or not badges, and, in the first case, which badges are available in
+%the tournament. Achille is prompted with a set of pre-existing badges (created from the
+%platform or in previous tournaments). He can decide to create new badges in addition
+%to the ones already present. When choosing to create a new badge, a pop-up window
+%appears where he can select and combine variables and rules to obtain the new badge.
+%Once he finishes setting up everything, he pushes the "Create tournament" button at the
+%bottom of the page.
+
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Unregistered Student                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The student isn't registered on the \verb|CKB| platform and clicks the sign-up button                                                                                                               \\
+        \hline
+        Event Flow       
+        & 1. The educator clicks on the "Create Tournament" button from the Menu in the homepage.\\
+        & 2. The \verb|CKB| platform prompts the educator to input the tournament name.\\
+        & 3. The educator inputs the tournament name.\\
+        & 4. The \verb|CKB| platform prompts the educator to input the registration deadline.\\
+        & 5. The educator inputs the registration deadline.\\
+        & 6. The educator toggles the "Advanced Options" section.\\
+        & 7. The \verb|CKB| platform prompts the educator to choose whether to include badges or not.\\
+        & 8. The educator chooses whether to include badges or not.\\
+        & 9. The \verb|CKB| platform prompts the educator to choose which badges to include.\\
+        & 10. The educator chooses which badges to include.\\
+        & 11. The \verb|CKB| platform prompts the educator to choose whether to create new badges or not.\\
+        & 12. The educator chooses to create new badges.\\
+        & 13. The \verb|CKB| platform opens a pop-up window allowing the educator to create new badges by selecting and combining variables and rules.\\
+        & 14. The educator creates new badges.\\
+        & 15. The educator pushes the "Create Tournament" button.\\
+        & 16. The \verb|CKB| platform communicates the outcome of the tournament creation.\\
+        \hline
+        Exit condition   & A tournament is created.   \\                                                                                                                                                                         
+        \hline
+        Exceptions   
+        & 3.1. The educator does not input the tournament name.\\
+            & The \verb|CKB| platform shows a message asking the user to input the tournament name.  \\
+        & 5.1. The educator does not input the registration deadline or inputs an invalid date.\\
+            & The \verb|CKB| platform shows a message asking the user to input the registration deadline.  \\
+        & 8.1. The educator does not choose whether to include badges or not.\\
+            & The \verb|CKB| platform assumes that badges are not included.  \\
+        & 10.1. The educator does not choose which badges to include.\\
+            & The \verb|CKB| platform assumes that no pre-existing badges are included.  \\
+        & 12.1. The educator does not choose to create new badges.\\
+            & The \verb|CKB| platform assumes that no new badges are created.  \\
+        & 14.1. The educator tries to create a new badge without selecting any variable or rule.\\
+            & The \verb|CKB| platform shows a message asking the user to select at least one variable or rule.  \\
+        \hline
+        \caption{Tournament Creation Use Case.}
+        \label{tab: tournament_creation_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/tournament_creation}
+   %             \caption{Tournament Creation Sequence Diagram}
+%                \label{fig: tournament creation_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
 
 
 \section{Performance Requirements}
