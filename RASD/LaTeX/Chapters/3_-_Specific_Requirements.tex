@@ -564,6 +564,15 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+%. To create a new battle, an educator uses the CKB
+%platform to perform the following steps:
+%• upload the code kata (description and software project, including test cases and build
+%automation scripts),
+%• set minimum and maximum number of students per group,
+%• set a registration deadline,
+%• set a final submission deadline,
+%• set additional configurations for scoring (see further details in the following).
+
 
 \subsubsection*{UC\cuc . Educator creates a new Code Kata Battle}
 \begin{center}
@@ -571,35 +580,55 @@ This comprehensive representation aims to capture the essential aspects of each 
         \hline
         Actor            & Educator \\
         \hline
-        Entry conditions & The educator is logged in on the \verb|CKB| platform and has permissions to perform actions on a specific tournament.\\                                                                                                               \\
+        Entry conditions & The educator is logged in on the \verb|CKB| platform and is on a tournament's details page. The educator has permissions to add new CKB to the tournament.\\                                                                                                               \\
         \hline
-        Event Flow       
-        & 1. The educator clicks on a tournament for which he has editing permissions from the list in the "Tournaments" page\\
-        & 2. The \verb|CKB| platform shows the tournament details page\\
-        & 3. The educator clicks on the "Close Tournament" button\\
-        & 4. The \verb|CKB| platform shows a pop-up window asking for confirmation\\
-        & 5. The educator confirms the action\\
-        & 6. The \verb|CKB| platform communicates the outcome of the tournament closing\\
-        & 7. The \verb|CKB| computes the final ranking of the tournament and makes it available\\
-        & 8. The \verb|CKB| platform notifies all students that the tournament is closed\\
+        Event Flow      
+        & 1. The educator clicks on the "Create New Code Kata Battle" button\\ 
+        & 2. The \verb|CKB| platform asks the educator to upload the code kata for the battle\\
+        & 3. The educator uploads the code kata\\
+        & 4. The \verb|CKB| platform verifies that the code kata includes a description and a software project with test cases and build automation scripts\\
+        & 5. The \verb|CKB| platform asks the educator to set the minimum and maximum number of students per group\\
+        & 6. The educator sets the minimum and maximum number of students per group\\
+        & 7. The \verb|CKB| platform asks the educator to set a registration deadline\\
+        & 8. The educator sets a registration deadline\\
+        & 9. The \verb|CKB| platform asks the educator to set a final submission deadline\\
+        & 10. The educator sets a final submission deadline\\
+        & 11. The educator clicks on the "Additional Configurations for Scoring" button\\
+        & 12. The \verb|CKB| platform shows the "Additional Configurations for Scoring" section\\
+        & 13. The educator sets additional configurations for scoring if needed\\
+        & 14. The educator clicks on the "Create" button\\
+        & 15. The \verb|CKB| platform communicates the outcome of the CKB creation\\
+        & 16. The \verb|CKB| platform notifies all students subscribed to the tournament that a new CKB is available\\
         \hline
-        Exit condition   & The tournament is closed.   \\                                                                                                                                                                         
+        Exit condition   & The new CKB is added to the tournament.   \\                                                                                                                                                                         
         \hline
         Exceptions   
-        & 5.1. The educator does not confirm the action\\
-            & The \verb|CKB| platform does not close the tournament.  \\
+        & 4.1. The code kata does not include a description\\
+            & The \verb|CKB| platform shows a message asking the educator to upload a code kata including a description.  \\
+        & 4.2. The code kata does not include a software project\\
+            & The \verb|CKB| platform shows a message asking the educator to upload a code kata including a software project.  \\
+        & 4.3. The code kata does not include test cases\\
+            & The \verb|CKB| platform shows a message asking the educator to upload a code kata including test cases.  \\
+        & 4.4. The code kata does not include build automation scripts\\
+            & The \verb|CKB| platform shows a message asking the educator to upload a code kata including build automation scripts.  \\
+        & 5.1. The educator does not set the minimum and maximum number of students per group\\
+            & The \verb|CKB| platform shows a message asking the educator to set the minimum and maximum number of students per group.  \\
+        & 7.1. The educator does not set a registration deadline or sets an invalid date\\
+            & The \verb|CKB| platform shows a message asking the educator to set a registration deadline.  \\
+        & 9.1. The educator does not set a final submission deadline or sets an invalid date\\
+            & The \verb|CKB| platform shows a message asking the educator to set a final submission deadline.  \\
         \hline
-        \caption{Tournament Closing Use Case.}
-        \label{tab: tournament_closing_use_case}
+        \caption{New CKB creation Use Case.}
+        \label{tab: new_CKB_use_case}
     \end{longtable}
 
     %QUI SEQUENCE DIAGRAM
     %\begin{comment}
     %    \begin{figure} [H]
     %        \begin{center}
-                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/tournament_closing}
-   %             \caption{Tournament Closing Sequence Diagram}
-%                \label{fig: tournament_closing_seq_diag}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/CKB_creation}
+   %             \caption{CKB creation Sequence Diagram}
+%                \label{fig: ckb_creation_seq_diag}
     %        \end{center}
    %     \end{figure}
     %    \end{comment}
