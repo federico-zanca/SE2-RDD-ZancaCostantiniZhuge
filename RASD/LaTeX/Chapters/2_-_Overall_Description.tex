@@ -5,17 +5,22 @@
 \label{subsec:class_diagrams}%
 The diagram below represents and describes the classes involved in the system, their basic functionalities, attributes,
 and the relationships between them.
-We took advantage of several design patterns to better implement some aspects of the system to be. More specifically, we used:
+From the diagram, it is easy to see how the tournament entity function as a bridge between different
+components. More specifically, in our design we assigned to this entity the task to hold track 
+of battles, leaderboard of the tournament itself and badge assignment.
+All the other functionalities are esily understandable from within the diagram or 
+will be later discussed. \newline
+Here, we want to stress that, even though just an high level view of the system-to-be, some consideration of implementation can be done. 
+More specifically, some design pattern can be taken into consideration:
 \begin{itemize}
-    \item Strategy Pattern: used to implement different type of scoring systems.
-    \item Decorator Pattern: used to easily aggregate different type of scoring systems,
-    so just one interaction will be needed to calculate the total score.
-    \item Observe Patter: used to broadcast notifications to multiple observers. In our specific case,
-     we can notify students connected to a tornnouament and/or battle of any change in the status.
+    \item Decorator Pattern: to implement the logic behind the scoring system. Educator's choice of different aspect to consider will be easily managable 
+    \item Observer patter: to implement the structure behind the notification system.
+    \item Factory pattern: for the creation of different Badges with different characteristics and requirements.
   \end{itemize}
-More detail about design patterns and design choices in general will be further discussed in the DD document.
+
 \begin{figure}[H]
     \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/class-diagram.jpeg}
         \caption{A simplified Class Diagram}
         \label{fig:class_diagram}%
     \end{center}
@@ -24,191 +29,111 @@ More detail about design patterns and design choices in general will be further 
 \subsection{State Diagrams}
 \label{subsec:state_diagrams}%
 
-\paragraph{The EVD gets position and characteristics of charging stations at a certain location.}
-EVD Andrew is going to use his car to go to the university for the Software Engineering 2 exam, but his EV is out of battery.
-So, he needs to decide where to charge his vehicle.
-To do that, he opens the \verb|eMALL| application and enters the map section.
-At first, he sees if there is any charging station around him, but unfortunately at his current position,
-there is only one charging station, which is shown as in maintenance.
-So, he decides to see where to charge his EV nearby the university, inserting Milan in the location search bar.
-From the huge amount of charging stations, he decides to choose the cheapest one.
-He selects a charging station and gets its additional information.
-He goes on searching other stations until he finds the best one for him.
-At this point, the navigation process ends.
-
-Below is presented a state diagram summarizing the flow of activities done in the charging stations navigation process:
-\begin{figure}[H]
-    \begin{center}
-        
-        \caption{Get locations of charging stations state diagram}
-        \label{fig:locations_sd}%
-    \end{center}
-\end{figure}
-
-\paragraph{EVD books a charge at a specified charging station at a certain timeframe.}
-Andrew needs to book a charge for his EV\@.
-He selects a charging station on the map and enters the booking section.
-Unfortunately, the charging station cannot offer a reservation to him because no spots are available.
-So, he searches for another one until he finds it.
-Andrew has to decide in which timeframe he wants the charging point to be reserved.
-So, he checks the availability schedule of the charging station and books a slot for its charge.
-The system asks to pay a deposit to the EVD, which proceed to pay.
-Finally, the EVD receives an e-mail with all the information that confirms the reservation.
-
-It is shown a state diagram that summaries the activities in the booking process:
-\begin{figure}[H]
-    \begin{center}
-        
-        \caption{Book a charge state diagram}
-        \label{fig:booking_sd}%
-    \end{center}
-\end{figure}
-
-\paragraph{CPO adds charging points in its CPMS.}
-\verb|SOLARIS| is the new company of the successful businessman Hugh Peter.
-They decided to trust the \verb|eMALL| project, entrusting them with the responsibility of managing their IT infrastructure.
-After logging in, they start inserting new charging points owned by them and distributed throughout the territory.
-The first thing they are asked to select is the charging station to which the new spot belongs.
-So, they insert all the requested information (serial number, location, connectors, power, etc.).
-After they confirm and submit what they inserted, they iterate the process until they have inserted all the charging points.
-It is shown a state diagram to summaries the activities in the charging points insertion process:
-\begin{figure}[H]
-    \begin{center}
-        
-        \caption{Insert charging points state diagram}
-        \label{fig:insert_charging_points_sd}%
-    \end{center}
-\end{figure}
 
 \subsection{Scenarios}
 \label{subsec:scenarios}%
 
-\paragraph{Unregistered EVD creates an account.}
-Mr. Oak has his EV and is looking for an application that offers the chance to charge his vehicle and smartly plan a
-charging process depending on the battery status and his daily schedule.
-Fortunately, he finds out \verb|eMALL|\@.
-So, he immediately proceeds to create an account.
-At first, he opens the application and goes to the ``sign up'' section.
-The system asks to Mr. Oak its personal information such as first and second name, birthday, living address, e-mail address, password, and telephone number, which he inserts immediately.
-He receives an e-mail with a 6-digit code to be inserted in the new window shown by the \verb|eMALL| system to confirm his e-mail address.
-After accepting the terms \& conditions and submitting all the inserted information, the system creates his account,
-and he can begin using the application.
+\paragraph{Unregistered student creates an account.}
+Gianmarco is a computer science student from Politecnico of Milan. After attending several courses about software engineering, 
+he is looking for a way to practice his skills. Fortunately, one of his professor suggests him the CodeKataBattle CKB platform.
+Gianmarco immediately proceeds to create an account. He navigates to the platform and goes to the "sign up" section. 
+The system asks Gianmarco some personal information such as first and last name, an email linked 
+to an institutional profile (for example name.surname@mail.polimi.it). He receives an e-mail with a 
+6-digit code to be in inserted in the web page to confirm his e-mail address. In the meanwhile, the platform 
+receives information about the status of Gianmarco from the university (whether he is a techer or a student). 
+After accepting the terms \& conditions 
+and submitting an username for his profile, the system creates his account, and Gianmarco can begin to use the platform.
 
-\paragraph{The EVD charges his/her EV.}
-After booking a charge, Michael Scarn goes to the charging station at the chosen hour.
-After turning off the EV, he opens the \verb|eMALL| application and enters the charge section.
-From the set of close charging points, he selects which one has the serial number he received by \verb|eMALL| by e-mail
-when he booked the charge.
-So, he asks to charge the EV at that charging point.
-After verifying that the EVD can be charged at that charging point, the application notifies to the user that the
-connectors are now unlocked and ready to be used.\@
-While the EV is in charge, the system notifies the EVD of the current status of the charging process.
-When the process ends, he unplugs the connector, pays through the \verb|eMALL| application, and gets back in his car.
+\paragraph{Professor creates a tournament. }
+Achille is a cyber security professor from university of Milan. He has an active profile on the CKB platform. 
+During his last lesson, he annouced to his students that he will create monthly tournaments with weekly Battle for them to practise. 
+He then proceeds to create the first tournament. He logs in the CKB platform from the "sign-in" page. 
+Then, from the menu option in the home page, he selects "Create a new tournament". He is prompted with the page of the setup for the tournament itself. 
+Achille enters a name for the tournament and the registration deadline. He then toggles the "advanced options" section. 
+From here, he can decide wheter to include or not badges, and, in the first case, which badges are available in the tournament. 
+Achille is prompted with a set of pre-existing badges (created from the platform or in previous tournaments). He can decide to 
+create new badges in addition to the ones already present. When choosing to create a new badge, a pop-up window appears where he can select and combine 
+variables and rules to obtain the new badge. Once he finishes setting up everything, he pushes the "Create tournament" button at the bottom of the page. 
 
-\paragraph{The EVD inserts a new activity in its calendar and receives a suggestion for a charging process.}
-Jimothy inserts a new activity in his calendar, specifying the hour and destination of the event.
-After doing that, he receives a notification that shows the EVD where and when to charge his vehicle.
-The system creates suggestions to minimize the cost and the time lost at the charging station.
-It also considers special offers activated by the CPOs registered in the eMALL system.
-So, Joe accepts the received proposal and confirms the book of the listed charging points, making the needed payments.
+\paragraph*{Professor closes a tournament.}
+Logged into the CKB platform, Professor Lucia navigates to the "Tournaments" page. She locates the "Programming Prodigy Challenge" in the list and clicks
+on it to access the tournament details. Satisfied with the students' participation and battle outcomes, she clicks the "Close Tournament" button.
+A confirmation pop-up appears, and without hesitation, Professor Lucia confirms the action. The CKB platform processes the request, communicates 
+the successful tournament closure, and computes the final ranking based on accumulated scores.
+The platform promptly makes the final ranking available for participants. Professor Lucia, acknowledging the students' efforts, briefly reviews the rankings. 
 
-\paragraph{The EVD receives a notification about a new special offer activated by a CPO}
-Joe receives a notification about a new special offer activated by the CPO \verb|SOLARIS|.
-So, he opens the promotion page, reads what it is about, and gets the discount code of the offer.
-It consists of a 20\% discount for all the EVDs that are under 25.
-Considering that he has to charge his EV, he decides to book a charging session at a charging station owned by the CPO \verb|SOLARIS|.
-After selecting the timeframe and verifying its availability, he inserts the discount code SARTORIUS\@.
+\paragraph*{Professor creates a new CKB.}
+Professor Roberto, logged into his CKB platform account, navigates to the tournament's details page named "Algorithmic Mastery Challenge." 
+Excited to introduce a new coding challenge, he clicks on the "Create New Code Kata Battle" button. 
+Professor Roberto is prompted to upload a code kata for the battle: he selects a well-prepared code kata that includes a comprehensive description and a software project with test cases and build automation scripts. 
+He ensures that all necessary components are included before uploading.
+Then he decides that groups should consist of a minimum of two students and a maximum of four students for this battle, so Professor Roberto sets these values accordingly in the "Group Size" field.
+The educator proceeds to set a registration deadline and a final submission deadline, providing students with ample time to prepare and submit their solutions.
+Curious about the advanced scoring options, Professor Roberto clicks on the "Additional Configurations for Scoring" button. 
+The platform displays the scoring section, allowing him to set additional configurations if needed. 
+Satisfied with the default scoring, he proceeds to click the "Create" button.
 
+\paragraph*{Professor grants permissions to another professor to add CKB to a tournament.}
+Professor Marta, logged into her CKB platform account, navigates to the details page of the tournament named "Coding Challenge Extravaganza," which she initiated. 
+Realizing the workload involved in creating battles, she decides to grant permissions to another educator, Professor Elena.
+She clicks on the "Add Administrator" button, prompting the CKB platform to request the email or username of the educator to whom she wants to grant permissions. 
+Professor Marta confidently inputs Professor Elena's email.
+Professor Elena receives a notification from the CKB platform, informing her that she has been granted permissions to add battles to the tournament named "Coding Challenge Extravaganza."
+Now, Professor Elena, can access the tournament details page and contribute by creating new Code Kata Battles. 
 
-\section{Product functions}
-\label{sec:product_functions}%
-\textbf{The EVD books a charging session} \\
-The main functionality of \verb|eMALL| is to book charge sessions in different charging stations for the EVD\@.
-In particular, the system shows charging stations to the EVD and waits for him to select where he wants to book a charging session.
+\paragraph*{Professor creates a new Badge.}
+Professor Sofia, logged into her CKB platform account and currently on the details page of the "Coding Excellence Showcase" tournament, is inspired to introduce a special badge for outstanding performances. 
+Excited about the idea, she clicks on the "Create New Badge" button located in the "Advanced Options" section.
+The CKB platform prompts her to input the title of the badge. 
+Professor Sofia, with a clear vision in mind, names the badge "Elite Coder."
+Next, the platform allows Professor Sofia to define the rules for the badge. 
+She navigates through a user-friendly wizard, creating rules that capture exceptional coding skills. 
+Each rule represents a milestone that, when achieved, contributes to earning the "Elite Coder" badge.
+Professor Sofia completes the rule-setting process, ensuring a fair and challenging criteria for students to meet. 
+Satisfied with her creation, she clicks on the "Create" button.
 
-When \verb|eMALL| retrieves information about the charging stations available in the local area, it also retrieves all the extra info about the available plugs and power supplies.
+\paragraph*{Professor manually evaluates teams in a CKB.}
+Professor Marco, logged into his CKB platform account and currently on the details page of the "Algorithmic Challenge" CKB, a challenge that is ended and is in post evaluation phase.
+The team already has a score, automatically computed by the platform, but Professor Marco wants to provide a more detailed evaluation. 
+Eager to ensure a fair evaluation, he clicks on the "Manually Evaluate Teams" button.
+The platform presents him with a list of teams that participated in the "Algorithmic Challenge." 
+Professor Marco carefully selects a team from the list, keen on assessing their coding skills and approach to the given challenge.
+Upon selecting a team, the CKB platform displays the team's submitted sources. 
+Professor Marco thoroughly reviews the materials and, based on his expert judgment, assigns a comprehensive score to the team's performance.
+Satisfied with the evaluation, Professor Marco clicks the "Save" button to record his assessment. 
+This meticulous manual evaluation process repeats as Professor Marco proceeds to assess other teams involved in the "Algorithmic Challenge." 
+Each score contributes to the overall ranking of the teams.
 
-The system has to control if the charging station is currently unavailable, and if it is not, it gets the station's schedule.
-The EVD has to choose a timeframe between the ones available to book a charge session.
-\verb|eMALL| also queries the charging station to know if the station has or not a mandatory deposit to pay to end the booking process.
-If the station does not have a deposit policy, then \verb|eMALL| finishes the booking process by sending an informative email to the EVD that resumes all the booking info.
+\paragraph*{User consults the leaderboard of a tournament.}
+Sofia, an active user on the CodeKataBattle (CKB) platform, decides to check the current ranking of the "Data Structures Madness" tournament. 
+She navigates to the "Tournaments" page and selects "Data Structure Madness" tournament.
+Sofia proceeds opening the details page and effortlessly views the real-time leaderboard with a single click. 
+The platform promptly presents the current standings, allowing Sophia to gauge the performance of each student subscribed to the tournament.
 
-In the email, \verb|eMALL| also specifies the serial number associated with the charging point of the charging station where the EVD has to charge his EV\@.
+\paragraph*{User views the profile of another user to check their badges.}
+Francesca, a student on the CodeKataBattle (CKB) platform, is intrigued to explore the profile of a student, Alex, to gain insights into his achievements. 
+With a simple click on Alex's profile from the "Users" page, Francesca is presented with a comprehensive view. 
+The platform seamlessly showcases the badges earned by Alex. 
+To delve deeper, Francesca clicks on a specific badge and is presented with a detailed description of the badge and the criteria for earning it.
 
-\textbf{The EVD receives charging alerts about where to charge his EV} \\
-\verb|eMALL| offers smart functions about when the EVD might book a charge for his EV\@.
-Hence, when an EVD inserts a new activity in his calendar, \verb|eMALL| computes the best route to reach the destination through an external navigator API\@.
-\verb|eMALL| also checks the battery status of the EV, so it notifies the best itinerary for the EVD\@.
-If the battery state doesn't allow the EVD to reach the destination, then \verb|eMALL| shows him the best route with the charging stations available along the road.
-
-\verb|eMALL| tries to minimize the costs.
-Hence, starting from the current battery status, the system computes the maximum kilometers an EV can travel before running out of battery.
-If the EV can reach the destination, \verb|eMALL| marks the route returned by the API as preferred.
-On the other hand, \verb|eMALL| finds charging stations along the road and selects the one with the minimum costs because it knows the details about the EV, for instance, the plug type.
-The best charging station found is shown to the EVD, allowing him to decide whether to start a booking process.
-
-If the EVD doesn't accept \verb|eMALL| solution, he can book another charging station along the road and start, as well, a booking process.
-
-\textbf{The CPO manages its charging stations} \\
-A CPO should be able to manage its charging stations and relative charging points.
-In general, a CPO might have new charging stations to register in \verb|eMALL|, and, as well, it might have charging points too.
-The system allows the CPO to register charging stations, by entering all the info about them, for instance, the position on the map and the number of charging points available.
-Furthermore, the system allows the registration of also charging points by inserting info like the available plugs and the power supply of the charging process.
-
-Just like the CPO inserts new information about its product, it can also delete charging points or charging stations from \verb|eMALL|\@.
-
-The system also shows CPOs charging stations and relative charging points on the map.
-This functionality is necessary because they might break down, so the CPO has to change their availability status (offline, under maintenance, online).
+\paragraph*{User views the ranking of an ongoing CKB.}
+Emma, an enthusiastic student on the CKB platform, is eager to witness the live dynamics of an ongoing coding tournament.
+Logging into CKB, Emma navigates to a specific tournament, selecting a Code Kata Battle (CKB) of interest.
+Within the chosen CKB, Emma clicks on "Ranking". In an instant, the CKB platform reveals the real-time rankings, showcasing the fluid movements of teams based on their pushes to the repository, automatically evaluated by the system.
 
 
 \section{User characteristics}
 \label{sec:user_characteristics}%
-The actors listed below are considered in the eMALL system
+The CKB platform caters to various user roles, each with specific responsibilities and access levels:
 \begin{itemize}
-    \item \textbf{CPO:} owns one or more charging stations, and manages bookings and promotions about its charging points.
-    He buys energy from DSOs, based on prices and needs.
-    CPOs has their own IT system.
-    \item \textbf{Unregistered EV Driver:} anybody who owns an electric vehicle, but isn’t registered in the eMALL system.
-    Before accessing its benefits, it needs to get an account.
-    \item \textbf{Registered EV Driver:} an electric vehicle owner who already joined the eMALL system, and access its benefits.
-    He’s identified with a unique ID, and can own one or more vehicles with different specifics.
-    They can check prices and position of charging points, in addition to receiving notifications about promotions reserved to them.
+    \item \textbf{Guest:}  Users who are not registered on the CKB platform but have the potential to become either students or educators. 
+    Guests have limited access and functionality until they complete the registration process. 
+    Once registered, they can assume the roles of either Student or Educator based on their role in the institution they belong to.
+    \item \textbf{Educator:} Educators who have successfully registered within the CKB system. Identified by a unique identifier, registered educators, depending on permissions granted, may assume the role of Tournament Administrator. 
+    They possess the ability to create CKBs, evaluate student submissions, and engage in other system functionalities.
+    \item \textbf{Student:} Users, both registered and unregistered, participating in code kata battles facilitated by the CKB platform. 
+    Students can form teams, submit solutions, and engage in the competition. 
+    Their scores, rankings, and achievements contribute to their overall performance, visible in the context of tournaments.
+    \item \textbf{Tournament Administrator:} Educators with privileges to perform actions within a specific Tournament. Tournament Administrators, typically the creators of a Tournament, can delegate administrative powers to other educators. 
+    These administrators have the authority to initiate new CKBs, evaluate submissions, and oversee tournament-related activities.
 \end{itemize}
-
-
-\section{Assumptions, dependencies and constraints}
-\label{sec:assumptions_dependencies_and_constraints}%
-\newcounter{da}
-\setcounter{da}{1}
-\newcommand{\cda}{\theda\stepcounter{da}}
-\begin{center}
-    \begin{longtable}{ |l|p{0.9\linewidth}| }
-        \hline
-        \textbf{ID} & \textbf{Description}                                                                                     \\
-        \hline
-        DA\cda      & Each user has needed competences to use the \verb|eMALL| system.                                         \\
-        \hline
-        DA\cda      & Both the users EVDs and CPOs have an e-mail.                                                             \\
-        \hline
-        DA\cda      & The EVD has a payment method.                                                                            \\
-        \hline
-        DA\cda      & The EVD uses a device with internet connectivity.                                                        \\
-        \hline
-        DA\cda      & The EVD uses a device with GPS module for navigation and localization.                                   \\
-        \hline
-        DA\cda      & There is a specific compatibility between EV's plug and connectors offered by charging points.           \\
-        \hline
-        DA\cda      & Charging points have their own software.                                                                 \\
-        \hline
-        DA\cda      & Communication between the \verb|eMALL| system and the charging points happens through the OCPP protocol. \\
-        \hline
-        DA\cda      & The \verb|eMALL| system communicates with EV brands API to get vehicles' specification.                  \\
-        \hline
-        DA\cda      & The \verb|eMALL| system communicates with DSOs through their APIs.                                       \\
-        \hline
-        DA\cda      & The \verb|eMALL| system communicates with third-party payment services to manage the payments.           \\
-        \hline
-        \caption{Domain assumptions.}
-        \label{tab:domainassmptn_tab}%
-    \end{longtable}
-\end{center}
