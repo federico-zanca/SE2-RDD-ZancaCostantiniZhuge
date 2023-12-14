@@ -565,6 +565,47 @@ This comprehensive representation aims to capture the essential aspects of each 
 \end{center}
 
 
+\subsubsection*{UC\cuc . Educator creates a new Code Kata Battle}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Educator \\
+        \hline
+        Entry conditions & The educator is logged in on the \verb|CKB| platform and has permissions to perform actions on a specific tournament.\\                                                                                                               \\
+        \hline
+        Event Flow       
+        & 1. The educator clicks on a tournament for which he has editing permissions from the list in the "Tournaments" page\\
+        & 2. The \verb|CKB| platform shows the tournament details page\\
+        & 3. The educator clicks on the "Close Tournament" button\\
+        & 4. The \verb|CKB| platform shows a pop-up window asking for confirmation\\
+        & 5. The educator confirms the action\\
+        & 6. The \verb|CKB| platform communicates the outcome of the tournament closing\\
+        & 7. The \verb|CKB| computes the final ranking of the tournament and makes it available\\
+        & 8. The \verb|CKB| platform notifies all students that the tournament is closed\\
+        \hline
+        Exit condition   & The tournament is closed.   \\                                                                                                                                                                         
+        \hline
+        Exceptions   
+        & 5.1. The educator does not confirm the action\\
+            & The \verb|CKB| platform does not close the tournament.  \\
+        \hline
+        \caption{Tournament Closing Use Case.}
+        \label{tab: tournament_closing_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/tournament_closing}
+   %             \caption{Tournament Closing Sequence Diagram}
+%                \label{fig: tournament_closing_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
 \section{Performance Requirements}
 \label{subsec:performance_requirements}%
 
