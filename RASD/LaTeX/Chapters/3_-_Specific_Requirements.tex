@@ -331,7 +331,7 @@ In this section, it will be shown the functional requirements and the domain ass
     \end{center}
 \end{figure}
 
-\subsection{Use Cases}
+\section{Use Cases}
 \label{subsec: use_case}%
 \newcounter{uc}
 \setcounter{uc}{1}
@@ -361,21 +361,21 @@ This comprehensive representation aims to capture the essential aspects of each 
         & 10. The student inputs the verification code.\\
         & 11. The \verb|CKB| platform communicates the outcome of the student's registration.\\
         \hline
-        Exit condition   & An account is created.                                                                                                                                                                              \\
+        Exit condition   & An account is created.   \\                                                                                                                                                                           
         \hline
-        Exceptions       
-        & 3.1. The student does not agree to the platform's "Terms \& Conditions," and "Privacy Policy."
-            & The \verb|CKB| platform shows a message asking the user to agree to such "Terms \& Conditions" stopping the sign up operation.                                                                                                     \\
-        & 4.1. The \verb|CKB| platform is unable to validate the student's personal information.                                                                                                           \\
+        Exceptions   
+        & 3.1. The student does not agree to the platform's "Terms \& Conditions," and "Privacy Policy."\\
+            & The \verb|CKB| platform shows a message asking the user to agree to such "Terms \& Conditions" stopping the sign up operation.  \\                                                                                                   
+        & 4.1. The \verb|CKB| platform is unable to validate the student's personal information.  \\                                                                                                         
             & In these cases, the unregistered student receives a notification with an error message.   \\
-        & 7.1. The student's provided username is already in use.                                                                                                           \\
-            & The \verb|CKB| platform shows a message asking the user to choose another username.   
-        & 7.2. The student's provided username is in a non acceptable format    
-            & The \verb|CKB| platform shows a message asking the user to choos another username    
+        & 7.1. The student's provided username is already in use.           \\                                                                                                
+            & The \verb|CKB| platform shows a message asking the user to choose another username.   \\
+        & 7.2. The student's provided username is in a non acceptable format    \\
+            & The \verb|CKB| platform shows a message asking the user to choos another username    \\
       % email not received by user                                                                                        \\
-        & 10.1. The student inputs an incorrect verification code.                                                                                                           \\
-            & The \verb|CKB| platform shows a message asking the user to input the correct verification code.      
-                                                                                        \\    
+        & 10.1. The student inputs an incorrect verification code.      \\                                                           
+            & The \verb|CKB| platform shows a message asking the user to input the correct verification code.  \\
+                                                                                        
         \hline
         \caption{Student Registration Use Case.}
         \label{tab: student_registration_use_case}
