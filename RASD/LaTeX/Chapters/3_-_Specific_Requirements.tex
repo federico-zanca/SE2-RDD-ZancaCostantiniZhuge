@@ -393,6 +393,42 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+\subsubsection*{UC\cuc . User Login}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered User                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The User is registered on the \verb|CKB| platform and clicks the login button                                                                                                               \\
+        \hline
+        Event Flow       
+        & 1. The \verb|CKB| platform prompts the user to input institutional email\\
+        & 2. The \verb|CKB| platform validates the email redirecting the user to the institution's page\\
+        & 3. The \verb|CKB| platform communicates the outcome of the user's login.\\
+        \hline
+        Exit condition   & Login completed.   \\                                                                                                                                                                           
+        \hline
+        Exceptions   
+        & 2.1. The user's email isn't valid.\\                                          
+        & 2.2. The user's verification on the institution's page goes wrong. \\                                                                                                         
+            & In these cases, the user receives a notification with an error message.   \\                                                               
+        \hline
+        \caption{Student Registration Use Case.}
+        \label{tab: user_login_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
+   %             \caption{Student Registration Sequence Diagram}
+%                \label{fig: student_registration_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
 
 
 \section{Performance Requirements}
