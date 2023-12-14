@@ -429,6 +429,42 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+
+\subsubsection*{UC\cuc . Student Subscription to a Tournament}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered Student                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The Student is logged in on the \verb|CKB| platform and clicks to the subscription button to a tournament.                                                                                                            \\
+        \hline
+        Event Flow       
+        & 1. The \verb|CKB| platform receives the request.\\
+        & 2. The \verb|CKB| platform checks if the tournament's subscription deadline is over.\\
+        & 3. The \verb|CKB| platform communicates the outcome of the student's subscription.\\
+        \hline
+        Exit condition   & Subscription completed.   \\                                                                                                                                                                           
+        \hline
+        Exceptions   
+        & 2.1. The tournament's subscription deadline is over.\\                                                                                                                                              
+            & In these cases, the student receives a notification with an error message.   \\                                                               
+        \hline
+        \caption{Student Subscription Use Case.}
+        \label{tab: student_subscription_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
+   %             \caption{Student Registration Sequence Diagram}
+%                \label{fig: student_registration_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
 \subsubsection*{UC\cuc . Student creates a team}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
@@ -472,42 +508,7 @@ This comprehensive representation aims to capture the essential aspects of each 
 \end{center}
 
 
-\subsubsection*{UC\cuc . Student Subscription to a Tournament}
-\begin{center}
-    \begin{longtable}{lp{0.75\linewidth}}
-        \hline
-        Actor            & Registered Student                                                                                                                                                                               \\
-        \hline
-        Entry conditions & The Student is logged in on the \verb|CKB| platform and clicks to the subscription button to a tournament.                                                                                                            \\
-        \hline
-        Event Flow       
-        & 1. The \verb|CKB| platform receives the request.\\
-        & 2. The \verb|CKB| platform checks if the tournament's subscription deadline is over.\\
-        & 3. The \verb|CKB| platform communicates the outcome of the student's subscription.\\
-        \hline
-        Exit condition   & Subscription completed.   \\                                                                                                                                                                           
-        \hline
-        Exceptions   
-        & 2.1. The tournament's subscription deadline is over.\\                                                                                                                                              
-            & In these cases, the student receives a notification with an error message.   \\                                                               
-        \hline
-        \caption{Student Subscription Use Case.}
-        \label{tab: student_subscription_use_case}
-    \end{longtable}
-
-    %QUI SEQUENCE DIAGRAM
-    %\begin{comment}
-    %    \begin{figure} [H]
-    %        \begin{center}
-                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
-   %             \caption{Student Registration Sequence Diagram}
-%                \label{fig: student_registration_seq_diag}
-    %        \end{center}
-   %     \end{figure}
-    %    \end{comment}
-\end{center}
-
-\subsubsection*{UC\cuc . Student invite another student to the team}
+\subsubsection*{UC\cuc . Student invites another student to the team}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -545,6 +546,41 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+\subsubsection*{UC\cuc . Student joins a battle without a team}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Student                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The Student is logged in on the \verb|CKB| platform and participating in a tournament.                                                                                                            \\
+        \hline
+        Event Flow       
+        & 1. The student selects a battle on the list of battles in the tournament page.\\
+        & 2. The student clicks the "Join battle" button on the bottom of the list of battles in the tournament page.\\
+        & 3. The \verb|CKB| platform verifies the registration deadline for the battle.\\
+        & 4. The \verb|CKB| platform communicates the outcome of the student's action.\\
+        \hline
+        Exit condition   & Student joined the battle.   \\                                                                                                                                                                           
+        \hline
+        Exceptions   
+        & 3.1. The battle's registration deadline is over.\\                                                                                                                                              
+            & In these cases, the student receives a notification with an error message.   \\                                                               
+        \hline
+        \caption{Student Subscription Use Case.}
+        \label{tab: student_subscription_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
+   %             \caption{Student Registration Sequence Diagram}
+%                \label{fig: student_registration_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
 
 \subsubsection*{UC\cuc . Educator creates a tournament}
 
