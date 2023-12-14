@@ -852,6 +852,41 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+%Badges can be visualized by all users. In particular, both students and educators can see collected
+%badges when they visualize the profile of a student.
+\subsubsection*{UC\cuc . User visualizes a student's profile}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Educator/Student \\
+        \hline
+        Entry conditions & The user is logged in on the \verb|CKB| platform and is browsing the "Users" page\\
+        \hline
+        Event Flow      
+        & 1. The user clicks on a student from the list of students in the "Users" page\\
+        & 2. The \verb|CKB| platform shows the student's profile page which includes the badges achieved by the student\\
+        & 3. The user clicks on a badge\\
+        & 4. The \verb|CKB| platform shows the badge's details\\
+        \hline
+        Exit condition   & The user visualizes the student's profile and the badges he earned.   \\ 
+        \hline
+        \caption{Visualization of tournament's leaderboard.}
+        \label{tab: view_profile_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+    %            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/view_profile}
+    %            \caption{Visualization of tournament leaderboard Sequence Diagram}
+    %            \label{fig: view_profile_use_case}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
 \section{Performance Requirements}
 \label{subsec:performance_requirements}%
 
