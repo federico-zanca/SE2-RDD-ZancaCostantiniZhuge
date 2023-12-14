@@ -301,8 +301,8 @@ In this section, it will be shown the functional requirements and the domain ass
             \item \textbf{[D.1]}
         \end{itemize}
 \end{itemize}
-\subsection{Use Cases}
-\label{subsec: use_cases}%
+\subsection{Use Case Diagrams}
+\label{subsec: use_case_diag}%
 % Use Case Diagrams
 \begin{figure}[H]
     \begin{center}
@@ -319,6 +319,70 @@ In this section, it will be shown the functional requirements and the domain ass
         \label{fig:class_diagram}%
     \end{center}
 \end{figure}
+
+\subsection{Use Cases}
+\label{subsec: use_case}%
+\newcounter{uc}
+\setcounter{uc}{1}
+\newcommand{\cuc}{\theuc\stepcounter{uc}}
+In this section, the primary identified use cases are elucidated. 
+Each use case is accompanied by a table delineating entry conditions, event flow, exit conditions, and exceptions. 
+Additionally, a sequence diagram is provided to illustrate the interactions between entities and the functions invoked. 
+This comprehensive representation aims to capture the essential aspects of each use case, ensuring a clear understanding of the system dynamics within the context of the Code Kata Battle (CKB) platform.
+\subsubsection*{UC\cuc . Student Registration}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Unregistered Student                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The student isn't registered on the \verb|CKB| platform and clicks the sign-up button                                                                                                               \\
+        \hline
+        Event Flow       
+        & 1. The \verb|CKB| platform prompts the unregistered student to input personal information (name, surname, email linked to an institutional profile).\\
+        & 2. The unregistered student fills the form with personal information\\
+        & 3. The student agrees to the platform's "Terms \& Conditions," and "Privacy Policy."\\
+        & 4. The \verb|CKB| platform validates the provided student information.\\
+        & 5. The \verb|CKB| platform requests the student to input a username for their profile.\\
+        & 6. The student inputs a username.\\ 
+        & 7. The \verb|CKB| platform validates the username.\\
+        & 8. The \verb|CKB| platform sends a verification email containing a 6-digit code to the student's provided institutional email address.\\
+        & 9. The \verb|CKB| platform prompts the student to input the verification code.\\
+        & 10. The student inputs the verification code.\\
+        & 11. The \verb|CKB| platform communicates the outcome of the student's registration.\\
+        \hline
+        Exit condition   & An account is created.                                                                                                                                                                              \\
+        \hline
+        Exceptions       
+        & 3.1. The student does not agree to the platform's "Terms \& Conditions," and "Privacy Policy."
+            & The \verb|CKB| platform shows a message asking the user to agree to such "Terms \& Conditions" stopping the sign up operation.                                                                                                     \\
+        & 4.1. The \verb|CKB| platform is unable to validate the student's personal information.                                                                                                           \\
+            & In these cases, the unregistered student receives a notification with an error message.   \\
+        & 7.1. The student's provided username is already in use.                                                                                                           \\
+            & The \verb|CKB| platform shows a message asking the user to choose another username.   
+        & 7.2. The student's provided username is in a non acceptable format    
+            & The \verb|CKB| platform shows a message asking the user to choos another username    
+      % email not received by user                                                                                        \\
+        & 10.1. The student inputs an incorrect verification code.                                                                                                           \\
+            & The \verb|CKB| platform shows a message asking the user to input the correct verification code.      
+                                                                                        \\    
+        \hline
+        \caption{Student Registration Use Case.}
+        \label{tab: student_registration_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
+   %             \caption{Student Registration Sequence Diagram}
+%                \label{fig: student_registration_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
 
 \section{Performance Requirements}
 \label{subsec:performance_requirements}%
