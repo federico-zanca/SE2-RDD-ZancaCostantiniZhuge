@@ -776,7 +776,38 @@ This comprehensive representation aims to capture the essential aspects of each 
 \end{center}
 
 
+% User clicks on a tournament from the list of tournaments in the homepage and in the details he can see the current ranking
+\subsubsection*{UC\cuc . User visualizes a tournament's current ranking}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Educator/Student \\
+        \hline
+        Entry conditions & The user is logged in on the \verb|CKB| platform and is on the "Tournaments" page\\
+        \hline
+        Event Flow      
+        & 1. The user clicks on a tournament from the list of tournaments in the "Tournaments" page\\
+        & 2. The \verb|CKB| platform shows the tournament's details page\\
+        & 3. The user clicks on the "Ranking" button\\
+        & 4. The \verb|CKB| platform shows the tournament's current ranking\\
+        \hline
+        Exit condition   & The user visualizes the tournament's current ranking.   \\ 
+        \hline
+        \caption{Visualization of tournament's leaderboard.}
+        \label{tab: visualization_of_leaderboard_use_case}
+    \end{longtable}
 
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/show_leaderboard}
+   %             \caption{Visualization of tournament leaderboard Sequence Diagram}
+%                \label{fig: torunament_leaderboard_use_case}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
 
 \section{Performance Requirements}
 \label{subsec:performance_requirements}%
