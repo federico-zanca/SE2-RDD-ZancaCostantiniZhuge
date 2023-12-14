@@ -429,6 +429,49 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
+\subsubsection*{UC\cuc . Student creates a team}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Student                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The student is logged in on the \verb|CKB| platform.                                                                                                               \\
+        \hline
+        Event Flow       
+        & 1. The student clicks on the "Create team" button from the tournament page.\\
+        & 2. The \verb|CKB| platform prompts the student to input the size of the team.\\
+        & 3. The student inputs the size of the team.\\
+        & 4. The \verb|CKB| platform prompts the student to input the name of the team.\\
+        & 5. The student inputs the name of the team.\\
+        & 6. The \verb|CKB| platform checks the name of the team.\\
+        & 7. The \verb|CKB| platform communicates the outcome of the team creation.\\
+        \hline
+        Exit condition   & A team is created.   \\                                                                                                                                                                           
+        \hline
+        Exceptions   
+        & 2.1. The team size is invalid.\\                                          
+        & 4.1. The team name already exists or it is invalid. \\                                                                                                         
+            & In these cases, the student receives a notification with an error message.   \\
+        & 2-6.1. The student cancels team creation.\\
+            & In this case, the \verb|CKB| platform will roll back any action performed and the student receives a notification with an update message.\\                                                               
+        \hline
+        \caption{Team Creation Use Case.}
+        \label{tab: team_creation_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
+   %             \caption{Student Registration Sequence Diagram}
+%                \label{fig: student_registration_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
 \subsubsection*{UC\cuc . Student Subscription to a Tournament}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
