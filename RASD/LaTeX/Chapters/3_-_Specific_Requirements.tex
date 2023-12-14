@@ -506,6 +506,46 @@ This comprehensive representation aims to capture the essential aspects of each 
    %     \end{figure}
     %    \end{comment}
 \end{center}
+
+\subsubsection*{UC\cuc . Student invite another student to the team}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Students                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The student is logged in on the \verb|CKB| platform and created a team.                                                                                                               \\
+        \hline
+        Event Flow       
+        & 1. The student selects a student from the list of students on the tournament page.\\
+        & 2. The student clicks on the invite button on the bottom of the list of students from the tournament page.\\
+        & 3. The \verb|CKB| platform checks for remaining space in the team.\\
+        & 4. The \verb|CKB| platform prompts the invited student to accept/reject join request.\\
+        & 5. The student accepts/reject the invitation. \\
+        & 6. The \verb|CKB| platform communicates the outcome of the invitation to both students.\\
+        \hline
+        Exit condition   & An invitation is completed.   \\                                                                                                                                                                           
+        \hline
+        Exceptions   
+        & 3.1. The team size is full.\\                                          
+            & In this case, the \verb|CKB| platform will roll back any action performed and the student receives a notification with an update message.\\                                                               
+        \hline
+        \caption{Invitation Use Case.}
+        \label{tab: invitation_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
+   %             \caption{Student Registration Sequence Diagram}
+%                \label{fig: student_registration_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
 \subsubsection*{UC\cuc . Educator creates a tournament}
 
 \begin{center}
