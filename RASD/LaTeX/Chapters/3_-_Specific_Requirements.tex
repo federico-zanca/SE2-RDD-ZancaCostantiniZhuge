@@ -676,6 +676,65 @@ This comprehensive representation aims to capture the essential aspects of each 
 \end{center}
 
 
+%The CKB platform also includes gamification badges: elements in the form of rewards that represent
+%the achievements of individual students. Badges are defined by educators when they create a
+%tournament. Each badge has a title (e.g., “top committer”) and one or more rules (i.e., simple Boolean properties) that must be fulfilled to achieve the badge. 
+%Thus, each badge is assigned to one or more students depending on the rules checked at the end of the tournament. 
+%The following are examples of possible badges:
+%    • Title: tournament participant
+%        o Rules: { tot_attended_battles > 0 }
+%    • Title: top committer
+%        o Rules: { tot_commits_student == max_tot_commits }
+%Where tot_attended_battles, tot_commits_student and max_tot_commits are pre-defined variables
+%that represent, respectively, the total number of battles the student has been involved in, the number
+%of commits carried out by the student and the maximum total number of commits considering all
+%students.
+%As mentioned above, educators can create new badges and define new rules as well as new variables
+%associated with them. Variables can represent any piece of information available in CKB relevant for
+%scoring. It is up to you to identify such information and a simple language for creating new variables,
+%rules, and badges.
+        
+
+\subsubsection*{UC\cuc . Educator creates a new badge}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Educator \\
+        \hline
+        Entry conditions & The educator is logged in on the \verb|CKB| platform and is on a tournament's details page. The educator is creating a tournament.\\
+        \hline
+        Event Flow      
+        & 1. The educator clicks on the "Create New Badge" button in "Advanced Options"\\
+        & 2. The \verb|CKB| platform prompts the educator to input the title of the badge\\
+        & 3. The educator inputs the title of the badge\\
+        & 4. The \verb|CKB| platform allows the educator to create new variables and rules for the badge\\
+        & 5. The educator defines the rules of the badge through a wizard\\
+        & 6. The educator clicks on the "Create" button\\
+        & 7. The \verb|CKB| platform communicates the outcome of the badge creation\\
+        \hline
+        Exit condition   & The new badge is added to the tournament.   \\
+        \hline
+        Exceptions
+        & 3.1. The educator does not input the title of the badge\\
+            & The \verb|CKB| platform shows a message asking the educator to input the title of the badge.  \\
+        & 5.1. The educator does not define any rule for the badge\\
+            & The \verb|CKB| platform shows a message asking the educator to define at least one rule for the badge.  \\
+        \hline
+        \caption{New Badge creation Use Case.}
+        \label{tab: badge_creation_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/badge_creation}
+   %             \caption{New Badge creation Sequence Diagram}
+%                \label{fig: new_badge_creation_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
 
 \section{Performance Requirements}
 \label{subsec:performance_requirements}%
