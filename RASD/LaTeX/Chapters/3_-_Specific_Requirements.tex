@@ -184,23 +184,23 @@ After that, to facilitate reading, the section reports the text of all the assum
         \hline
         \textbf{Goal} & \textbf{Domain assumptions}                       & \textbf{Requirements}                                                               \\
         \hline
-        G\cmg         &                             & R23, R24, R25, R29, R30                        \\
+        G\cmg         & D9                           & R23, R24, R25, R29, R30                        \\
         \hline
-        G\cmg         &                             & R24, R25, R26, R27, R28                                      \\
+        G\cmg         & D2, D11                            & R24, R25, R26, R27, R28                                      \\
         \hline
-        G\cmg         &                             & R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19, R20                                \\
+        G\cmg         & D1, D5, D6                            & R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19, R20                                \\
         \hline
-        G\cmg         &                             & R33, R34, R35, R36, R37, R38, R39              \\
+        G\cmg         & D7                            & R33, R34, R35, R36, R37, R38, R39              \\
         \hline
-        G\cmg         &                             & R20, R29, R30, R44                               \\
+        G\cmg         & D5, D6                            & R20, R29, R30, R44                               \\
         \hline
-        G\cmg         &                             & R41, R42, R45                     \\
+        G\cmg         & D3, D7                            & R41, R42, R45                     \\
         \hline
-        G\cmg         &                             & R46, R47                                \\
+        G\cmg         & D2                            & R46, R47                                \\
         \hline
-        G\cmg         &                             & R48                                                   \\
+        G\cmg         & D8                            & R48                                                   \\
         \hline
-        G\cmg         &                             & R16, R17, R18, R19, R48                                               \\
+        G\cmg         & D8                            & R16, R17, R18, R19, R48                                               \\
         \hline
         \caption{Mapping on goals.}
         \label{tab: map_on_g}%
@@ -217,7 +217,7 @@ In this section, it will be shown the functional requirements and the domain ass
         \item \textbf{[R.25]} The \verb|CKB| platform shall allow students to join teams for a specific battle within a tournament. 
         \item \textbf{[R.29]} The \verb|CKB| platform shall allow students to join a battle without a team. 
         \item \textbf{[R.30]} The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team.
-        \item \textbf{[D.1]}
+        \item \textbf{[D.9]} Students have basic knowledge of at least one programming language supported by the \verb|CKB| platform.
     \end{itemize}
 
     \item \textbf{{[G.2]} Facilitate peer learning and collaboration by allowing students to form teams and work together on coding exercises. }
@@ -227,7 +227,10 @@ In this section, it will be shown the functional requirements and the domain ass
             \item \textbf{[R.26]} The \verb|CKB| platform shall allow students to invite other participants to the same group. 
             \item \textbf{[R.27]} The \verb|CKB| platform shall allow students to join a battle without a team.
             \item \textbf{[R.28]} The \verb|CKB| platform shall allow students to reject an invitation.
-            \item \textbf{[D.1]}
+            \item \textbf{[D.2]}  All users of the \verb|CKB| platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.     
+            \item \textbf{[D.11]} Github repo collaborators are coherent with respect to groups created in the \verb|CKB| platform for a given battle.
+
         \end{itemize}
 
         \item \textbf{{[G.3]} Provide educators with a platform to create and manage coding challenges tailored to specific learning objectives. }
@@ -252,6 +255,11 @@ In this section, it will be shown the functional requirements and the domain ass
             \item \textbf{[R.18]} The \verb|CKB| platform shall allow educators to define new rules associated with the badges.
             \item \textbf{[R.19]} The \verb|CKB| platform shall allow educators to define new variables associated with the badges.
             \item \textbf{[R.20]} The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.
+            \item \textbf{[D.1]} Educators using \verb|CKB| platform have the necessary technical knowledge and skills to create and manage code kata battles. 
+            This includes the ability to create programming exercises, write test cases, and set up build automation scripts.
+            \item \textbf{[D.5]} Educators and students have a good understanding of GitHub and GitHub actions.  
+            \item \textbf{[D.6]} Educators are capable of creating and closing tournaments, without leaving them open undefinetly when no more battles are scheduled or in session.
+
         \end{itemize}
 
         \item \textbf{{[G.4]} Implement automated evaluation of code submissions, considering factors such as functional correctness, timeliness, and code quality. }
@@ -263,6 +271,8 @@ In this section, it will be shown the functional requirements and the domain ass
             \item \textbf{[R.37]} The \verb|CKB| platform shall be able to run the testcases on the code uploaded by students and determine if the code is a valid solution for the exercise.
             \item \textbf{[R.38]} The \verb|CKB| platform shall inform students of the mandatory automated evaluation criteria, including functional aspects, timeliness, and source code quality.  
             \item \textbf{[R.39]} The \verb|CKB| platform shall automatically update the battle score of a team based on GitHub commits and test results.
+            \item \textbf{[D.7]} The scroing system is transparent, consistent, and coherent with the criteria of the rules (quality of sources, timeliness, ...)
+
         \end{itemize}
 
         \item \textbf{{[G.5]} Introduce a competitive element through tournament-based coding challenges, motivating students to strive for excellence. }
@@ -271,6 +281,9 @@ In this section, it will be shown the functional requirements and the domain ass
             \item \textbf{[R.29]} The \verb|CKB| platform shall allow students to join a battle without a team.
             \item \textbf{[R.30]} The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team. 
             \item \textbf{[R.44]} The \verb|CKB| platform shall keep track of time elapsed from the start of a CKB and the final submissions of each team
+            \item \textbf{[D.5]} Educators and students have a good understanding of GitHub and GitHub actions.  
+            \item \textbf{[D.6]} Educators are capable of creating and closing tournaments, without leaving them open undefinetly when no more battles are scheduled or in session.
+
         \end{itemize}
 
         \item \textbf{{[G.6]} Assign scores to teams based on automated and manual evaluation, creating a transparent and fair ranking system. }
@@ -278,17 +291,23 @@ In this section, it will be shown the functional requirements and the domain ass
             \item \textbf{[R.41]} The \verb|CKB| platform shall assign or update battle scores to each team of the battle.
             \item \textbf{[R.42]} The \verb|CKB| platform shall calculate and update the personal tournament score of each student based on their performance in battles.
             \item \textbf{[R.45]} The \verb|CKB| platform shall be able to use static analysis tools to evaluate the quality of the code submitted by teams in terms of security, reliability, maintainability and other aspects defined by the educator who created the battle
+            \item \textbf{[D.3]} Educators are expected to have the ability to evaluate the work done by students and assign scores if manual evaluation is required.
+            \item \textbf{[D.7]} The scroing system is transparent, consistent, and coherent with the criteria of the rules (quality of sources, timeliness, ...)
+
         \end{itemize}
 
         \item \textbf{{[G.7]} Notify participants when a tournament concludes, providing closure and allowing reflection on performance. }
         \begin{itemize}
             \item \textbf{[R.46]} The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final ranking is available.   
             \item \textbf{[R.47]} The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users. 
+            \item \textbf{[D.2]} All users of the \verb|CKB| platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.
         \end{itemize}
 
         \item \textbf{{[G.8]} Educators can close tournaments, and the platform notifies all students when the final tournament rank becomes available. }
         \begin{itemize}
             \item \textbf{[R.48]} The \verb|CKB| platform shall display collected badges on the profile of both students and educators.   
+            \item \textbf{[D.8]} Badge rules and varibales are well-defined and understood by the platform. They are meaningfull with respect to the tournament associated with.
         \end{itemize}
 
         \item \textbf{{[G.9]} Students and educators seek information about ongoing tournaments, ranks, and profiles with badges.}
@@ -298,9 +317,9 @@ In this section, it will be shown the functional requirements and the domain ass
             \item \textbf{[R.18]} The \verb|CKB| platform shall allow educators to define new rules associated with the badges.
             \item \textbf{[R.19]} The \verb|CKB| platform shall allow educators to define new variables associated with the badges.
             \item \textbf{[R.48]} The \verb|CKB| platform shall display collected badges on the profile of both students and educators.   
-            \item \textbf{[D.1]}
+            \item \textbf{[D.8]} Badge rules and varibales are well-defined and understood by the platform. They are meaningfull with respect to the tournament associated with.
         \end{itemize}
-\end{itemize}
+    \end{itemize}
 \section{Use Case Diagrams}
 \label{subsec:use_cases}
 \subsection{Guest}
