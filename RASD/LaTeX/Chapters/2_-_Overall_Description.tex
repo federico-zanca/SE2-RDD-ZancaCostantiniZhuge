@@ -22,7 +22,7 @@ More specifically, some design pattern can be taken into consideration:
     \begin{center}
         \includegraphics[width=0.9\linewidth]{Images/class-diagram.jpeg}
         \caption{A simplified Class Diagram}
-        \label{fig:class_diagram}%
+        \label{fig:class_diagram_2}%
     \end{center}
 \end{figure}
 
@@ -157,58 +157,32 @@ The CKB platform caters to various user roles, each with specific responsibiliti
         \hline
         \textbf{ID} & \textbf{Assumptions}                                                                   \\
         \hline
-        A\ca        & Educators using CKB platform have the necessary technical knowledge and skills to create and manage code kata battles. 
+        D\ca        & Educators using CKB platform have the necessary technical knowledge and skills to create and manage code kata battles. 
         This includes the ability to create programming exercises, write test cases, and set up build automation scripts.                                   \\
         \hline
-        A\ca        & All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+        D\ca        & All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
          necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.                                  \\
         \hline
-        A\ca        & Educators are expected to have the ability to evaluate the work done by students and assign scores if manual evaluation is required. \\
+        D\ca        & Educators are expected to have the ability to evaluate the work done by students and assign scores if manual evaluation is required. \\
         \hline
-        A\ca        & Educators managing a torunament will not lose access to their institutional email during the whole duration of the tournament itself.                                                             \\
+        D\ca        & Educators managing a torunament will not lose access to their institutional email during the whole duration of the tournament itself.                                                             \\
         \hline
-        A\ca        & Educators and students have a good understanding of GitHub and GitHub actions.                                  \\
+        D\ca        & Educators and students have a good understanding of GitHub and GitHub actions.                                  \\
         \hline
-        A\ca        & Educators are capable of creating and closing tournaments, without leaving them open undefinetly.                      \\
+        D\ca        & Educators are capable of creating and closing tournaments, without leaving them open undefinetly when no more battles are scheduled or in session.                      \\
+        \hline
+        D\ca        & The scroing system is transparent, consistent, and coherent with the criteria of the rules (quality of sources, timeliness, ...) \\
+        \hline
+        D\ca        & Badge rules and varibales are well-defined and understood by the platform. They are meaningfull with respect to the tournament associated with. \\
+        \hline
+        D\ca        & Students have basic knowledge of at least one programming language supported by the CKB platform. \\
+        \hline  
+        D\ca        & Educators and students are linked to one and only one institutional email.                                  \\
+        \hline
+        D\ca        & Github repo collaborators are coherent with respect to groups created in the CKB platform for a given battle. \\
         \hline
         \caption{Assumptions.}
         \label{tab:assumption_tab}%
-    \end{longtable}
-\end{center}
-
-\subsection{Constraints}
-
-\newcounter{cc}
-\setcounter{cc}{0}
-\newcommand{\ccc}{\stepcounter{cc}\theac}
-
-\newcommand{\ccrow}[1]{
-    C\ccc & #1 \\
-    \hline
-}
-
-\begin{center}
-    \begin{longtable}{ |l|p{0.9\linewidth}| }
-        \hline
-        \textbf{ID} & \textbf{Assumptions}.                                   \\
-        \hline
-        C\ccc        & Educators and students are linked to one and only one institutional email. There can't be multiple accounts owned by the same person..                                  \\
-        \hline
-        C\ccc        & Students can participate in a battle with one and only one group or alone. It is not possible to have a student signed 
-        for a battle with more than one group or one group and individually. \\
-        \hline
-        C\ccc        & Students will have to write their code in one of the language supported by the CKB platform.                                                             \\
-        \hline
-        C\ccc        & Educators can't close a tournament while there is still a battle unravelling in that specific torunament.                                  \\
-        \hline
-        C\ccc        & For each battle, the number of students per group is constrained by the minimum and maximum number set by 
-        the educator during the creation of the battle. This means that a group cannot have fewer members 
-        than the minimum limit or more members than the maximum limit.                      \\
-        \hline
-        C\ccc        & The submission of code by students is constrained by the final submission deadlines set by the educator. Any submissions made after the final submission deadline will not be considered for evaluation.                                                \\
-        \hline
-        \caption{Constraints.}
-        \label{tab:constraints_tab}%
     \end{longtable}
 \end{center}
 
@@ -223,20 +197,7 @@ The CKB platform caters to various user roles, each with specific responsibiliti
     \hline
 }
 
-\begin{center}
-    \begin{longtable}{ |l|p{0.9\linewidth}| }
-        \hline
-        \textbf{ID} & \textbf{Assumptions}.                                   \\
-        \hline
-        D\cd        & Affiliated universities have an automated system to provide data about an authenticated student/educator to the CKB platform.                                  \\
-        \hline
-        D\cd        &  The operation of the CodeKataBattle (CKB) platform heavily depends on its integration with GitHub. 
-        GitHub is used for code submission, version control, and tracking commits made by students. \\
-        \hline
-        D\cd        & The notification of students about new tournaments, battles, ranks, and badges depends on the notification system of the CKB platform. 
-        The platform must be able to send timely and accurate notifications to all subscribed students.                                                             \\
-        \hline
-        \caption{Dependencies.}
-        \label{tab:dependencies_tab}%
-    \end{longtable}
-\end{center}
+\begin{itemize}
+    \item Affiliated universities have an automated system to provide data about an authenticated student/educator to the CKB platform.
+    \item GitHub needs to provide APIs to allow the CKB platform to be notified when Actions are performed and let group repo to be pulled for the evaluation.
+\end{itemize}
