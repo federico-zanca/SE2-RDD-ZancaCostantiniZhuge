@@ -22,7 +22,7 @@ More specifically, some design pattern can be taken into consideration:
     \begin{center}
         \includegraphics[width=0.9\linewidth]{Images/class-diagram.jpeg}
         \caption{A simplified Class Diagram}
-        \label{fig:class_diagram_2}%
+        \label{fig:class_diagram}%
     \end{center}
 \end{figure}
 
@@ -35,14 +35,97 @@ More specifically, some design pattern can be taken into consideration:
 
 \paragraph{Unregistered student creates an account.}
 Gianmarco is a computer science student from Politecnico of Milan. After attending several courses about software engineering, 
-he is looking for a way to practice his skills. Fortunately, one of his professor suggests him the CodeKataBattle CKB platform.
+he is looking for a way to practice his skills. Fortunately, one of his professor suggests him the CodeKataBattle platform.
 Gianmarco immediately proceeds to create an account. He navigates to the platform and goes to the "sign up" section. 
 The system asks Gianmarco some personal information such as first and last name, an email linked 
 to an institutional profile (for example name.surname@mail.polimi.it). He receives an e-mail with a 
 6-digit code to be in inserted in the web page to confirm his e-mail address. In the meanwhile, the platform 
-receives information about the status of Gianmarco from the university (whether he is a techer or a student). 
+receives information about the status of Gianmarco from the university (wether he is a teacher or a student). 
 After accepting the terms \& conditions 
 and submitting an username for his profile, the system creates his account, and Gianmarco can begin to use the platform.
+
+\paragraph*{User Logs in.}
+Emily, the coding enthusiast, is all set for her daily dose of challenges on the CodeKataBattle (CKB) platform. 
+To embark on her coding adventure, she clicks the login button and enters her institutional email.
+The platform asks Emily to provide the password for her account. 
+Excited and confident, Emily types in her password, which is verified by the platform to ensure it matches the email/password combination for the user.
+With a successful password match, the platform welcomes Emily to her homepage; she's now ready to dive into the coding battles.
+In case there's a typo in her email or a hiccup during password verification, the platform gently guides Emily through the process, ensuring a seamless login experience.
+
+%Actor Student
+%Entry conditions The student is logged in on the CKB platform.
+%Event Flow 1. The student clicks on the "Create team" button from the tour-
+%nament page.
+%2. The CKB platform prompts the student to input the size of the
+%team.
+%3. The student inputs the size of the team.
+%4. The CKB platform prompts the student to input the name of the
+%team.
+%5. The student inputs the name of the team.
+%6. The CKB platform checks the name of the team.
+%7. The CKB platform communicates the outcome of the team cre-
+%ation.
+%Exit condition A team is created.
+\paragraph*{Student creates a team.}
+Francesca, a student on the CodeKataBattle (CKB) platform, is eager to participate in the "Algorithmic Challenge" CKB.
+Francesca is aware that winning the battle all by herself is a daunting task, so she decides to form a team.
+She navigates to the tournament details page and clicks on the "Create Team" button and is prompted to input the size of the team.
+Francesca wants to form a team of three students, so she chooses the number three from the drop-down menu.
+After deciding that the name of her team will be "The Three Musketeers," she clicks on the "Create Team" button.
+She will now need to choose to whom she wants to send the team invitation.
+
+
+%Actor Student
+%Entry conditions The student is logged in on the CKB platform and created a team.
+%Event Flow 1. The student selects a student from the list of students on the
+%tournament page.
+%2. The student clicks on the invite button on the bottom of the list
+%of students from the tournament page.
+%3. The CKB platform checks for remaining space in the team.
+%4. The CKB platform sends the invitation to the selected student.
+%5. The CKB platform communicates the outcome of the invitation
+%to the student.
+%Exit condition An invitation is sent.
+\paragraph*{Student invites another student to join a team.}
+Imagine Marco, an enthusiastic student navigating the CodeKataBattle (CKB) platform, keen on forming a proficient coding team for an upcoming tournament. 
+Having already gathered part of his team, Marco identifies Sofia, another student he believes would enhance their collective skills.
+On the tournament page, Marco locates Sofia's profile and clicks the "Invite" button, signaling his desire to collaborate. 
+The CKB platform efficiently checks team capacity, ensuring seamless integration.
+In the digital realm, an invitation is generated and dispatched to Sofia through the platform's communication channels. 
+Marco eagerly awaits the platform's response, hopeful for a positive outcome.
+Success! The invitation is sent, propelling Marco's team towards a cohesive coding alliance.
+
+
+
+\paragraph*{Student accepts an invitation to join a team.}
+Sofia, a student passionate about coding, is actively using the CKB platform to participate in coding tournaments. 
+Today, as she's logged in, he receives a pop-up notification indicating that she has been invited by Marco to join a team for a CKB.
+Intrigued, she clicks on the "Accept" button within the invitation pop-up as she knows that her and Marco would be a good team. 
+Behind the scenes, the CKB platform swiftly processes this action and conveys the acceptance information to the student who sent the invitation, ensuring a seamless interaction between both students involved.
+Alex and the sender of the invitation are promptly notified of the outcome. 
+The invitation has been successfully accepted, and Sofia is now part of the team.
+
+
+
+\paragraph*{Student rejects an invitation to join a team.}
+Sofia, a dedicated student engaged in coding challenges on the CKB platform, is logged in and actively participating. 
+Today, she receives a pop-up notification, signaling that she has received an invitation to join a coding tournament.
+After thoughtful consideration, Sofia decides to decline the invitation. 
+With a click on the "Reject" button within the invitation pop-up, she communicates her decision to the CKB platform. 
+Behind the scenes, the platform ensures this information is promptly relayed to the student who extended the invitation.
+Both Sofia and the sender of the invitation receive immediate communication from the CKB platform, confirming the outcome of the declined invitation. 
+The respectful rejection is acknowledged, allowing the students to proceed with their individual coding journeys.
+
+
+\paragraph*{Student joins a battle without a team.}
+Emma, an enthusiastic student with a passion for coding challenges, is actively participating in a coding tournament on the CKB platform. 
+Excited about a specific battle, she navigates to the tournament page to explore the available challenges.
+Spotting a captivating battle in the list, Emma decides to join without forming a team as she is confident on her own skills. 
+She selects the desired battle and clicks the "Join Battle" button at the bottom of the list.
+Behind the scenes, the CKB platform promptly verifies the registration deadline for the chosen battle. 
+Upon completion of this process, the platform communicates the outcome of Emma's action. 
+Whether met with success or needing adjustment, Emma receives immediate feedback, allowing her to seamlessly engage in the selected coding challenge.
+
 
 \paragraph{Professor creates a tournament. }
 Achille is a cyber security professor from university of Milan. He has an active profile on the CKB platform. 
@@ -108,7 +191,7 @@ Each score contributes to the overall ranking of the teams.
 Sofia, an active user on the CodeKataBattle (CKB) platform, decides to check the current ranking of the "Data Structures Madness" tournament. 
 She navigates to the "Tournaments" page and selects "Data Structure Madness" tournament.
 Sofia proceeds opening the details page and effortlessly views the real-time leaderboard with a single click. 
-The platform promptly presents the current standings, allowing Sophia to gauge the performance of each student subscribed to the tournament.
+The platform promptly presents the current standings, allowing Sofia to gauge the performance of each student subscribed to the tournament.
 
 \paragraph*{User views the profile of another user to check their badges.}
 Francesca, a student on the CodeKataBattle (CKB) platform, is intrigued to explore the profile of a student, Alex, to gain insights into his achievements. 
@@ -210,32 +293,58 @@ The CKB platform caters to various user roles, each with specific responsibiliti
         \hline
         \textbf{ID} & \textbf{Assumptions}                                                                   \\
         \hline
-        D\ca        & Educators using CKB platform have the necessary technical knowledge and skills to create and manage code kata battles. 
+        A\ca        & Educators using CKB platform have the necessary technical knowledge and skills to create and manage code kata battles. 
         This includes the ability to create programming exercises, write test cases, and set up build automation scripts.                                   \\
         \hline
-        D\ca        & All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+        A\ca        & All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
          necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.                                  \\
         \hline
-        D\ca        & Educators are expected to have the ability to evaluate the work done by students and assign scores if manual evaluation is required. \\
+        A\ca        & Educators are expected to have the ability to evaluate the work done by students and assign scores if manual evaluation is required. \\
         \hline
-        D\ca        & Educators managing a torunament will not lose access to their institutional email during the whole duration of the tournament itself.                                                             \\
+        A\ca        & Educators managing a torunament will not lose access to their institutional email during the whole duration of the tournament itself.                                                             \\
         \hline
-        D\ca        & Educators and students have a good understanding of GitHub and GitHub actions.                                  \\
+        A\ca        & Educators and students have a good understanding of GitHub and GitHub actions.                                  \\
         \hline
-        D\ca        & Educators are capable of creating and closing tournaments, without leaving them open undefinetly when no more battles are scheduled or in session.                      \\
-        \hline
-        D\ca        & The scroing system is transparent, consistent, and coherent with the criteria of the rules (quality of sources, timeliness, ...) \\
-        \hline
-        D\ca        & Badge rules and varibales are well-defined and understood by the platform. They are meaningfull with respect to the tournament associated with. \\
-        \hline
-        D\ca        & Students have basic knowledge of at least one programming language supported by the CKB platform. \\
-        \hline  
-        D\ca        & Educators and students are linked to one and only one institutional email.                                  \\
-        \hline
-        D\ca        & Github repo collaborators are coherent with respect to groups created in the CKB platform for a given battle. \\
+        A\ca        & Educators are capable of creating and closing tournaments, without leaving them open undefinetly.                      \\
         \hline
         \caption{Assumptions.}
         \label{tab:assumption_tab}%
+    \end{longtable}
+\end{center}
+
+\subsection{Constraints}
+
+\newcounter{cc}
+\setcounter{cc}{0}
+\newcommand{\ccc}{\stepcounter{cc}\theac}
+
+\newcommand{\ccrow}[1]{
+    C\ccc & #1 \\
+    \hline
+}
+
+\begin{center}
+    \begin{longtable}{ |l|p{0.9\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Assumptions}.                                   \\
+        \hline
+        C\ccc        & Educators and students are linked to one and only one institutional email. There can't be multiple accounts owned by the same person..                                  \\
+        \hline
+        C\ccc        & Students can participate in a battle with one and only one group or alone. It is not possible to have a student signed 
+        for a battle with more than one group or one group and individually. \\
+        \hline
+        C\ccc        & Students will have to write their code in one of the language supported by the CKB platform.                                                             \\
+        \hline
+        C\ccc        & Educators can't close a tournament while there is still a battle unravelling in that specific torunament.                                  \\
+        \hline
+        C\ccc        & For each battle, the number of students per group is constrained by the minimum and maximum number set by 
+        the educator during the creation of the battle. This means that a group cannot have fewer members 
+        than the minimum limit or more members than the maximum limit.                      \\
+        \hline
+        C\ccc        & The submission of code by students is constrained by the final submission deadlines set by the educator. Any submissions made after the final submission deadline will not be considered for evaluation.                                                \\
+        \hline
+        \caption{Constraints.}
+        \label{tab:constraints_tab}%
     \end{longtable}
 \end{center}
 
@@ -250,7 +359,20 @@ The CKB platform caters to various user roles, each with specific responsibiliti
     \hline
 }
 
-\begin{itemize}
-    \item Affiliated universities have an automated system to provide data about an authenticated student/educator to the CKB platform.
-    \item GitHub needs to provide APIs to allow the CKB platform to receive notification when Actions are performed and be able to automatically pull the repositories of each group for evaluation.
-\end{itemize}
+\begin{center}
+    \begin{longtable}{ |l|p{0.9\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Assumptions}.                                   \\
+        \hline
+        D\cd        & Affiliated universities have an automated system to provide data about an authenticated student/educator to the CKB platform.                                  \\
+        \hline
+        D\cd        &  The operation of the CodeKataBattle (CKB) platform heavily depends on its integration with GitHub. 
+        GitHub is used for code submission, version control, and tracking commits made by students. \\
+        \hline
+        D\cd        & The notification of students about new tournaments, battles, ranks, and badges depends on the notification system of the CKB platform. 
+        The platform must be able to send timely and accurate notifications to all subscribed students.                                                             \\
+        \hline
+        \caption{Dependencies.}
+        \label{tab:dependencies_tab}%
+    \end{longtable}
+\end{center}
