@@ -654,8 +654,44 @@ This comprehensive representation aims to capture the essential aspects of each 
         & 3.1. The battle's registration deadline is over.\\                                                                                                                                              
             & In this case, the student receives a notification with an error message.   \\                                                               
         \hline
-        \caption{Student Subscription Use Case.}
+        \caption{Student Join battle Use Case.}
         \label{tab: battle_alone_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/student_registration}
+   %             \caption{Student Registration Sequence Diagram}
+%                \label{fig: student_registration_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+\subsubsection*{UC\cuc . Student joins a battle with a team}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Team of students                                                                                                                                                                               \\
+        \hline
+        Entry conditions & The team is registered on the \verb|CKB| platform in a tournament's battle.                                                                                                            \\
+        \hline
+        Event Flow       
+        & 1. The team leader selects a CKB from the list of battles in the Tournament page.\\
+        & 2. The student clicks the "Join battle" button on the bottom of the list of battles in the tournament page.\\
+        & 3. The \verb|CKB| platform verifies the registration deadline for the battle.\\
+        & 4. The \verb|CKB| platform communicates the outcome of the student's action.\\
+        \hline
+        Exit condition   & The team joined the battle.   \\                                                                                                                                                                           
+        \hline
+        Exceptions   
+        & 3.1. The battle's registration deadline is over.\\                                                                                                                                              
+            & In this case, the student receives a notification with an error message.   \\                                                               
+        \hline
+        \caption{Team Join Battle Use Case.}
+        \label{tab: team_join_battle_use_case}
     \end{longtable}
 
     %QUI SEQUENCE DIAGRAM
