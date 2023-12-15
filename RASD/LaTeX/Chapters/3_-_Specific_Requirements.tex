@@ -514,7 +514,7 @@ This comprehensive representation aims to capture the essential aspects of each 
         \hline
         Actor            & Student                                                                                                                                                                               \\
         \hline
-        Entry conditions & The student is logged in on the \verb|CKB| platform and created a team.                                                                                                               \\
+        Entry conditions & The student is logged in on the \verb|CKB| platform and has already created a team.                                                                                                               \\
         \hline
         Event Flow       
         & 1. The student selects a student from the list of students on the tournament page.\\
@@ -546,21 +546,21 @@ This comprehensive representation aims to capture the essential aspects of each 
     %    \end{comment}
 \end{center}
 
-\subsubsection*{UC\cuc . Student accept an invitation}
+\subsubsection*{UC\cuc . Student accept an invitation to join a CKB team}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
         Actor            & Student                                                                                                                                                                               \\
         \hline
-        Entry conditions & The student is logged in on the \verb|CKB| platform and receives and invitation.                                                                                                               \\
+        Entry conditions & The student is logged in on the \verb|CKB| platform and receives and invitation to join a CKB team.                                                                                                               \\
         \hline
         Event Flow       
-        & 1. The student receives a pop-up norification of the invitation.\\
-        & 2. The student clicks on the accept button of the invitation pop-up.\\
+        & 1. The student receives a pop-up norification informing of the invitation.\\
+        & 2. The student clicks on the "Accept" button on the invitation pop-up.\\
         & 3. The \verb|CKB| platform sends the information to the invitation sender.\\
         & 4. The \verb|CKB| platform communicates the outcome of the invitation to both students.\\
         \hline
-        Exit condition   & Invitation accepted.   \\                                                                                                                                                                           
+        Exit condition   & The two students are now part of the same team.\\                                                                                                                                                                           
         \hline
         Exceptions   
         & 3.1. The team is already dissembled.\\                                          
@@ -588,15 +588,15 @@ This comprehensive representation aims to capture the essential aspects of each 
         \hline
         Actor            & Student                                                                                                                                                                               \\
         \hline
-        Entry conditions & The student is logged in on the \verb|CKB| platform and receives and invitation.                                                                                                               \\
+        Entry conditions & The student is logged in on the \verb|CKB| platform and receives and invitation to join a CKB team.                                                                                                               \\
         \hline
         Event Flow       
         & 1. The student receives a pop-up norification of the invitation.\\
-        & 2. The student clicks on the reject button of the invitation pop-up.\\
+        & 2. The student clicks on the "Reject" button of the invitation pop-up.\\
         & 3. The \verb|CKB| platform sends the information to the invitation sender.\\
         & 4. The \verb|CKB| platform communicates the outcome of the invitation to both students.\\
         \hline
-        Exit condition   & Invitation rejected.   \\                                                                                                                                                                           
+        Exit condition   & The students are not part of the same team.   \\                                                                                                                                                                           
         \hline
         \caption{Invitation Rejected Use Case.}
         \label{tab: invitation_rejected_use_case}
@@ -621,22 +621,22 @@ This comprehensive representation aims to capture the essential aspects of each 
         \hline
         Actor            & Student                                                                                                                                                                               \\
         \hline
-        Entry conditions & The Student is logged in on the \verb|CKB| platform and participating in a tournament.                                                                                                            \\
+        Entry conditions & The Student is logged in on the \verb|CKB| platform and is registered to a tournament.                                                                                                            \\
         \hline
         Event Flow       
-        & 1. The student selects a battle on the list of battles in the tournament page.\\
+        & 1. The student selects a CKB from the list of battles in the Tournament page.\\
         & 2. The student clicks the "Join battle" button on the bottom of the list of battles in the tournament page.\\
         & 3. The \verb|CKB| platform verifies the registration deadline for the battle.\\
         & 4. The \verb|CKB| platform communicates the outcome of the student's action.\\
         \hline
-        Exit condition   & Student joined the battle.   \\                                                                                                                                                                           
+        Exit condition   & The student joined the battle.   \\                                                                                                                                                                           
         \hline
         Exceptions   
         & 3.1. The battle's registration deadline is over.\\                                                                                                                                              
-            & In these cases, the student receives a notification with an error message.   \\                                                               
+            & In this case, the student receives a notification with an error message.   \\                                                               
         \hline
         \caption{Student Subscription Use Case.}
-        \label{tab: student_subscription_use_case}
+        \label{tab: battle_alone_use_case}
     \end{longtable}
 
     %QUI SEQUENCE DIAGRAM
