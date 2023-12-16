@@ -22,13 +22,9 @@ More specifically, some design pattern can be taken into consideration:
     \begin{center}
         \includegraphics[width=0.9\linewidth]{Images/class-diagram.jpeg}
         \caption{A simplified Class Diagram}
-        \label{fig:class_diagram}%
+        \label{fig:class_diagram_pic}%
     \end{center}
 \end{figure}
-
-\subsection{State Diagrams}
-\label{subsec:state_diagrams}%
-
 
 \subsection{Scenarios}
 \label{subsec:scenarios}%
@@ -37,20 +33,20 @@ More specifically, some design pattern can be taken into consideration:
 Gianmarco is a computer science student from Politecnico of Milan. After attending several courses about software engineering, 
 he is looking for a way to practice his skills. Fortunately, one of his professor suggests him the CodeKataBattle platform.
 Gianmarco immediately proceeds to create an account. He navigates to the platform and goes to the "sign up" section. 
-The system asks Gianmarco some personal information such as first and last name, an email linked 
-to an institutional profile (for example name.surname@mail.polimi.it). He receives an e-mail with a 
-6-digit code to be in inserted in the web page to confirm his e-mail address. In the meanwhile, the platform 
-receives information about the status of Gianmarco from the university (wether he is a teacher or a student). 
+The system asks Gianmarco an email linked 
+to an institutional profile valid for the CKB platform (for example name.surname@mail.polimi.it). He is then redirected to the log in page of his institution.  
+After a successful authentication, Gianmarco will be prompted with a data access request page for sharing data about his university profile. This way the CKB platform 
+can determine wheter Gianmarco is a student or a professor and act accordingly. 
+Once accepted the data access request, he is redirected to the creation profile page, where he is asked to insert an unique username. 
 After accepting the terms \& conditions 
-and submitting an username for his profile, the system creates his account, and Gianmarco can begin to use the platform.
+and submitting everything, the system creates his account, if info are correct, and Gianmarco can begin to use the platform.
 
 \paragraph*{User Logs in.}
 Emily, the coding enthusiast, is all set for her daily dose of challenges on the CodeKataBattle (CKB) platform. 
 To embark on her coding adventure, she clicks the login button and enters her institutional email.
-The platform asks Emily to provide the password for her account. 
-Excited and confident, Emily types in her password, which is verified by the platform to ensure it matches the email/password combination for the user.
-With a successful password match, the platform welcomes Emily to her homepage; she's now ready to dive into the coding battles.
-In case there's a typo in her email or a hiccup during password verification, the platform gently guides Emily through the process, ensuring a seamless login experience.
+Emily is then redirected to the access page of her institution where she performs the authentication.
+Once authenticated, she is reconnected to the CKB platform that welcomes her in the homepage; she's now ready to dive into the coding battles.
+In case there's a typo in her email, the platform gently guides Emily through the process, ensuring a seamless login experience.
 
 %Actor Student
 %Entry conditions The student is logged in on the CKB platform.
@@ -68,11 +64,12 @@ In case there's a typo in her email or a hiccup during password verification, th
 %Exit condition A team is created.
 \paragraph*{Student creates a team.}
 Francesca, a student on the CodeKataBattle (CKB) platform, is eager to participate in the "Algorithmic Challenge" CKB.
-Francesca is aware that winning the battle all by herself is a daunting task, so she decides to form a team.
-She navigates to the tournament details page and clicks on the "Create Team" button and is prompted to input the size of the team.
+Despite the possibility to participate individually to this battle, 
+Francesca is aware that winning it all by herself is a daunting task, so she decides to form a team.
+She navigates to the tournament details page and clicks on the "Create Team" button and is prompted to input the size of the team compliant to the settings of the battle (min/max number of students per team).
 Francesca wants to form a team of three students, so she chooses the number three from the drop-down menu.
 After deciding that the name of her team will be "The Three Musketeers," she clicks on the "Create Team" button.
-She will now need to choose to whom she wants to send the team invitation.
+She will now be able to send other students team invitation and accpete or decline joining requests.
 
 
 %Actor Student
@@ -87,13 +84,13 @@ She will now need to choose to whom she wants to send the team invitation.
 %to the student.
 %Exit condition An invitation is sent.
 \paragraph*{Student invites another student to join a team.}
-Imagine Marco, an enthusiastic student navigating the CodeKataBattle (CKB) platform, keen on forming a proficient coding team for an upcoming tournament. 
+Imagine Marco, an enthusiastic student navigating the CodeKataBattle (CKB) platform, keen on forming a proficient coding team for an upcoming battle. 
 Having already gathered part of his team, Marco identifies Sofia, another student he believes would enhance their collective skills.
-On the tournament page, Marco locates Sofia's profile and clicks the "Invite" button, signaling his desire to collaborate. 
+On the tournament page, Marco locates Sofia's profile in the lists of students not in a team yet and clicks the "Invite" button, signaling his desire to collaborate. 
 The CKB platform efficiently checks team capacity, ensuring seamless integration.
 In the digital realm, an invitation is generated and dispatched to Sofia through the platform's communication channels. 
 Marco eagerly awaits the platform's response, hopeful for a positive outcome.
-Success! The invitation is sent, propelling Marco's team towards a cohesive coding alliance.
+Upon success, the invitation is sent, propelling Marco's team towards a cohesive coding alliance.
 
 
 
@@ -101,15 +98,15 @@ Success! The invitation is sent, propelling Marco's team towards a cohesive codi
 Sofia, a student passionate about coding, is actively using the CKB platform to participate in coding tournaments. 
 Today, as she's logged in, he receives a pop-up notification indicating that she has been invited by Marco to join a team for a CKB.
 Intrigued, she clicks on the "Accept" button within the invitation pop-up as she knows that her and Marco would be a good team. 
-Behind the scenes, the CKB platform swiftly processes this action and conveys the acceptance information to the student who sent the invitation, ensuring a seamless interaction between both students involved.
-Alex and the sender of the invitation are promptly notified of the outcome. 
+Behind the scenes, the CKB platform swiftly processes this action.
+If the team didn't fill up in the meantime, the CKB platform conveys the acceptance information to the student who sent the invitation, ensuring a seamless interaction between both students involved.
+Sofia and the sender of the invitation are promptly notified of the outcome. 
 The invitation has been successfully accepted, and Sofia is now part of the team.
-
 
 
 \paragraph*{Student rejects an invitation to join a team.}
 Sofia, a dedicated student engaged in coding challenges on the CKB platform, is logged in and actively participating. 
-Today, she receives a pop-up notification, signaling that she has received an invitation to join a coding tournament.
+Today, she receives a pop-up notification, signaling that she has received an invitation to join a team for a CKB.
 After thoughtful consideration, Sofia decides to decline the invitation. 
 With a click on the "Reject" button within the invitation pop-up, she communicates her decision to the CKB platform. 
 Behind the scenes, the platform ensures this information is promptly relayed to the student who extended the invitation.
@@ -127,7 +124,7 @@ Upon completion of this process, the platform communicates the outcome of Emma's
 Whether met with success or needing adjustment, Emma receives immediate feedback, allowing her to seamlessly engage in the selected coding challenge.
 
 
-\paragraph{Professor creates a tournament. }
+\paragraph{Professor creates a tournament.}
 Achille is a cyber security professor from university of Milan. He has an active profile on the CKB platform. 
 During his last lesson, he annouced to his students that he will create monthly tournaments with weekly Battle for them to practise. 
 He then proceeds to create the first tournament. He logs in the CKB platform from the "sign-in" page. 
@@ -142,7 +139,7 @@ variables and rules to obtain the new badge. Once he finishes setting up everyth
 Logged into the CKB platform, Professor Lucia navigates to the "Tournaments" page. She locates the "Programming Prodigy Challenge" in the list and clicks
 on it to access the tournament details. Satisfied with the students' participation and battle outcomes, she clicks the "Close Tournament" button.
 A confirmation pop-up appears, and without hesitation, Professor Lucia confirms the action. The CKB platform processes the request, communicates 
-the successful tournament closure, and computes the final ranking based on accumulated scores.
+the successful tournament closure, computes the final ranking based on accumulated scores, and notifies student about possible badges acquisition if necessary.
 The platform promptly makes the final ranking available for participants. Professor Lucia, acknowledging the students' efforts, briefly reviews the rankings. 
 
 \paragraph*{Professor creates a new CKB.}
@@ -155,6 +152,20 @@ The educator proceeds to set a registration deadline and a final submission dead
 Curious about the advanced scoring options, Professor Roberto clicks on the "Additional Configurations for Scoring" button. 
 The platform displays the scoring section, allowing him to set additional configurations if needed. 
 Satisfied with the default scoring, he proceeds to click the "Create" button.
+
+\paragraph*{Push action on GitHub}
+Let’s consider a team named “CodeWarriors” consisting of two students, Alice and Bob. 
+They are participating in a battle in one of the tournaments created by their professor, Achille. 
+Alice and Bob are working on the code kata for the battle. They are in a brainstorming session, discussing the problem and proposing solutions. 
+They write some initial code and test it locally on their machines. 
+After some time, they are satisfied with their progress and decide to push their code to GitHub. 
+Bob commits their code with a meaningful commit message and pushes it to their team’s repository on GitHub. 
+As soon as the push action is performed, the CKB platform is triggered. 
+It pulls the latest sources from the team’s repository, analyzes them, and runs the tests on the corresponding executables. 
+The platform then calculates the team’s score based on the functional aspects, timeliness, and quality level of the sources. 
+Alice and Bob receive a notification from the CKB platform about their updated score. 
+They review the feedback, discuss the areas they need to improve, and continue working on the code kata. 
+They are now in the process of refining their code and planning their next push action.
 
 \paragraph*{Professor grants permissions to another professor to add CKB to a tournament.}
 Professor Marta, logged into her CKB platform account, navigates to the details page of the tournament named "Coding Challenge Extravaganza," which she initiated. 
@@ -208,6 +219,52 @@ Within the chosen CKB, Emma clicks on "Ranking". In an instant, the CKB platform
 %by training with peers on code kata1 . Educators use the platform to challenge students by creating code
 %kata battles in which teams of students can compete against each other, thus proving (and improving)
 %their skills.
+
+\subsection{State Diagrams}
+\label{subsec:state_diagrams}%
+
+Below are presented state diagrams relative to some of the scenarios described before
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/user-registration.jpg}
+        \caption{User registration state diagram}
+        \label{fig:state_diagram_1}%
+    \end{center}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/student-join-team.jpg}
+        \caption{Join team state diagram}
+        \label{fig:state_diagram_4}%
+    \end{center}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/student-invitation.jpg}
+        \caption{Student invitation state diagram}
+        \label{fig:state_diagram_5}%
+    \end{center}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/Tournament_creation.jpg}
+        \caption{Tournament creation state diagram}
+        \label{fig:state_diagram_2}%
+    \end{center}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/push-action.jpg}
+        \caption{Push action state diagram}
+        \label{fig:state_diagram_3}%
+    \end{center}
+\end{figure}
+
 
 %Summary of major functions
 \section{Product Functions}
