@@ -687,8 +687,10 @@ This comprehensive representation aims to capture the essential aspects of each 
         Exit condition   & The team joined the battle.   \\                                                                                                                                                                           
         \hline
         Exceptions   
+        & 2.1. The number of students in the team is not in the range of the battle's minimum and maximum number of students.\\                                                                                                                                              
+            & In this case, the student receives a notification with an error message and the team does not join the battle.   \\
         & 3.1. The battle's registration deadline is over.\\                                                                                                                                              
-            & In this case, the student receives a notification with an error message.   \\                                                               
+            & In this case, the student receives a notification with an error message.   \\                                                                
         \hline
         \caption{Team Join Battle Use Case.}
         \label{tab: team_join_battle_use_case}
@@ -978,6 +980,65 @@ This comprehensive representation aims to capture the essential aspects of each 
    %     \end{figure}
     %    \end{comment}
 \end{center}
+
+
+%To inject a gamified element, educators define badges to recognize and reward student achievements. 
+%Badges, with titles like "Top Performer" or "Code Guru," serve as visual representations of accomplishments, enhancing student profiles and fostering a sense of achievement.
+%Educators can include badges in tournaments by selecting from a list of pre-existing badges or creating new ones.
+%When creating new badges, educators must define rules and variables that determine when a badge is awarded to a student.
+%Rules and variables can either be selected from a list of pre-existing ones or created from scratch.
+%In order to create a new variable, educators can make use of metrics exposed by the platform that offer information that could be relevant for scoring. 
+%These metrics can be combined to arithmetic operations to create new variables.
+%New rules can be defined by performing operation on variables (avreage, max, min, sum, etc.), resulting in complex requirements the students must meet to earn the badge.
+\subsubsection*{UC\cuc . Educator creates a new variable and a new rule for a badge}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Educator \\
+        \hline
+        Entry conditions & The educator is logged in on the \verb|CKB| platform and is creating a new badge.\\
+        \hline
+        Event Flow      
+        & 1. The educator clicks on the "Create New Variable" button at the end of the list of pre-existing variables\\
+        & 2. The \verb|CKB| platform prompts the educator to input the name of the variable\\
+        & 3. The educator inputs the name of the variable\\
+        & 4. The platform shows a list of metrics exposed by CKB and available for the creation of the variable\\
+        & 5. The educator selects one or more metrics from the list\\
+        & 6. The educator writes an arithmetic expression combining the selected metrics in the input box on the right of the list\\
+        & 7. The educator clicks on the "Create" button\\
+        & 8. The \verb|CKB| platform communicates the outcome of the variable creation\\
+        & 9. The educator clicks on the "Create New Rule" button at the end of the list of pre-existing rules\\
+        & 10. The \verb|CKB| platform prompts the educator to input the description of the rule\\
+        & 11. The educator inputs the description of the rule\\
+        & 12. The platform shows a list of variables available for the creation of the rule\\
+        & 13. The educator writes a mathematical expression combining the selected variables in the input box on the right of the list\\
+        & 14. The educator clicks on the "Create" button\\
+        & 15. The \verb|CKB| platform communicates the outcome of the rule creation\\
+        \hline
+        Exit condition   & The new variable and the new rule are added to the badge.   \\   
+        \hline
+        Exceptions
+        & 6.1. The educator does not write a valid arithmetic expression\\
+        & 13.1. The educator does not write a valid arithmetic expression\\
+            & In both cases the \verb|CKB| platform shows a message asking the educator to write a valid arithmetic expression.  \\
+        \caption{New Variable and Rule creation Use Case.}
+        \label{tab: rule_variable_use_case}
+    \end{longtable}
+
+    %QUI SEQUENCE DIAGRAM
+    %\begin{comment}
+    %    \begin{figure} [H]
+    %        \begin{center}
+                %\includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/manual_evaluation}
+   %             \caption{Manual Evaluation Sequence Diagram}
+%                \label{fig: manual_evaluation_seq_diag}
+    %        \end{center}
+   %     \end{figure}
+    %    \end{comment}
+\end{center}
+
+
+
 
 % When the submission deadline of a CKB expires, there is a consolidation stage in
 %which, if manual evaluation is required, the educator uses the CKB platform to go through the sources
