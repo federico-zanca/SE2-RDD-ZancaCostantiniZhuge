@@ -9,21 +9,25 @@ requirements
 // Alloy model for CodeKataBattle platform - Entities and Facts
 
 // Signatures
-abstract sig User {
-    username: one String
+abstract sig User{
+    username: one Int
 }
 
-sig Student extends User {
+
+sig Student extends User{
+
     //subscribedTournaments: set Tournament,
     //participatedBattles: set Battle
     //badges: set Badge,
 }
 
-sig Educator extends User {}
+
+sig Educator extends User{
+
+}
 
 sig Score{
     student: one Student,
-    tournament: one Tournament,
     value: Int,
     rank: Int
 }
@@ -54,25 +58,45 @@ sig Tournament{
 
 // Req: every user as an unique usernanme
 
-fact uniqueUsername{
+fact uniquesername{
     all u1, u2: User | u1!=u2 implies u1.username != u2.username
 }
-
 
 // ------------------------- TOURNAMENT RELATED FACTS
 
 //For every two students in the participant sets, a student with a higher score in a tournament has a lower rank
 
 fact studentsWithHigherScoreHaveLowerRank{
-    all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies (s1.value > s2.value implies s1.rank < s2.rank) and (s1.value = s2.value implies s1.rank = s2.rank)
+    all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies ((s1.value >= s2.value implies s1.rank <= s2.rank)) //and (s1.value = s2.value implies s1.rank = s2.rank))
 
 }
+
+// A score is linked to a torunament ALWAYS!!!!!!!!
+
+fact scoreLinkedTournament{
+    all score: Score | some tournament: Tournament | score in tournament.leaderboard
+}
+
+// A score can't be in two different tournaments
+
+fact noDoubleScore{
+    all t1, t2: Tournament, s1: t1.leaderboard, s2: t2.leaderboard|t1!=t2 implies s1 != s2
+    
+}
+
 
 // Links the score in the tournament with the participants in the same tournament
 
-fact participantsInATournamentAreInLeaderboard{
-    all t: Tournament, s: Student | s in t.participants implies one score: Score | score.student = s 
+fact studentInTournamentMatchesScore {
+    all t: Tournament | t.participants = (t.leaderboard.student)
 }
+
+// In a tournament, a student is linked to only one score
+
+fact singleStudentScore{
+    all tournament: Tournament, s1, s2: tournament.leaderboard | s1 != s2 implies s1.student != s2.student
+}
+
 
 // Tournament needs to have at least one administrator
 
@@ -81,17 +105,27 @@ fact numAdministrators{
 }
 
 // ---------------------- TEAM RELATED FACTS
-
 // Just some general variable check
 
 fact generalTeamReq{
-    all team: Team | #team.members <= team.size and team.size > 0 and team.score >= 0
+    all team: Team | #team.members <= team.size and team.size > 0 and team.score >= 0 and #team.members > 0
+    
 }
+
+// The size defined for the team must be in battle constraint and Num of members is at least minimum in a team
+
+fact correctSize{
+    all battle: Battle, team: battle.teams | team.size >= battle.min_size and team.size <= battle.max_size and #team.members >= battle.min_size
+}
+
+
+
+
 
 // ----------------------- BATTLE RELATED FACTS
 
 fact generalBattleReq{
-    all battle: Battle | battle.min_size >= battle.max_size and battle.min_size > 0
+    all battle: Battle | battle.min_size <= battle.max_size and battle.min_size > 0
 }
 
 // There can't be a student in a battle being part of two differnt teams
@@ -100,23 +134,38 @@ fact oneTeamPerBattle{
     all battle: Battle, team1, team2: battle.teams | team1 != team2 implies (all s1: team1.members, s2: team2.members | s1 != s2)
 }
 
+// ----------------------- SCORE RELATED FACTS
 
+// general req
+
+fact generalScoreReq{
+    all score: Score | score.value >= 0 and score.rank > 0
+}
+
+/*
+fact gg{
+    all s1, s2: Score | s1 != s2 implies s1.value != s2.value
+}
+*/
+
+fact ranksAreInSuccession {
+    all t: Tournament, s: t.leaderboard | s.rank > 0 and s.rank <= #t.leaderboard
+    all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies s1.rank != s2.rank
+    all t: Tournament | lone s: t.leaderboard | s.rank = 1
+    all t: Tournament | lone s: t.leaderboard | s.rank = #t.leaderboard
+}
+
+fact firstExists{
+    //all tournament: Tournament | some score : tournament.leaderboard | score.rank = 1
+}
+
+/*
 // HARD SUPER UPER HARD CONSTRAINT
 // FOR EVERY TOURNAMENT, PEOPLE IN THE BATTLES MUST BE THE SAME PEOPLE IN THE TOURNAMENT
 
 fact consistencyBattleTorunament{
     // TO-DO
 }
-
-
-
-
-
-/*
-fact numStudentsInATeamRespectsTeamSize{
-    all t: Team | #t.members <= t.size and #t.members > 0  
-}
-*/
 
 
 
@@ -148,3 +197,8 @@ fact ScoresInRange {
 
 // Add more facts as needed...
 */
+
+pred show{
+}
+
+run show for 4 but exactly 5 Student, exactly 3 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 4 Score, exactly 4 Team
