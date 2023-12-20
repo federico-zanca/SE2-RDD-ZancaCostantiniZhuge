@@ -117,8 +117,6 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|CKB| platform shall allow students to join a battle without a team.                               \\
         \hline
-        R\creq      & The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team.                                                      \\
-        \hline
         \caption{Student Requirements.}
         \label{tab: req}%
     \end{longtable}
@@ -188,17 +186,17 @@ After that, to facilitate reading, the section reports the text of all the assum
         \hline
         G\cmg         & D1,D2                       & R1,R2,R5,R6,R7,R8,R11\\
         \hline
-        G\cmg         & D2,D5                       & R33,R34,R35,R36,R39\\
+        G\cmg         & D2,D5                       & R32,R33,R34,R35,R38\\
         \hline
         G\cmg         & D2                          & R24,R25,R26,R27,R28,R29\\
         \hline
-        G\cmg         & D2                          & R31,R32,R46,R47\\
+        G\cmg         & D2                          & R30,R31,R45,R46\\
         \hline
-        G\cmg         & D1,D2,D7                    & R9,R35,R36,R37,R38,R39,R42,R45\\
+        G\cmg         & D1,D2,D7                    & R9,R34,R35,R36,R37,R38,R41,R44\\
         \hline
         G\cmg         & D1,D2,D3                    & R14,R15\\
         \hline
-        G\cmg         & D2                          & R16,R20,R47,R48\\
+        G\cmg         & D2                          & R16,R20,R46,R47\\
         \hline
         G\cmg         & D2,D8                       & R17,R18,R19\\
         \hline
@@ -210,114 +208,119 @@ After that, to facilitate reading, the section reports the text of all the assum
 In this section, it will be shown the functional requirements and the domain assumption related to each goal.
 \begin{itemize}
 
-    \item \textbf{{[G.1]} The platform should allow educators to set up code kata battles with configurable
-    parameters.}
+    \item \textbf{{[G.1]} The platform should allow educators to set up tournaments.}
     \begin{itemize}
-        \item \textbf{[R.23]} The \verb|CKB| platform shall allow students to subscribe to a tournament within a specified deadline.
-        \item \textbf{[R.24]} The \verb|CKB| platform shall allow students to create teams for a specific battle within a tournament.
-        \item \textbf{[R.25]} The \verb|CKB| platform shall allow students to join teams for a specific battle within a tournament. 
-        \item \textbf{[R.29]} The \verb|CKB| platform shall allow students to join a battle without a team. 
-        \item \textbf{[R.30]} The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team.
-        \item \textbf{[D.9]} Students have basic knowledge of at least one programming language supported by the \verb|CKB| platform.
+        \item \textbf{[R.1]} The \verb|CKB| platform shall allow educators to create an account.
+        \item \textbf{[R.2]} The \verb|CKB| platform shall allow educators to log in.
+        \item \textbf{[R.3]} The \verb|CKB| platform shall allow educators to create a new tournament. 
+        \item \textbf{[R.4]} The \verb|CKB| platform shall allow educators to set the minimum and maximum number of students per group for a tournament. 
+        \item \textbf{[R.10]} The \verb|CKB| platform shall allow educators to set a registration deadline for a battle within a tournament.
+        \item \textbf{[R.13]} The \verb|CKB| platform shall allow educators to close a tournament.
+        \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+        necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.
+        \item \textbf{[D.4]}  Educators managing a torunament will not lose access to their institutional email during the whole duration of the tournament itself.
+        \item \textbf{[D.6]} Educators are capable of creating and closing tournaments, without leaving them open undefinetly when no more battles are scheduled or in session.
+        \item \textbf{[D.10]} Educators and students are linked to one and only one institutional email.
     \end{itemize}
 
-    \item \textbf{{[G.2]} Facilitate peer learning and collaboration by allowing students to form teams and work together on coding exercises. }
-        \begin{itemize}
-            \item \textbf{[R.24]} The \verb|CKB| platform shall allow students to create teams for a specific battle within a tournament.
-            \item \textbf{[R.25]} The \verb|CKB| platform shall allow students to join teams for a specific battle within a tournament.
-            \item \textbf{[R.26]} The \verb|CKB| platform shall allow students to invite other participants to the same group. 
-            \item \textbf{[R.27]} The \verb|CKB| platform shall allow students to join a battle without a team.
-            \item \textbf{[R.28]} The \verb|CKB| platform shall allow students to reject an invitation.
-            \item \textbf{[D.2]}  All users of the \verb|CKB| platform, both educators and students, are assumed to have access to a stable internet connection. This is
-            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.     
-            \item \textbf{[D.11]} Github repo collaborators are coherent with respect to groups created in the \verb|CKB| platform for a given battle.
-
-        \end{itemize}
-
-        \item \textbf{{[G.3]} Provide educators with a platform to create and manage coding challenges tailored to specific learning objectives. }
+    \item \textbf{{[G.2]} The platform should allow educators to set up code kata battles with configurable parameters. }
         \begin{itemize}
             \item \textbf{[R.1]} The \verb|CKB| platform shall allow educators to create an account.
-            \item \textbf{[R.2]} The \verb|CKB| platform shall allow educators to log in. 
-            \item \textbf{[R.3]} The \verb|CKB| platform shall allow educators to create a new tournament.
-            \item \textbf{[R.4]} The \verb|CKB| platform shall allow educators to set the minimum and maximum number of students per group for a tournament.
-            \item \textbf{[R.5]} The \verb|CKB| platform shall allow educators to upload a code kata battle.
+            \item \textbf{[R.2]} The \verb|CKB| platform shall allow educators to log in.
+            \item \textbf{[R.5]} The \verb|CKB| platform shall allow educators to upload a code kata battle. 
             \item \textbf{[R.6]} The \verb|CKB| platform shall allow educators to grant permissions to other educators to create battles within a specific tournament.
-            \item \textbf{[R.7]} The \verb|CKB| platform shall enable educators to include a battle to a specific tournament. 
-            \item \textbf{[R.8]} The \verb|CKB| platform shall allow educators to include a description for a battle.
-            \item \textbf{[R.9]} The \verb|CKB| platform shall allow educators to include a software project with test cases.  
-            \item \textbf{[R.10]} The \verb|CKB| platform shall allow educators to set a registration deadline for a battle within a tournament.
+            \item \textbf{[R.7]} The \verb|CKB| platform shall enable educators to include a battle to a specific tournament.
+            \item \textbf{[R.8]} The \verb|CKB| platform shall allow educators to include a description for a battle.     
             \item \textbf{[R.11]} The \verb|CKB| platform shall allow educators to set a final submission deadline for a battle within a tournament.
-            \item \textbf{[R.12]} The \verb|CKB| platform shall allow educators to set additional configurations for scoring, including functional aspects and quality level criteria.
-            \item \textbf{[R.13]} The \verb|CKB| platform shall allow educators to close a tournament. 
-            \item \textbf{[R.14]} The \verb|CKB| platform shall allow an educator to define optional manual evaluation criteria for score assignment in battles.
-            \item \textbf{[R.15]} The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams. 
-            \item \textbf{[R.16]} The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.
-            \item \textbf{[R.17]} The \verb|CKB| platform shall allow educators to define new badges for gamification.
-            \item \textbf{[R.18]} The \verb|CKB| platform shall allow educators to define new rules associated with the badges.
-            \item \textbf{[R.19]} The \verb|CKB| platform shall allow educators to define new variables associated with the badges.
-            \item \textbf{[R.20]} The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.
-            \item \textbf{[D.1]} Educators using \verb|CKB| platform have the necessary technical knowledge and skills to create and manage code kata battles. 
+            \item \textbf{[D.1]} Educators using CKB platform have the necessary technical knowledge and skills to create and manage code kata battles. 
             This includes the ability to create programming exercises, write test cases, and set up build automation scripts.
-            \item \textbf{[D.5]} Educators and students have a good understanding of GitHub and GitHub actions.  
-            \item \textbf{[D.6]} Educators are capable of creating and closing tournaments, without leaving them open undefinetly when no more battles are scheduled or in session.
-
-        \end{itemize}
-
-        \item \textbf{{[G.4]} Implement automated evaluation of code submissions, considering factors such as functional correctness, timeliness, and code quality. }
-        \begin{itemize}
-            \item \textbf{[R.33]} The \verb|CKB| platform shall create a GitHub repository for each battle.
-            \item \textbf{[R.34]} send a link to the Github repository associated to a battle to all members of subscribed teams upon expiration of the registration deadline.
-            \item \textbf{[R.35]} The \verb|CKB| platform shall be able to be informed of new students' commits by Github Actions workflows. 
-            \item \textbf{[R.36]} The \verb|CKB| platform shall be able to pull the latest sources from the forks of the Github repository provided.
-            \item \textbf{[R.37]} The \verb|CKB| platform shall be able to run the testcases on the code uploaded by students and determine if the code is a valid solution for the exercise.
-            \item \textbf{[R.38]} The \verb|CKB| platform shall inform students of the mandatory automated evaluation criteria, including functional aspects, timeliness, and source code quality.  
-            \item \textbf{[R.39]} The \verb|CKB| platform shall automatically update the battle score of a team based on GitHub commits and test results.
-            \item \textbf{[D.7]} The scroing system is transparent, consistent, and coherent with the criteria of the rules (quality of sources, timeliness, ...)
-
-        \end{itemize}
-
-        \item \textbf{{[G.5]} Introduce a competitive element through tournament-based coding challenges, motivating students to strive for excellence. }
-        \begin{itemize}
-            \item \textbf{[R.20]} The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.
-            \item \textbf{[R.29]} The \verb|CKB| platform shall allow students to join a battle without a team.
-            \item \textbf{[R.30]} The \verb|CKB| platform shall allow students to upload a solution for a specific battle on behalf of the team. 
-            \item \textbf{[R.44]} The \verb|CKB| platform shall keep track of time elapsed from the start of a CKB and the final submissions of each team
-            \item \textbf{[D.5]} Educators and students have a good understanding of GitHub and GitHub actions.  
-            \item \textbf{[D.6]} Educators are capable of creating and closing tournaments, without leaving them open undefinetly when no more battles are scheduled or in session.
-
-        \end{itemize}
-
-        \item \textbf{{[G.6]} Assign scores to teams based on automated and manual evaluation, creating a transparent and fair ranking system. }
-        \begin{itemize}
-            \item \textbf{[R.41]} The \verb|CKB| platform shall assign or update battle scores to each team of the battle.
-            \item \textbf{[R.42]} The \verb|CKB| platform shall calculate and update the personal tournament score of each student based on their performance in battles.
-            \item \textbf{[R.45]} The \verb|CKB| platform shall be able to use static analysis tools to evaluate the quality of the code submitted by teams in terms of security, reliability, maintainability and other aspects defined by the educator who created the battle
-            \item \textbf{[D.3]} Educators are expected to have the ability to evaluate the work done by students and assign scores if manual evaluation is required.
-            \item \textbf{[D.7]} The scroing system is transparent, consistent, and coherent with the criteria of the rules (quality of sources, timeliness, ...)
-
-        \end{itemize}
-
-        \item \textbf{{[G.7]} Notify participants when a tournament concludes, providing closure and allowing reflection on performance. }
-        \begin{itemize}
-            \item \textbf{[R.46]} The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final ranking is available.   
-            \item \textbf{[R.47]} The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users. 
-            \item \textbf{[D.2]} All users of the \verb|CKB| platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
             necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.
         \end{itemize}
 
-        \item \textbf{{[G.8]} Educators can close tournaments, and the platform notifies all students when the final tournament rank becomes available. }
+        \item \textbf{{[G.3]} The platform should allow third party platforms integration. }
         \begin{itemize}
-            \item \textbf{[R.48]} The \verb|CKB| platform shall display collected badges on the profile of both students and educators.   
-            \item \textbf{[D.8]} Badge rules and varibales are well-defined and understood by the platform. They are meaningfull with respect to the tournament associated with.
+            \item \textbf{[R.32]} The \verb|CKB| platform shall create a GitHub repository for each battle.
+            \item \textbf{[R.33]} send a link to the Github repository associated to a battle to all members of subscribed teams upon expiration of the registration deadline. 
+            \item \textbf{[R.34]} The \verb|CKB| platform shall be able to be informed of new students' commits by Github Actions workflows.
+            \item \textbf{[R.35]} The \verb|CKB| platform shall be able to pull the latest sources from the forks of the Github repository provided.
+            \item \textbf{[R.38]} The \verb|CKB| platform shall automatically update the battle score of a team based on GitHub commits and test results.
+
+            \item \textbf{[D.1]} Educators using \verb|CKB| platform have the necessary technical knowledge and skills to create and manage code kata battles. 
+            This includes the ability to create programming exercises, write test cases, and set up build automation scripts.
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.  
+            \item \textbf{[D.5]} Educators and students have a good understanding of GitHub and GitHub actions.
+
         \end{itemize}
 
-        \item \textbf{{[G.9]} Students and educators seek information about ongoing tournaments, ranks, and profiles with badges.}
+        \item \textbf{{[G.4]} The platform should allow students to join battles individually or form teams within specified size limits. }
         \begin{itemize}
-            \item \textbf{[R.16]} The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.
-            \item \textbf{[R.17]} The \verb|CKB| platform shall allow educators to define new badges for gamification.
+            \item \textbf{[R.24]} The \verb|CKB| platform shall allow students to create teams for a specific battle within a tournament. 
+            \item \textbf{[R.25]} The \verb|CKB| platform shall allow students to join teams for a specific battle within a tournament.
+            \item \textbf{[R.26]} The \verb|CKB| platform shall allow students to invite other participants to the same group.
+            \item \textbf{[R.27]} The \verb|CKB| platform shall allow students to accept an invitation.
+            \item \textbf{[R.28]} The \verb|CKB| platform shall allow students to reject an invitation. 
+            \item \textbf{[R.29]} The \verb|CKB| platform shall allow students to join a battle without a team.
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.
+        \end{itemize}
+
+        \item \textbf{{[G.5]} The platform should allow users to see real time updates on current tournaments and battles.}
+        \begin{itemize}
+            \item \textbf{[R.30]} The \verb|CKB| platform shall notify all subscribed students of a new battle and its details within a specific tournament.
+            \item \textbf{[R.31]} The \verb|CKB| platform shall notify all subscribed students of a new tournament and its details.
+            \item \textbf{[R.45]} The \verb|CKB| platform shall notify all students involved in a tournament when it is closed and the final ranking is available. 
+            \item \textbf{[R.46]} The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users.
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.
+        \end{itemize}
+
+        \item \textbf{{[G.6]} The platform should have automated evaluations of code submissions. }
+        \begin{itemize}
+            \item \textbf{[R.9]} The \verb|CKB| platform shall allow educators to include a software project with test cases.
+            \item \textbf{[R.34]} The \verb|CKB| platform shall be able to be informed of new students' commits by Github Actions workflows.
+            \item \textbf{[R.35]} The \verb|CKB| platform shall be able to pull the latest sources from the forks of the Github repository provided.
+            \item \textbf{[R.36]} The \verb|CKB| platform shall be able to run the testcases on the code uploaded by students and determine if the code is a valid solution for the exercise.
+            \item \textbf{[R.37]} The \verb|CKB| platform shall inform students of the mandatory automated evaluation criteria, including functional aspects, timeliness, and source code quality.
+            \item \textbf{[R.38]} The \verb|CKB| platform shall automatically update the battle score of a team based on GitHub commits and test results.
+            \item \textbf{[R.41]} The \verb|CKB| platform shall calculate and update the personal tournament score of each student based on their performance in battles.
+            \item \textbf{[R.44]} The \verb|CKB| platform shall be able to use static analysis tools to evaluate the quality of the code submitted by teams in terms of security, reliability, maintainability and other aspects defined by the educator who created the battle. 
+            \item \textbf{[D.1]} Educators using \verb|CKB| platform have the necessary technical knowledge and skills to create and manage code kata battles. 
+            This includes the ability to create programming exercises, write test cases, and set up build automation scripts.
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification. 
+            \item \textbf{[D.7]} The scoring system is transparent, consistent, and coherent with the criteria of the rules (quality of sources, timeliness, ...)
+
+        \end{itemize}
+
+        \item \textbf{{[G.7]} The platform should allow educators to manually evaluate and assign scores for optional factors at the end of each battle. }
+        \begin{itemize}
+            \item \textbf{[R.14]} The \verb|CKB| platform shall allow an educator to define optional manual evaluation criteria for score assignment in battles.   
+            \item \textbf{[R.15]} The \verb|CKB| platform shall allow educators to manually evaluate and assign scores to teams.
+            \item \textbf{[D.1]} Educators using \verb|CKB| platform have the necessary technical knowledge and skills to create and manage code kata battles. 
+            This includes the ability to create programming exercises, write test cases, and set up build automation scripts.
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.
+            \item \textbf{[D.3]} Educators are expected to have the ability to evaluate the work done by students and assign scores if manual evaluation is required.
+        \end{itemize}
+
+        \item \textbf{{[G.8]} The platform should allow users to visualize informations about another user. }
+        \begin{itemize}
+            \item \textbf{[R.16]} The \verb|CKB| platform shall allow educators and students to visualize the gamification badges.   
+            \item \textbf{[R.20]} The \verb|CKB| platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed.   
+            \item \textbf{[R.46]} The \verb|CKB| platform shall visualize ongoing tournaments and their ranks for all users.
+            \item \textbf{[R.47]} The \verb|CKB| platform shall display collected badges on the profile of both students and educators.    
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.        \end{itemize}
+
+        \item \textbf{{[G.9]} The platform should allow educators to create new gamification badges.}
+        \begin{itemize}
+            \item \textbf{[R.17]} The \verb|CKB| platform shall allow educators to define new badges for gamification. 
             \item \textbf{[R.18]} The \verb|CKB| platform shall allow educators to define new rules associated with the badges.
             \item \textbf{[R.19]} The \verb|CKB| platform shall allow educators to define new variables associated with the badges.
-            \item \textbf{[R.48]} The \verb|CKB| platform shall display collected badges on the profile of both students and educators.   
+            \item \textbf{[D.2]} All users of the CKB platform, both educators and students, are assumed to have access to a stable internet connection. This is
+            necessary fir accessing the platform, downloading code kata, submitting code, and receiving notification.
             \item \textbf{[D.8]} Badge rules and varibales are well-defined and understood by the platform. They are meaningfull with respect to the tournament associated with.
         \end{itemize}
     \end{itemize}
