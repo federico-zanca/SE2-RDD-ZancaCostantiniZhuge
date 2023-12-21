@@ -118,9 +118,23 @@ fact correctSize{
     all battle: Battle, team: battle.teams | team.size >= battle.min_size and team.size <= battle.max_size and #team.members >= battle.min_size
 }
 
+// The students in a team must be all relative to the same tournament
 
+fact possibleTeam{
+    all t: Tournament, b: t.battles, team : b.teams, m: team.members | m in t.participants 
+}
 
+// Teams must be linked to a battle
 
+fact teamBattleRel{
+    all team: Team| one battle: Battle | team in battle.teams
+}
+
+// Students in a battle must be in only one team
+
+fact oneTeamPerStudent{
+    all battle: Battle, team1, team2: battle.teams | team1 != team2 implies (all s1: team1.members, s2: team2.members | s1 != s2)
+}
 
 // ----------------------- BATTLE RELATED FACTS
 
@@ -128,10 +142,10 @@ fact generalBattleReq{
     all battle: Battle | battle.min_size <= battle.max_size and battle.min_size > 0
 }
 
-// There can't be a student in a battle being part of two differnt teams
+// Battle are related to tournament
 
-fact oneTeamPerBattle{
-    all battle: Battle, team1, team2: battle.teams | team1 != team2 implies (all s1: team1.members, s2: team2.members | s1 != s2)
+fact battleTournamentRel{
+    all battle: Battle | one tournament: Tournament | battle in tournament.battles
 }
 
 // ----------------------- SCORE RELATED FACTS
@@ -154,11 +168,11 @@ fact ranksAreInSuccession {
     all t: Tournament | lone s: t.leaderboard | s.rank = 1
     all t: Tournament | lone s: t.leaderboard | s.rank = #t.leaderboard
 }
-
+/*
 fact firstExists{
     //all tournament: Tournament | some score : tournament.leaderboard | score.rank = 1
 }
-
+*/
 /*
 // HARD SUPER UPER HARD CONSTRAINT
 // FOR EVERY TOURNAMENT, PEOPLE IN THE BATTLES MUST BE THE SAME PEOPLE IN THE TOURNAMENT
@@ -201,4 +215,4 @@ fact ScoresInRange {
 pred show{
 }
 
-run show for 4 but exactly 5 Student, exactly 3 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 4 Score, exactly 4 Team
+run show for 4 but exactly 10 Student, exactly 4 Battle, exactly 2 Tournament, exactly 1 Educator, exactly 4 Score, exactly 4 Team

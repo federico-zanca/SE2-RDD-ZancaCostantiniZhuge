@@ -1,0 +1,28 @@
+TOURNAMENTS
+    FACTS
+
+    PREDICATES
+        addBattle
+        addAdmin
+        
+
+
+BATTLES
+    FACTS
+
+    PREDICATES
+        subscribeTeamToBattle
+
+
+TEAMS
+    FACTS
+        
+    PREDICATES
+        addPlayer
+
+BADGES
+    FACTS
+
+    PREDICATES
+
+pred 
