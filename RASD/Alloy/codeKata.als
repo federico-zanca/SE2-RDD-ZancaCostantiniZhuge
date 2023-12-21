@@ -7,6 +7,20 @@ requirements
 
 
 // Alloy model for CodeKataBattle platform - Entities and Facts
+abstract sig  BattleState{}
+one sig OpenBattle extends BattleState{}
+one sig StartedBattle extends BattleState{}
+one sig InProgressBattle extends BattleState{}
+
+abstract sig TournamentState{}
+one sig OpenToornament extends TournamentState{}
+one sig StartedTournament extends TournamentState{}
+one sig InProgressTournament extends TournamentState{}
+
+
+abstract sig BadgeType{}
+one sig ParticipationBadge extends BadgeType{}
+
 
 // Signatures
 abstract sig User{
@@ -15,7 +29,6 @@ abstract sig User{
 
 
 sig Student extends User{
-
     //subscribedTournaments: set Tournament,
     //participatedBattles: set Battle
     //badges: set Badge,
@@ -39,11 +52,16 @@ sig Team{
     score: Int // Punteggio del team nella battle
 }
 
+sig Badge{
+    type: one BadgeType
+}
+
 
 sig Battle{
     teams: disj set Team,
     min_size: Int,
-    max_size: Int
+    max_size: Int,
+    state: one BattleState,
 }
 
 
@@ -51,7 +69,9 @@ sig Tournament{
     participants: set Student,
     leaderboard: set Score,
     administrators: set Educator,
-    battles: disj set Battle
+    battles: disj set Battle,
+    tState: one TournamentState,
+    badges: disj set Badge
 }
 
 // ------------------------ USER RELATED FACTS ------------------------
@@ -162,34 +182,16 @@ fact gg{
 }
 */
 
+// All ranks are in order given their score
+
 fact ranksAreInSuccession {
     all t: Tournament, s: t.leaderboard | s.rank > 0 and s.rank <= #t.leaderboard
     all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies s1.rank != s2.rank
     all t: Tournament | lone s: t.leaderboard | s.rank = 1
     all t: Tournament | lone s: t.leaderboard | s.rank = #t.leaderboard
 }
-/*
-fact firstExists{
-    //all tournament: Tournament | some score : tournament.leaderboard | score.rank = 1
-}
-*/
-/*
-// HARD SUPER UPER HARD CONSTRAINT
-// FOR EVERY TOURNAMENT, PEOPLE IN THE BATTLES MUST BE THE SAME PEOPLE IN THE TOURNAMENT
-
-fact consistencyBattleTorunament{
-    // TO-DO
-}
-
-
-
 
 /*
-// Facts and Constraints
-fact UsersHaveUniqueIDs {
-    all u1, u2: User | u1.id != u2.id
-}
-
 fact EachBattleHasUniqueRepository {
     all b1, b2: Battle | b1 != b2 implies b1.repository != b2.repository
 }
@@ -211,6 +213,17 @@ fact ScoresInRange {
 
 // Add more facts as needed...
 */
+
+
+
+// Joinin a battle is possible only if the battle is open
+// Team t joins battle b and is added to the set of teams in the battle b
+pred joinBattle[b: Battle, t: Team]{
+    //pre-condition
+    b.state = OpenBattle
+    //post-condition
+    b.teams' = b.teams + t
+}
 
 pred show{
 }
