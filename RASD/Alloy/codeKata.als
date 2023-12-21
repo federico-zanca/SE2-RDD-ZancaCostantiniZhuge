@@ -67,7 +67,7 @@ fact uniquesername{
 //For every two students in the participant sets, a student with a higher score in a tournament has a lower rank
 
 fact studentsWithHigherScoreHaveLowerRank{
-    all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies ((s1.value >= s2.value implies s1.rank <= s2.rank)) //and (s1.value = s2.value implies s1.rank = s2.rank))
+    all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies ((s1.value >= s2.value iff s1.rank <= s2.rank)) //and (s1.value = s2.value implies s1.rank = s2.rank))
 
 }
 
