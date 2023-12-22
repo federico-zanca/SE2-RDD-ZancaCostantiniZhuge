@@ -1,11 +1,3 @@
-/*
-sig -> torneo, battle, user {a}, student {student_in_tournament}, educator, (guest?), badge, team
-
-requirements
-
-*/
-
-
 // Alloy model for CodeKataBattle platform - Entities and Facts
 abstract sig  BattleState{}
 one sig OpenBattle extends BattleState{}
@@ -66,7 +58,7 @@ sig Tournament{
     participants: set Student,
     leaderboard: set Score,
     administrators: set Educator,
-    battles: disj set Battle,
+    var battles: disj set Battle,
     tState: one TournamentState,
     tBadges: disj set Badge
 }
@@ -249,7 +241,7 @@ fact DoubleDigitScoreBadgeAcqR{
 // (COSTA È SCEMO)
 // Joinin a battle is possible only if the battle is open
 // Team t joins battle b and is added to the set of teams in the battle b
-/*
+
 pred joinBattle[b: Battle, t: Team]{
     //pre-condition
     b.state = OpenBattle
@@ -261,14 +253,31 @@ assert joinBattleWorks {
     b.state = OpenBattle implies (joinBattle[b, t] implies t in b.teams')
 }
 check joinBattleWorks for 10
-*/
+
+
+// Possibility to add a battle
+
+pred addBattle[b: Battle, t: Tournament]{
+    //pre-condition
+    t.tState = InProgressTournament
+    //post-condition
+    t.battles' = t.battles + b
+}
+
+assert addBattleWorks{
+    all t: Tournament, b: Battle |
+    (t.tState = InProgressTournament && !(b in t.battles)) implies (addBattle[b, t] implies b in t.battles')
+}
+
+check addBattleWorks for 10
+
+
 pred show{
-    //test for joinBattle predicate
-    //some battle: Battle | some team: Team | joinBattle[battle, team]
-    
+    some battle: Battle | some team: Team | joinBattle[battle, team]
+    some t: Tournament | some battle : Battle | addBattle[battle, t]
 }
 
 fact{
 }
 
-run show for 4 but exactly 2 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 4 Team, exactly 3 Student, 5 Int
+run show for 4 but exactly 2 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 4 Team, exactly 3 Student, exactly 3 Badge, 5 Int
