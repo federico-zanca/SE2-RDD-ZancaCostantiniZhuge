@@ -40,7 +40,7 @@ sig Score{
 
 
 sig Team{
-    var members: set Student,
+    members: set Student,
     size: Int,
     score: Int // Punteggio del team nella battle
 }
@@ -58,7 +58,7 @@ sig Tournament{
     participants: set Student,
     leaderboard: set Score,
     administrators: set Educator,
-    var battles: disj set Battle,
+    battles: disj set Battle,
     tState: one TournamentState,
     tBadges: disj set Badge
 }
