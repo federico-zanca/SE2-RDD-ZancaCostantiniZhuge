@@ -6,7 +6,7 @@ one sig InProgressBattle extends BattleState{}
 
 abstract sig TournamentState{}
 one sig OpenTournament extends TournamentState{}
-one sig StartedTournament extends TournamentState{}
+one sig ClosedTournament extends TournamentState{}
 one sig InProgressTournament extends TournamentState{}
 
 
@@ -40,7 +40,7 @@ sig Score{
 
 
 sig Team{
-    members: set Student,
+    var members: set Student,
     size: Int,
     score: Int // Punteggio del team nella battle
 }
@@ -236,9 +236,6 @@ fact DoubleDigitScoreBadgeAcqR{
 }
 
 
-
-// SECONDO COSTA VA BENE COSI'!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// (COSTA È SCEMO)
 // Joinin a battle is possible only if the battle is open
 // Team t joins battle b and is added to the set of teams in the battle b
 
@@ -271,13 +268,36 @@ assert addBattleWorks{
 
 check addBattleWorks for 10
 
+// Possibility to join a team
+pred joinTeam[t: Team, s: Student, b: Battle, tournament: Tournament]{
+    //pre-condition
+    #t.members < t.size
+    b.state = OpenBattle
+    s in tournament.participants
+    !(some team: b.teams | s in team.members)
+    all m: t.members | m in tournament.participants
+    t in b.teams
+    //post-condition
+    t.members' = t.members + s
+}
+
+assert joinTeamWorks{
+    all t: Tournament, b: t.battles, s: t.participants, team: b.teams |
+    (t.tState = InProgressTournament && b.state = OpenBattle && #team.members < team.size && !(some team: b.teams | s in team.members))
+    implies (joinTeam[team, s, b, t] implies s in team.members')
+}
+
+check joinTeamWorks for 10
+
 
 pred show{
     some battle: Battle | some team: Team | joinBattle[battle, team]
     some t: Tournament | some battle : Battle | addBattle[battle, t]
+    some t: Tournament, b: Battle, s: Student, team: Team | joinTeam[team, s, b, t]
 }
 
+// Da usare per mettere delle condizioni da testare
 fact{
 }
 
-run show for 4 but exactly 2 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 4 Team, exactly 3 Student, exactly 3 Badge, 5 Int
+run show for 4 but exactly 1 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 2 Team, exactly 10 Student, exactly 3 Badge, 5 Int
