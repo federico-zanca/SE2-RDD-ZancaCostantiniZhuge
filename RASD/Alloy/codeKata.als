@@ -303,4 +303,6 @@ fact{
     some s: Score | s.value > 9
 }
 
-run show for 4 but exactly 2 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 3 Team, exactly 10 Student, exactly 3 Badge, 5 Int
+//run show for 4
+//run show for 4 but exactly 2 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 3 Team, exactly 10 Student, exactly 3 Badge, 5 Int
+run show for 4 but exactly 2 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 3 Team, exactly 8 Student, exactly 3 Badge, 5 Int
