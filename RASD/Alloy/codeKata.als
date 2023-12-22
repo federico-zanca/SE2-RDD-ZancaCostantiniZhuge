@@ -40,7 +40,7 @@ sig Score{
 
 
 sig Team{
-    members: set Student,
+    var members: set Student,
     size: Int,
     score: Int // Punteggio del team nella battle
 }
@@ -58,7 +58,7 @@ sig Tournament{
     participants: set Student,
     leaderboard: set Score,
     administrators: set Educator,
-    battles: disj set Battle,
+    var battles: disj set Battle,
     tState: one TournamentState,
     tBadges: disj set Badge
 }
@@ -239,10 +239,62 @@ fact DoubleDigitScoreBadgeAcqR{
 // Joinin a battle is possible only if the battle is open
 // Team t joins battle b and is added to the set of teams in the battle b
 
+/*
+pred joinBattle[b: Battle, t: Team]{
+    //pre-condition
+    b.state = OpenBattle
+    //post-condition
+    b.teams' = b.teams + t
+}
+assert joinBattleWorks {
+    all b: Battle, t: Team | 
+    b.state = OpenBattle implies (joinBattle[b, t] implies t in b.teams')
+}
+check joinBattleWorks for 10
 
 
+// Possibility to add a battle
+
+pred addBattle[b: Battle, t: Tournament]{
+    //pre-condition
+    t.tState = InProgressTournament
+    //post-condition
+    t.battles' = t.battles + b
+}
+
+assert addBattleWorks{
+    all t: Tournament, b: Battle |
+    (t.tState = InProgressTournament && !(b in t.battles)) implies (addBattle[b, t] implies b in t.battles')
+}
+
+check addBattleWorks for 10
+
+// Possibility to join a team
+pred joinTeam[t: Team, s: Student, b: Battle, tournament: Tournament]{
+    //pre-condition
+    #t.members < t.size
+    b.state = OpenBattle
+    s in tournament.participants
+    !(some team: b.teams | s in team.members)
+    all m: t.members | m in tournament.participants
+    t in b.teams
+    //post-condition
+    t.members' = t.members + s
+}
+
+assert joinTeamWorks{
+    all t: Tournament, b: t.battles, s: t.participants, team: b.teams |
+    (t.tState = InProgressTournament && b.state = OpenBattle && #team.members < team.size && !(some team: b.teams | s in team.members))
+    implies (joinTeam[team, s, b, t] implies s in team.members')
+}
+
+check joinTeamWorks for 10
+*/
 
 pred show{
+    //some battle: Battle | some team: Team | joinBattle[battle, team]
+    //some t: Tournament | some battle : Battle | addBattle[battle, t]
+    //some t: Tournament, b: Battle, s: Student, team: Team | joinTeam[team, s, b, t]
 }
 
 // Da usare per mettere delle condizioni da testare
