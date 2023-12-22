@@ -13,13 +13,16 @@ one sig StartedBattle extends BattleState{}
 one sig InProgressBattle extends BattleState{}
 
 abstract sig TournamentState{}
-one sig OpenToornament extends TournamentState{}
+one sig OpenTournament extends TournamentState{}
 one sig StartedTournament extends TournamentState{}
 one sig InProgressTournament extends TournamentState{}
 
 
-abstract sig BadgeType{}
-one sig ParticipationBadge extends BadgeType{}
+enum BadgeEnum{ParticipationBadge, GroupPowerBadge, DoubleDigitScoreBadge}
+
+sig Badge{
+    badgeType: one BadgeEnum
+}
 
 
 // Signatures
@@ -29,9 +32,7 @@ abstract sig User{
 
 
 sig Student extends User{
-    //subscribedTournaments: set Tournament,
-    //participatedBattles: set Battle
-    //badges: set Badge,
+    sBadges: set Badge
 }
 
 
@@ -52,10 +53,6 @@ sig Team{
     score: Int // Punteggio del team nella battle
 }
 
-sig Badge{
-    type: one BadgeType
-}
-
 
 sig Battle{
     teams: disj set Team,
@@ -71,7 +68,7 @@ sig Tournament{
     administrators: set Educator,
     battles: disj set Battle,
     tState: one TournamentState,
-    badges: disj set Badge
+    tBadges: disj set Badge
 }
 
 // ------------------------ USER RELATED FACTS ------------------------
@@ -83,19 +80,6 @@ fact uniquesername{
 }
 
 // ------------------------- TOURNAMENT RELATED FACTS
-
-//For every two students in the participant sets, a student with a higher score in a tournament has a lower rank
-
-fact studentsWithHigherScoreHaveLowerRank{
-    all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies ((s1.value >= s2.value iff s1.rank <= s2.rank)) //and (s1.value = s2.value implies s1.rank = s2.rank))
-
-}
-
-// A score is linked to a torunament ALWAYS!!!!!!!!
-
-fact scoreLinkedTournament{
-    all score: Score | some tournament: Tournament | score in tournament.leaderboard
-}
 
 // A score can't be in two different tournaments
 
@@ -176,12 +160,6 @@ fact generalScoreReq{
     all score: Score | score.value >= 0 and score.rank > 0
 }
 
-/*
-fact gg{
-    all s1, s2: Score | s1 != s2 implies s1.value != s2.value
-}
-*/
-
 // All ranks are in order given their score
 
 fact ranksAreInSuccession {
@@ -191,41 +169,109 @@ fact ranksAreInSuccession {
     all t: Tournament | lone s: t.leaderboard | s.rank = #t.leaderboard
 }
 
+//For every two students in the participant sets, a student with a higher score in a tournament has a lower rank
+
+fact studentsWithHigherScoreHaveLowerRank{
+    all t: Tournament, s1, s2: t.leaderboard | s1 != s2 implies ((s1.value >= s2.value iff s1.rank <= s2.rank)) //and (s1.value = s2.value implies s1.rank = s2.rank))
+
+}
+
+// A score is linked to a torunament
+
+fact scoreLinkedTournament{
+    all score: Score | some tournament: Tournament | score in tournament.leaderboard
+}
+
+// the score is the some of the scores acquired in the challenges
 /*
-fact EachBattleHasUniqueRepository {
-    all b1, b2: Battle | b1 != b2 implies b1.repository != b2.repository
+fact consistentScore{
+    all t: Tournament, s: t.leaderboard | s.value = (sum team: {team: Team | s.student in team.members && (some battle: t.battles | team in battle.teams)} | team.score)
 }
-
-fact EachCodeKataHasUniqueDescription {
-    all ck1, ck2: CodeKata | ck1 != ck2 implies ck1.description != ck2.description
-}
-
-fact EachTestCaseHasUniqueDescription {
-  all tc1, tc2: TestCase | tc1 != tc2 implies tc1.description != tc2.description
-}
-
-fact ScoresInRange {
-  all s: Score | s.functionalAspects >= 0 and s.functionalAspects <= 100
-  all s: Score | s.timeliness >= 0
-  all s: Score | s.qualityLevel >= 0
-  all s: Score | s.optionalScore >= 0
-}
-
-// Add more facts as needed...
 */
 
+// ----------------------- BADGE RELATED FACTS
+
+// Badges exists withnin tournament scope
+
+fact badgeTournamentRel{
+    all b: Badge | some t: Tournament | b in t.tBadges
+}
+
+// Badges in a tournament are all different
+
+fact allDiffBadgesT{
+    all t: Tournament, b1, b2: t.tBadges | b1 != b2 implies b1.badgeType != b2.badgeType
+}
+
+// Badges of a student are all different
+
+fact allDiffbadgesS{
+    all s: Student, b1, b2: s.sBadges | b1 != b2 implies b1.badgeType != b2.badgeType
+}
+
+// A student can have a badge if he was in a tournament where that badge was acquirable
+
+fact coherenceAcq{
+    all s: Student, b: Badge | some t: Tournament | b in s.sBadges implies (b in t.tBadges && s in t.participants)   
+}
+
+// Student that are in a tournament where participationBadge is available, must have a partecipationBadge
+
+fact participationsBadgeAcq{
+    all t: Tournament, s: t.participants, b: t.tBadges | b.badgeType = ParticipationBadge implies (one b2: Badge | b2.badgeType = ParticipationBadge && b2 in s.sBadges)
+}
+
+// Student in a tournament with GroupPower Badge can acquire it if conditions are satisfied
+
+fact groupBadgeAcq{
+    all t: Tournament, badge: t.tBadges, battle: t.battles, team: battle.teams |
+        (badge.badgeType = GroupPowerBadge && #team.members >= 2) implies (all s: team.members | one b2: Badge | b2.badgeType = GroupPowerBadge && b2 in s.sBadges)
+}
+
+fact groupBadgeAcqR{
+    all s: Student, badge: s.sBadges | badge.badgeType = GroupPowerBadge implies (some team: Team | #team.members > 2 && s in team.members)
+}
+
+// Student in a tournament with DoubleDigitScoreBadge can acquire it if conditions are satisfied
+
+fact DoubleDigitScoreBadgeAcq{
+    all t: Tournament, badge: t.tBadges, score: t.leaderboard | (badge.badgeType = DoubleDigitScoreBadge && score.value > 9) implies 
+    (one b2: Badge | b2.badgeType = DoubleDigitScoreBadge && b2 in score.student.sBadges)
+}
+
+fact DoubleDigitScoreBadgeAcqR{
+    all s: Student, badge: s.sBadges | badge.badgeType = DoubleDigitScoreBadge implies (some score: Score | s = score.student && score.value > 9)
+}
 
 
+
+// SECONDO COSTA VA BENE COSI'!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// (COSTA È SCEMO)
 // Joinin a battle is possible only if the battle is open
 // Team t joins battle b and is added to the set of teams in the battle b
+/*
 pred joinBattle[b: Battle, t: Team]{
     //pre-condition
     b.state = OpenBattle
     //post-condition
     b.teams' = b.teams + t
 }
-
+assert joinBattleWorks {
+    all b: Battle, t: Team | 
+    b.state = OpenBattle implies (joinBattle[b, t] implies t in b.teams')
+}
+check joinBattleWorks for 10
+*/
 pred show{
+    //test for joinBattle predicate
+    //some battle: Battle | some team: Team | joinBattle[battle, team]
+    
 }
 
-run show for 4 but exactly 10 Student, exactly 4 Battle, exactly 2 Tournament, exactly 1 Educator, exactly 4 Score, exactly 4 Team
+fact{
+    all t: Tournament | #t.tBadges >= 1 && #t.participants >= 2
+    all team: Team | #team.members > 1
+    one score: Score | score.value > 9
+}
+
+run show for 4 but exactly 1 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 1 Team, exactly 4 Student, exactly 3 Badge, 5 Int
