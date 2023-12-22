@@ -3,8 +3,8 @@
 
 \subsection{User Interfaces}
 \label{subsec:user_interfaces}%
-The \verb|CodeKataBattle (CKB)| platform is accessed via an intuitive and responsive web interface compatible with major browsers (Chrome, Firefox, Safari, etc.).
-Educators enjoy a dedicated dashboard for effortless creation and management of tournaments, battles, and badges. This dashboard provides a comprehensive view of ongoing battles, tournament scores, and badge achievements.
+The \verb|CodeKataBattle (CKB)| platform is accessed via an intuitive and responsive web interface compatible with major browsers.
+Educators enjoy a dedicated dashboard for creation and management of tournaments, battles, and badges. This dashboard provides a comprehensive view of ongoing battles, tournament scores, and badge achievements.
 Students utilize a user-friendly dashboard for team formation, battle participation, and progress tracking. It streamlines team formation, displays upcoming battles, current ranks, and summarizes earned badges.
 GitHub seamlessly integrates into the platform for code versioning and automated testing. Students can easily fork repositories, set up GitHub Actions, and monitor build and test results within the \verb|CKB| platform.
 To keep all stakeholders informed, the platform employs a robust notification system. This system supports both email notifications and in-platform alerts, 
@@ -13,22 +13,22 @@ ensuring timely updates for educators and students on critical events like upcom
 \subsection{Hardware Interfaces}
 \label{subsec:hardware_interfaces}%
 The \verb|CKB| platform prioritizes accessibility by ensuring compatibility across a diverse range of devices. 
-Users can seamlessly access the platform from desktop computers, laptops, tablets, and smartphones. This inclusivity caters to the varied preferences and device usage patterns of our user base. 
+Users can seamlessly access the platform from desktop computers, laptops, tablets, and smartphones. 
 The platform's responsive design ensures that the user interface adapts fluidly to different screen sizes, providing an optimal experience regardless of the device used. 
 This commitment to device compatibility aims to enhance user convenience and flexibility, promoting a versatile and user-centric engagement with the \verb|CKB| platform.
 
 \subsection{Software Interfaces}
 \label{subsec:software_interfaces}%
 The \verb|CKB| platform seamlessly communicates with GitHub via APIs, enabling functionalities such as repository creation, commit tracking, and automated test processes.
-To ensure a secure integration, the platform should smoothly connect with GitHub APIs, facilitating automated workflows triggered by student commits.
+To ensure a secure integration, the platform should smoothly connect with GitHub APIs, facilitating automated workflows triggered by student commits, and Google Spreadsheet APIs, to help educators defining new rules and variables for gamification badges.
 Additionally, the platform harnesses static analysis tools to assess code quality comprehensively.
-Incorporating these tools seamlessly, educators can tailor automated evaluations by configuring specific aspects like security, reliability, and maintainability. This flexibility ensures a nuanced understanding of the code's overall quality.
+Incorporating these tools seamlessly, educators can tailor automated evaluations by configuring specific aspects like security, reliability, and maintainability. 
 
 \subsection{Communication Interfaces}
 \label{subsec:communication_interfaces}%
 The platform actively engages in communication with students, delivering notifications, battle updates, and final results in a secure manner through HTTPS. A reliable messaging system ensures timely information dissemination to students.
 Similarly, educators stay well-informed through the platform, receiving notifications and updates on battle progress and final results. Secure communication channels, similar to those used for students, guarantee the confidentiality and reliability of information relayed to educators.
-For the configuration of badges and rules, educators seamlessly use the platform to define new badges, rules, and associated variables. Ensuring a user-friendly interface, educators can make real-time adjustments, with changes promptly reflecting across the platform. This intuitive process empowers educators to tailor the platform to their evolving requirements effortlessly.
+For the configuration of badges and rules, educators seamlessly use the platform to define new badges, rules, and associated variables. Ensuring a user-friendly interface, educators can make real-time adjustments, with changes promptly reflecting across the platform.
 
 \section{Functional Requirements}
 \label{sec:functional_requirements}%
@@ -1203,57 +1203,57 @@ This comprehensive representation aims to capture the essential aspects of each 
 
 
 
-
-
-\begin{comment}
-\section{Performance Requirements}
-\label{subsec:performance_requirements}%
-
-\subsection*{1. Response Time:}
-   - The CKB platform shall respond to user interactions (e.g., creating a battle, joining a battle, submitting code) within an average time of 2 seconds, measured from the user action initiation to the completion of the corresponding operation.
-
-\subsection*{2. Concurrent Users:}
-   - The platform should support at least 1000 concurrent users participating in different battles and tournaments without a significant degradation in response time.
-
-\subsection*{3. GitHub Integration:}
-   - GitHub repository creation and updates triggered by student commits shall be processed and reflected in the CKB platform within 5 minutes of the GitHub action.
-
-\subsection*{4. Automated Evaluation:}
-   - The automated evaluation of submitted code, including functional aspects, timeliness, and quality level, shall be completed within 1 minute of each GitHub push action.
-
-\subsection*{5. Scalability:}
-   - The CKB platform should be designed to handle a growth in the number of users, battles, and tournaments. It should accommodate at least a 20\% annual increase in user base and battle participation.
-
-\subsection*{6. Data Retrieval Time:}
-   - Information retrieval for ongoing tournaments, tournament ranks, and personal scores should be performed within an average time of 3 seconds.
-
-\subsection*{7. Consolidation Stage:}
-   - The consolidation stage, where manual evaluation is required, should be completed within 3 days after the submission deadline of a battle.
-
-\subsection*{8. Badge Assignment:}
-   - Badge assignment based on rules and variables should be executed within 1 day after the final tournament rank becomes available.
-
-\subsection*{9. Platform Uptime:}
-   - The CKB platform should maintain a minimum of 99.9\% uptime over any given month to ensure continuous availability for users.
-
-\subsection*{10. Notification Latency:}
-    - Notifications, such as battle creation, submission deadlines, and tournament closure, should be sent to all relevant users within 1 minute of the triggering event.
-
-\subsection*{11. Gamification Features:}
-    - The display of badges on user profiles and the visualization of tournament-related achievements should be accessible with a response time of 3 seconds.
-
-\subsection*{12. API Response Time:}
-    - Any external APIs used for integrations, such as GitHub Actions and static analysis tools, should respond within 5 seconds to avoid delays in platform functionalities.
-
-\subsection*{13. Load Testing:}
-    - The platform should undergo periodic load testing to ensure it can handle peak loads and unexpected spikes in user activity without compromising performance.
-
-\subsection*{14. Security Scan Duration:}
-    - The time required for security scans during the evaluation of code quality should not exceed 2 minutes.
-
-\end{comment}
-
-
+%
+%
+%\begin{comment}
+%\section{Performance Requirements}
+%\label{subsec:performance_requirements}%
+%
+%\subsection*{1. Response Time:}
+%   - The CKB platform shall respond to user interactions (e.g., creating a battle, joining a battle, submitting code) within an average time of 2 seconds, measured from the user action initiation to the completion of the corresponding operation.
+%
+%\subsection*{2. Concurrent Users:}
+%   - The platform should support at least 1000 concurrent users participating in different battles and tournaments without a significant degradation in response time.
+%
+%\subsection*{3. GitHub Integration:}
+%   - GitHub repository creation and updates triggered by student commits shall be processed and reflected in the CKB platform within 5 minutes of the GitHub action.
+%
+%\subsection*{4. Automated Evaluation:}
+%   - The automated evaluation of submitted code, including functional aspects, timeliness, and quality level, shall be completed within 1 minute of each GitHub push action.
+%
+%\subsection*{5. Scalability:}
+%   - The CKB platform should be designed to handle a growth in the number of users, battles, and tournaments. It should accommodate at least a 20\% annual increase in user base and battle participation.
+%
+%\subsection*{6. Data Retrieval Time:}
+%   - Information retrieval for ongoing tournaments, tournament ranks, and personal scores should be performed within an average time of 3 seconds.
+%
+%\subsection*{7. Consolidation Stage:}
+%   - The consolidation stage, where manual evaluation is required, should be completed within 3 days after the submission deadline of a battle.
+%
+%\subsection*{8. Badge Assignment:}
+%   - Badge assignment based on rules and variables should be executed within 1 day after the final tournament rank becomes available.
+%
+%\subsection*{9. Platform Uptime:}
+%   - The CKB platform should maintain a minimum of 99.9\% uptime over any given month to ensure continuous availability for users.
+%
+%\subsection*{10. Notification Latency:}
+%    - Notifications, such as battle creation, submission deadlines, and tournament closure, should be sent to all relevant users within 1 minute of the triggering event.
+%
+%\subsection*{11. Gamification Features:}
+%    - The display of badges on user profiles and the visualization of tournament-related achievements should be accessible with a response time of 3 seconds.
+%
+%\subsection*{12. API Response Time:}
+%    - Any external APIs used for integrations, such as GitHub Actions and static analysis tools, should respond within 5 seconds to avoid delays in platform functionalities.
+%
+%\subsection*{13. Load Testing:}
+%    - The platform should undergo periodic load testing to ensure it can handle peak loads and unexpected spikes in user activity without compromising performance.
+%
+%\subsection*{14. Security Scan Duration:}
+%    - The time required for security scans during the evaluation of code quality should not exceed 2 minutes.
+%
+%\end{comment}
+%
+%
 \section{Design Constraints}
 \label{sec:design_constraints}%
 
@@ -1266,10 +1266,6 @@ The Code Kata Battle (CKB) platform must conform to established standards and le
           \begin{itemize}
               \item The platform must adhere to all laws governing privacy and data treatment, especially regarding user information and data exchange with third parties, such as CodeKata educators.
               \item Compliance with the European Union General Data Protection Regulation (EU GDPR) is mandatory to ensure the privacy and rights of users are protected.
-          \end{itemize}
-
-    \item \textbf{EU GDPR Principles:}
-          \begin{itemize}
               \item The system design should align with the principles outlined in Article 5 of the GDPR document, emphasizing the lawful, fair, and transparent processing of personal data.
           \end{itemize}
 \end{enumerate}
@@ -1287,7 +1283,7 @@ The design and functionality of the CKB platform need to consider specific limit
 \textbf{Note:} Cross-platform accessibility, although listed under hardware limitations, primarily involves software compatibility rather than hardware constraints. It highlights the need for the platform to function seamlessly across different operating systems.
 
 \subsection{Other Constraints}
-While considering standard compliance and hardware limitations, additional constraints specific to the CKB project should be acknowledged:
+While considering standard compliance and hardware limitations, additional but less restrictive constraints specific to the CKB project should be acknowledged:
 
 \begin{enumerate}
     \item \textbf{Educator Configuration:}
@@ -1298,11 +1294,6 @@ While considering standard compliance and hardware limitations, additional const
     \item \textbf{Automated Testing Tools:}
           \begin{itemize}
               \item Seamless integration with automated testing tools is essential. The platform should be designed to accommodate any constraints or limitations imposed by these tools during code evaluation.
-          \end{itemize}
-
-    \item \textbf{Scalability:}
-          \begin{itemize}
-              \item The platform must be scalable to handle a growing user base, increasing numbers of battles, and additional features without compromising performance. Consideration should be given to both the user interface and backend infrastructure.
           \end{itemize}
 
     \item \textbf{Educator Workload:}
@@ -1351,13 +1342,12 @@ By prioritizing these security measures, the CKB platform safeguards the integri
 \subsection{Maintainability}
 \label{subsec:maintainability}%
 Maintainability is a critical aspect of the CKB platform's design philosophy. The platform is structured into modular components to facilitate efficient maintenance, updates, and future extensions. 
-Each implemented functionality is meticulously documented, ensuring clarity for developers involved in maintenance tasks. 
+Each implemented functionality is documented, ensuring clarity for developers involved in maintenance tasks. 
 The design emphasizes a modular approach, allowing updates to specific components without adversely affecting the entire system. 
 This commitment to maintainability ensures that the CKB platform can adapt to evolving requirements and technologies without compromising its stability.
 
 \subsection{Portability}
 \label{subsec:portability}%
-The CKB platform prioritizes portability to accommodate a diverse user base. Users can access the platform seamlessly from web browsers and mobile applications on both Android and iOS devices. 
-The choice of programming languages and development tools is a strategic decision, with the goal of providing a consistent user experience across different platforms. 
+The CKB platform prioritizes portability to accommodate a diverse user base. Users can access the platform seamlessly from web browsers and mobile applications on both Android and iOS devices having access to the same features. 
 While cross-platform development tools offer efficiency, separate implementations for Android and iOS are considered for a more tailored user experience. 
 This flexibility in portability ensures that the CKB platform remains accessible and user-friendly, regardless of the chosen device or operating system.
