@@ -60,7 +60,7 @@
             \vfill
             \centering
             \transparent{0.4}
-            \includegraphics[width=0.85\paperwidth]{Images/raggiera_polimi}
+            \includegraphics[width=0.85\paperwidth]{Images/raggiera_polimi.png}
             \vfill
         }}}
 
