@@ -48,7 +48,7 @@ sig Score{
 
 
 sig Team{
-    members: disj set Student,
+    members: set Student,
     size: Int,
     score: Int // Punteggio del team nella battle
 }
@@ -183,11 +183,11 @@ fact scoreLinkedTournament{
 }
 
 // the score is the some of the scores acquired in the challenges
-/*
+
 fact consistentScore{
     all t: Tournament, s: t.leaderboard | s.value = (sum team: {team: Team | s.student in team.members && (some battle: t.battles | team in battle.teams)} | team.score)
 }
-*/
+
 
 // ----------------------- BADGE RELATED FACTS
 
@@ -269,9 +269,6 @@ pred show{
 }
 
 fact{
-    all t: Tournament | #t.tBadges >= 1 && #t.participants >= 2
-    all team: Team | #team.members > 1
-    one score: Score | score.value > 9
 }
 
-run show for 4 but exactly 1 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 1 Team, exactly 4 Student, exactly 3 Badge, 5 Int
+run show for 4 but exactly 2 Battle, exactly 1 Tournament, exactly 1 Educator, exactly 4 Team, exactly 3 Student, 5 Int
