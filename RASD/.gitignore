@@ -587,3 +587,15 @@ RASD.lot
 RASD.out
 RASD.synctex.gz
 RASD.toc
+
+
+DD.aux
+DD.fdb_latexmk
+DD.fls
+DD.lof
+DD.log
+DD.lot
+DD.out
+DD.syn*
+DD.toc
+DD.pdf
