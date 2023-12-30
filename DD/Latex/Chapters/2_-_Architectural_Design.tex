@@ -120,3 +120,58 @@ This is a NoSQL database, specifically MongoDB, which is designed for storing un
 \noindent\textbf{ckb DBMS}\newline
 This artifact within both database nodes represents the database management software that's part of the CodeKataBattle platform. It is likely the collection of schemas, 
 tables, queries, reports, views, and other objects associated with the platform's database management.
+
+\section{Selected architectural styles and patterns}
+
+In this section are shown the most relevant architectural design choices, with also the explanation of their role and their advantages.
+
+\textbf{3 Tier Architecture}\newline
+N-tier architecture refers to the structure of a software application divided into multiple tiers. 
+A tier is a layer of the application that operates on its own infrastructure or server. 
+In particular, we decided to implement a 3-tier architecture. The tiers are: presentation, logic, and data tier.\newline
+Presentation tier → It presents information to users and receive user inputs\newline
+Logic tier → It handles business logic and application processing logic. It’s responsible for processing user requests, 
+applying business rules, and managing the flow of data between the presentation and data tier\newline
+Data tier → It manages the storing and retrieving of the data. It handles data persistence and integrity too\newline
+The advantages of using this type of architecture revolve around its scalability, ease of management, and flexibility and security. 
+If we need to add more resources to a specific tier or modify it, we can do so without affecting the other tiers. Moreover, we can secure each 
+of the three tiers separately using different methods and techniques, based on the security needed for the specific tier
+
+\textbf{WebSocket with Pub/Sub Pattern}
+The WebSocket protocol provides a full-duplex communication channel over a single TCP connection. 
+This means that data can be sent and received at the same time, allowing for real-time communication between the client and the server.
+The Publish/Subscribe pattern is a messaging pattern where senders (publishers) categorize messages into classes without knowing which 
+subscribers (if any) there might be. Similarly, subscribers express interest in one or more classes, and only receive messages that are of interest, 
+without knowing which publishers there are
+When combined, WebSocket and Pub/Sub can be a powerful tool for real-time web applications. Regarding the CKB specifically:\newline
+1. Publishing → when an event occurs in CKB (e.g., a new battle is created, a score is updated,…), the server publishes a message about this event. 
+The message is categorized based on the type of event (e.g., “New Battle”, “Score Updated”,…)\newline
+2. Subscribing → Clients (users of CKB) subscribe to the types of events they’re interested in. 
+For example, a student might subscribe to “New Battle” events to be notified when a new battle is created.\newline
+3. Real-Time Updates → Because the communication is happening over WebSocket, these messages can be pushed from the 
+server to the client in real-time. As soon as a new message is published, all clients subscribed to that type of event will receive the message.\newline
+4. Scalability → The Pub/Sub pattern allows for scalability. As the number of users (subscribers) and events (publishers) increases, 
+the system can continue to function efficiently.\newline
+This combination of WebSocket and Pub/Sub can provide a dynamic, real-time user experience for CKB, making it more engaging and responsive for its users.
+
+\textbf{Worker Pooling}
+Worker pooling refers to a pattern where a set of initialized “workers” (threads, processes, or any kind of parallel-executing entities) 
+are kept ready to perform a certain kind of task. In the context of CKB, worker pooling can help to improve the performance and 
+responsiveness of your server by reusing workers instead of creating new ones for each request. This can be particularly helpful in 
+a high-load scenario where new requests are coming in faster than the server can create new workers. 
+Moreover, thanks to the presence of the reverse proxy, we can obtain a balanced load cross the network. 
+Infact, a reverse proxy can distribute incoming requests to multiple server replicas. 
+This is done to achieve evenly distributed load across the servers replica, 
+preventing any single server from becoming a bottleneck. 
+Each replica would have its own worker pool to handle the requests it receives
+
+\textbf{Microservices}
+The application uses a suite of small services, instead of being monolithic, 
+each running in its own process and communicating with the other microservices. 
+To communicate between each other, microservices can exploit an event-driven paradigm (like publisher and subscriber). 
+Moreover, other design choice must be taken into consideration, for example to achieve resiliency. 
+One suggestion could be to utilize a Circuit Breaker to inhibit all those microservices that are failing repeatedly. 
+In the specific context of CKB, this could be momentarily debilitating some functions of the platform, 
+such as the possibility to visualize the leaderboard of a Tournament or adding members to a team. 
+This way, the platform itself can keep running, and maintenance can be executed on the faulty microservices to bring them back up as quickly as possible
+
