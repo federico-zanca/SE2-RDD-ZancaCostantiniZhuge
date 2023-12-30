@@ -175,3 +175,21 @@ In the specific context of CKB, this could be momentarily debilitating some func
 such as the possibility to visualize the leaderboard of a Tournament or adding members to a team. 
 This way, the platform itself can keep running, and maintenance can be executed on the faulty microservices to bring them back up as quickly as possible
 
+\textbf{Database: NoSQL with SQL}
+In the context of CodeKataBattle (CKB), the use of two different databases, MongoDB (a NoSQL database) and MySQL (a SQL database), 
+is a strategic decision aimed at leveraging the strengths of both types of databases to efficiently manage and access data.
+
+MongoDB, a document-oriented database, offers flexibility with its schema-less design, 
+making it suitable for storing diverse data types like users, educators, tournament results, badges, notifications, etc. 
+This flexibility allows for easy and quick modifications as the data requirements evolve over time.
+
+On the other hand, MySQL, a relational database, 
+excels in handling structured data and complex queries. 
+It’s used for storing tournaments, teams, and battles, which are likely to involve numerous queries, 
+especially during an ongoing tournament. The structured nature of SQL databases allows for efficient querying and retrieval of data, 
+ensuring smooth operation during high-load scenarios.
+
+The entity ‘Tournament’ is shared between both databases, 
+necessitating synchronization to ensure data consistency. 
+This dual-database approach combines the flexibility of MongoDB with the query efficiency of MySQL, 
+providing a robust and adaptable data management solution for CKB.
