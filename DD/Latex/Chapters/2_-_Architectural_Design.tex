@@ -193,3 +193,33 @@ The entity ‘Tournament’ is shared between both databases,
 necessitating synchronization to ensure data consistency. 
 This dual-database approach combines the flexibility of MongoDB with the query efficiency of MySQL, 
 providing a robust and adaptable data management solution for CKB.
+
+\section{Other Design decisions}
+
+\textbf{Firewall}
+A firewall is a network security system that monitors and controls incoming and outgoing traffic based on predetermined security rules. 
+The firewall sits between the CKB’s network and the larger internet, examining all network traffic and blocking any 
+that doesn’t meet its configured security rules. This can help protect CKB from various types of attacks, 
+such as SQL injection, cross-site scripting and other exploits that could take advantage of vulnerabilities in the web application. 
+Moreover, a firewall can prevent unauthorized data from leaving the web application, adding an extra layer of data protection. 
+This is particularly important for a platform like CKB, which might handle sensitive data such as coding challenge solutions and users’ info. 
+The firewall must be configured to allow WebSocket traffic, which is used for real-time updates in CKB.
+
+
+\textbf{Model-View-Controller (MVC)}
+The Model-View-Controller (MVC) is a design pattern widely used in software development, particularly in object-oriented programming and web application. 
+It separates an application into three main logical components: the Model, the View, and the Controller\newline
+
+Model → The Model contains the methods for accessing data useful to the application. 
+In CKB, this could include data related to users, battles, tournaments, scores, etc. The Model directly manages the data, logic, and rules of the application\newline
+
+View → The View is responsible for displaying data to the user and managing the interaction between the user and the underlying infrastructure. 
+In CKB, this could include the user interfaces for viewing and joining battles, viewing scores, etc.\newline
+
+Controller → The Controller receives user commends through the View and reacts by performing operations that can affect the Model and 
+generally lead to a change of state in the View. In CKB, this could include operations like creating a new battle, etc.\newline
+
+The MVC pattern simplifies the code of applications by logically separation concerns. 
+This separation allows developers to focus on one aspect of the software at a time, making the code easier to understand, maintain, and expand. 
+It also improves efficiency by allowing different parts of the code to be developed and tested independently.
+
