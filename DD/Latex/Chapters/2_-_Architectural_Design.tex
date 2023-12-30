@@ -209,16 +209,12 @@ The firewall must be configured to allow WebSocket traffic, which is used for re
 \textbf{Model-View-Controller (MVC)}
 The Model-View-Controller (MVC) is a design pattern widely used in software development, particularly in object-oriented programming and web application. 
 It separates an application into three main logical components: the Model, the View, and the Controller\newline
-
 Model → The Model contains the methods for accessing data useful to the application. 
 In CKB, this could include data related to users, battles, tournaments, scores, etc. The Model directly manages the data, logic, and rules of the application\newline
-
 View → The View is responsible for displaying data to the user and managing the interaction between the user and the underlying infrastructure. 
 In CKB, this could include the user interfaces for viewing and joining battles, viewing scores, etc.\newline
-
 Controller → The Controller receives user commends through the View and reacts by performing operations that can affect the Model and 
 generally lead to a change of state in the View. In CKB, this could include operations like creating a new battle, etc.\newline
-
 The MVC pattern simplifies the code of applications by logically separation concerns. 
 This separation allows developers to focus on one aspect of the software at a time, making the code easier to understand, maintain, and expand. 
 It also improves efficiency by allowing different parts of the code to be developed and tested independently.
