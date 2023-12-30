@@ -137,7 +137,7 @@ The advantages of using this type of architecture revolve around its scalability
 If we need to add more resources to a specific tier or modify it, we can do so without affecting the other tiers. Moreover, we can secure each 
 of the three tiers separately using different methods and techniques, based on the security needed for the specific tier
 
-\textbf{WebSocket with Pub/Sub Pattern}
+\textbf{WebSocket with Pub/Sub Pattern}\newline
 The WebSocket protocol provides a full-duplex communication channel over a single TCP connection. 
 This means that data can be sent and received at the same time, allowing for real-time communication between the client and the server.
 The Publish/Subscribe pattern is a messaging pattern where senders (publishers) categorize messages into classes without knowing which 
@@ -154,7 +154,7 @@ server to the client in real-time. As soon as a new message is published, all cl
 the system can continue to function efficiently.\newline
 This combination of WebSocket and Pub/Sub can provide a dynamic, real-time user experience for CKB, making it more engaging and responsive for its users.
 
-\textbf{Worker Pooling}
+\textbf{Worker Pooling}\newline
 Worker pooling refers to a pattern where a set of initialized “workers” (threads, processes, or any kind of parallel-executing entities) 
 are kept ready to perform a certain kind of task. In the context of CKB, worker pooling can help to improve the performance and 
 responsiveness of your server by reusing workers instead of creating new ones for each request. This can be particularly helpful in 
@@ -165,7 +165,7 @@ This is done to achieve evenly distributed load across the servers replica,
 preventing any single server from becoming a bottleneck. 
 Each replica would have its own worker pool to handle the requests it receives
 
-\textbf{Microservices}
+\textbf{Microservices}\newline
 The application uses a suite of small services, instead of being monolithic, 
 each running in its own process and communicating with the other microservices. 
 To communicate between each other, microservices can exploit an event-driven paradigm (like publisher and subscriber). 
@@ -175,7 +175,7 @@ In the specific context of CKB, this could be momentarily debilitating some func
 such as the possibility to visualize the leaderboard of a Tournament or adding members to a team. 
 This way, the platform itself can keep running, and maintenance can be executed on the faulty microservices to bring them back up as quickly as possible
 
-\textbf{Database: NoSQL with SQL}
+\textbf{Database: NoSQL with SQL}\newline
 In the context of CodeKataBattle (CKB), the use of two different databases, MongoDB (a NoSQL database) and MySQL (a SQL database), 
 is a strategic decision aimed at leveraging the strengths of both types of databases to efficiently manage and access data.
 
@@ -196,7 +196,7 @@ providing a robust and adaptable data management solution for CKB.
 
 \section{Other Design decisions}
 
-\textbf{Firewall}
+\textbf{Firewall}\newline
 A firewall is a network security system that monitors and controls incoming and outgoing traffic based on predetermined security rules. 
 The firewall sits between the CKB’s network and the larger internet, examining all network traffic and blocking any 
 that doesn’t meet its configured security rules. This can help protect CKB from various types of attacks, 
@@ -206,7 +206,7 @@ This is particularly important for a platform like CKB, which might handle sensi
 The firewall must be configured to allow WebSocket traffic, which is used for real-time updates in CKB.
 
 
-\textbf{Model-View-Controller (MVC)}
+\textbf{Model-View-Controller (MVC)}\newline
 The Model-View-Controller (MVC) is a design pattern widely used in software development, particularly in object-oriented programming and web application. 
 It separates an application into three main logical components: the Model, the View, and the Controller\newline
 Model → The Model contains the methods for accessing data useful to the application. 
