@@ -11,12 +11,13 @@ The main aspects of the design are:
     modules and to increase scalability, availability and maintainability of the system.
 \end{itemize}
 
+\newpage
 \section{Component View}
 \label{sec: component_view}%
-The component diagram shows all the identified components.
+The UML component diagram shows all the identified components in the \verb|CKB| system.
 It also describes the relations between the modules, representing the verse of the communication flow and the actors participating.
-
-Bla bla bla
+It is divided into a WebApplication, which is the front-end for users, and a back-end, composed of the \verb|CKB Core Business Logic| and the \verb|CKB Notification System|.
+External entities to which the system holds a dependency are also shown.
 
 \subsection{Component diagram}
 \label{subsec:component_diagram}%
@@ -44,14 +45,16 @@ The components are:
     %        \item \textbf{Z} 
     %        \item \textbf{Z} 
     %    \end{itemize}
-    \item \textbf{UserManager} \verb|UserManager| component offers, through the interface \verb|UserManagerI|, the basic function for handling users:
+
+    %PROBABILMENTE UserManager SARÀ DA CAMBIARE E/O APPROFONDIRE MENTRE FAREMO LA SEZIONE Component Interfaces
+    %IDEM PER UserWebApp
+    \item \textbf{UserManager.} \verb|UserManager| component offers, through the interface \verb|UserManagerI|, the basic function for handling users:
         \begin{itemize}
             \item \textbf{Register}
             \item \textbf{Login}
             %tanta altra roba di sicuro
         \end{itemize}
         It also provides user information to the \verb|EducatorDashboardManager| component and the \verb|StudentDashboardManager| component depending on the role of the logged user.
-    %EducatorDashboardManager
     \item \textbf{Educator Dashboard Manager.} \verb|Educator| \verb|Dashboard| \verb|Manager| handles the main functionalities accessible by an Educator. 
     It allows creating and managing both CodeKataBattles and Tournaments, defining new badges and rules and performing all the operations that an Educator should be able to perform according to the RASD.
     \item \textbf{Badge Manager.} \verb|Badge| \verb|Manager| is used to manage badges, allowing to perform operations such as assigning a badge to a Student, creating new badges and defining new rules and variables to obtain them.
@@ -65,8 +68,17 @@ The components are:
     joining an existing one and checking the status of the ongoing ones through its interface \verb|TournamentI|. Educators can also add other Educators as admin to a tournament they created.
     \item \textbf{Automated Evaluation Manager.} \verb|Automated| \verb|Evaluation| \verb|Manager| is used to manage the automated evaluation of CodeKataBattles assigning scores to teams.
     \item \textbf{Team Manager.} \verb|Team| \verb|Manager| is used to manage teams, allowing to perform operations such as creating a new team, joining an existing one and inviting a student to join a team.
-    %invitations manager
-    \item \textbf{Notification Manager.} \verb|Notification| \verb|Manager| allows Students to be notified via email when a new CodeKataBattle or Tournament is created or ends. It relies on an external Mailing Service.
+    \item \textbf{Invitation Manager.} \verb|Invitation| \verb|Manager| is used to manage team invitations, it is responsible for keeping track of invitations sent by Students to other Students and their status (whether they have been accepted or not).
+    It communicates with \verb|TeamManager| and \verb|NotificationManager| to update teams and deliver notifications to Students.
+    \item \textbf{CKB Notification System.} \verb|CKB Notification| \verb|System| allows Students to be notified via email when a new CodeKataBattle or Tournament is created or ends. It relies on an external Mailing Service. 
+    This component handles notifications to be sent relying on three modules:
+        \begin{itemize}
+            \item \textbf{Tournament Notification Manager.} \verb|Tournament| \verb|Notification| \verb|Manager| is used to handle notifications elated to Tournament events (such as Tournament creation, registration deadline expiration and closing) 
+            through its interface \verb|InvitationNotificationI|.
+            \item \textbf{Battle Notification Manager.} \verb|Battle| \verb|Notification| \verb|Manager| handles notifications related to CodeKataBattles within Tournaments. It exposes an interface called \verb|BattleNotificationI| to allow the \verb|Battle Manager| 
+            to deliver notifications about Battle creation, start and end to Students. 
+            \item \textbf{Invitation Notification Manager.} \verb|Invitation| \verb|Notification| \verb|Manager| is used to handle notifications regarding invitations to join a team. Its interface is called \verb|InvitationNotificationI|.
+        \end{itemize}
 \end{itemize}
 External entities are:
 \begin{itemize}
@@ -75,7 +87,12 @@ External entities are:
     \item \textbf{Github.} \verb|Github| interacts with the \verb|Battle| \verb|Manager| component to handle the code that represents the solution of a CodeKataBattle. 
     CKB platform offers APIs to allow Github Actions Workflow to trigger a pull request to the repository of the solution.
 \end{itemize}
-
+DBMS components are:
+\begin{itemize}
+    \item \textbf{LongTermData DBMS.} \verb|LongTermData DBMS| is the DBMS used to store and manage data that is meant to be accessed less frequently and that will probably be stored for more time, like Users, Badges, Tournament results.
+    \item \textbf{ShortTermData DBMS.} \verb|ShortTermData DBMS| is the DBMS used to store and manage structured data that will probably be accessed more frequently by a higher number of users, like CodeKataBattles, Tournaments or Teams. 
+    This kind of data can be stored for a shorter period of time because after the end of a Tournament or a CodeKataBattle most of it will not be useful anymore.
+\end{itemize}
 \section{Deployment View}
 \label{sec: deployment_view}%
 The distribution of components capturing the topology of the system is illustrated below by using a deployment diagram.
