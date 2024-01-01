@@ -11,12 +11,13 @@ The main aspects of the design are:
     modules and to increase scalability, availability and maintainability of the system.
 \end{itemize}
 
+\newpage
 \section{Component View}
 \label{sec: component_view}%
-The component diagram shows all the identified components.
+The UML component diagram shows all the identified components in the \verb|CKB| system.
 It also describes the relations between the modules, representing the verse of the communication flow and the actors participating.
-
-Bla bla bla
+It is divided into a WebApplication, which is the front-end for users, and a back-end, composed of the \verb|CKB Core Business Logic| and the \verb|CKB Notification System|.
+External entities to which the system holds a dependency are also shown.
 
 \subsection{Component diagram}
 \label{subsec:component_diagram}%
@@ -28,6 +29,7 @@ Bla bla bla
     \end{center}
 \end{figure}
 
+\newpage
 \subsection{Components description}
 \label{subsec:components_description}%
 The components are:
@@ -44,14 +46,16 @@ The components are:
     %        \item \textbf{Z} 
     %        \item \textbf{Z} 
     %    \end{itemize}
-    \item \textbf{UserManager} \verb|UserManager| component offers, through the interface \verb|UserManagerI|, the basic function for handling users:
+
+    %PROBABILMENTE UserManager SARÀ DA CAMBIARE E/O APPROFONDIRE MENTRE FAREMO LA SEZIONE Component Interfaces
+    %IDEM PER UserWebApp
+    \item \textbf{UserManager.} \verb|UserManager| component offers, through the interface \verb|UserManagerI|, the basic function for handling users:
         \begin{itemize}
             \item \textbf{Register}
             \item \textbf{Login}
             %tanta altra roba di sicuro
         \end{itemize}
         It also provides user information to the \verb|EducatorDashboardManager| component and the \verb|StudentDashboardManager| component depending on the role of the logged user.
-    %EducatorDashboardManager
     \item \textbf{Educator Dashboard Manager.} \verb|Educator| \verb|Dashboard| \verb|Manager| handles the main functionalities accessible by an Educator. 
     It allows creating and managing both CodeKataBattles and Tournaments, defining new badges and rules and performing all the operations that an Educator should be able to perform according to the RASD.
     \item \textbf{Badge Manager.} \verb|Badge| \verb|Manager| is used to manage badges, allowing to perform operations such as assigning a badge to a Student, creating new badges and defining new rules and variables to obtain them.
@@ -65,8 +69,17 @@ The components are:
     joining an existing one and checking the status of the ongoing ones through its interface \verb|TournamentI|. Educators can also add other Educators as admin to a tournament they created.
     \item \textbf{Automated Evaluation Manager.} \verb|Automated| \verb|Evaluation| \verb|Manager| is used to manage the automated evaluation of CodeKataBattles assigning scores to teams.
     \item \textbf{Team Manager.} \verb|Team| \verb|Manager| is used to manage teams, allowing to perform operations such as creating a new team, joining an existing one and inviting a student to join a team.
-    %invitations manager
-    \item \textbf{Notification Manager.} \verb|Notification| \verb|Manager| allows Students to be notified via email when a new CodeKataBattle or Tournament is created or ends. It relies on an external Mailing Service.
+    \item \textbf{Invitation Manager.} \verb|Invitation| \verb|Manager| is used to manage team invitations, it is responsible for keeping track of invitations sent by Students to other Students and their status (whether they have been accepted or not).
+    It communicates with \verb|TeamManager| and \verb|NotificationManager| to update teams and deliver notifications to Students.
+    \item \textbf{CKB Notification System.} \verb|CKB Notification| \verb|System| allows Students to be notified via email when a new CodeKataBattle or Tournament is created or ends. It relies on an external Mailing Service. 
+    This component handles notifications to be sent relying on three modules:
+        \begin{itemize}
+            \item \textbf{Tournament Notification Manager.} \verb|Tournament| \verb|Notification| \verb|Manager| is used to handle notifications elated to Tournament events (such as Tournament creation, registration deadline expiration and closing) 
+            through its interface \verb|InvitationNotificationI|.
+            \item \textbf{Battle Notification Manager.} \verb|Battle| \verb|Notification| \verb|Manager| handles notifications related to CodeKataBattles within Tournaments. It exposes an interface called \verb|BattleNotificationI| to allow the \verb|Battle Manager| 
+            to deliver notifications about Battle creation, start and end to Students. 
+            \item \textbf{Invitation Notification Manager.} \verb|Invitation| \verb|Notification| \verb|Manager| is used to handle notifications regarding invitations to join a team. Its interface is called \verb|InvitationNotificationI|.
+        \end{itemize}
 \end{itemize}
 External entities are:
 \begin{itemize}
@@ -75,7 +88,12 @@ External entities are:
     \item \textbf{Github.} \verb|Github| interacts with the \verb|Battle| \verb|Manager| component to handle the code that represents the solution of a CodeKataBattle. 
     CKB platform offers APIs to allow Github Actions Workflow to trigger a pull request to the repository of the solution.
 \end{itemize}
-
+DBMS components are:
+\begin{itemize}
+    \item \textbf{LongTermData DBMS.} \verb|LongTermData DBMS| is the DBMS used to store and manage data that is meant to be accessed less frequently and that will probably be stored for more time, like Users, Badges, Tournament results.
+    \item \textbf{ShortTermData DBMS.} \verb|ShortTermData DBMS| is the DBMS used to store and manage structured data that will probably be accessed more frequently by a higher number of users, like CodeKataBattles, Tournaments or Teams. 
+    This kind of data can be stored for a shorter period of time because after the end of a Tournament or a CodeKataBattle most of it will not be useful anymore.
+\end{itemize}
 \section{Deployment View}
 \label{sec: deployment_view}%
 The distribution of components capturing the topology of the system is illustrated below by using a deployment diagram.
@@ -399,7 +417,7 @@ The advantages of using this type of architecture revolve around its scalability
 If we need to add more resources to a specific tier or modify it, we can do so without affecting the other tiers. Moreover, we can secure each 
 of the three tiers separately using different methods and techniques, based on the security needed for the specific tier
 
-\textbf{WebSocket with Pub/Sub Pattern}
+\textbf{WebSocket with Pub/Sub Pattern}\newline
 The WebSocket protocol provides a full-duplex communication channel over a single TCP connection. 
 This means that data can be sent and received at the same time, allowing for real-time communication between the client and the server.
 The Publish/Subscribe pattern is a messaging pattern where senders (publishers) categorize messages into classes without knowing which 
@@ -416,7 +434,7 @@ server to the client in real-time. As soon as a new message is published, all cl
 the system can continue to function efficiently.\newline
 This combination of WebSocket and Pub/Sub can provide a dynamic, real-time user experience for CKB, making it more engaging and responsive for its users.
 
-\textbf{Worker Pooling}
+\textbf{Worker Pooling}\newline
 Worker pooling refers to a pattern where a set of initialized “workers” (threads, processes, or any kind of parallel-executing entities) 
 are kept ready to perform a certain kind of task. In the context of CKB, worker pooling can help to improve the performance and 
 responsiveness of your server by reusing workers instead of creating new ones for each request. This can be particularly helpful in 
@@ -427,7 +445,7 @@ This is done to achieve evenly distributed load across the servers replica,
 preventing any single server from becoming a bottleneck. 
 Each replica would have its own worker pool to handle the requests it receives
 
-\textbf{Microservices}
+\textbf{Microservices}\newline
 The application uses a suite of small services, instead of being monolithic, 
 each running in its own process and communicating with the other microservices. 
 To communicate between each other, microservices can exploit an event-driven paradigm (like publisher and subscriber). 
@@ -436,4 +454,48 @@ One suggestion could be to utilize a Circuit Breaker to inhibit all those micros
 In the specific context of CKB, this could be momentarily debilitating some functions of the platform, 
 such as the possibility to visualize the leaderboard of a Tournament or adding members to a team. 
 This way, the platform itself can keep running, and maintenance can be executed on the faulty microservices to bring them back up as quickly as possible
+
+\textbf{Database: NoSQL with SQL}\newline
+In the context of CodeKataBattle (CKB), the use of two different databases, MongoDB (a NoSQL database) and MySQL (a SQL database), 
+is a strategic decision aimed at leveraging the strengths of both types of databases to efficiently manage and access data.
+
+MongoDB, a document-oriented database, offers flexibility with its schema-less design, 
+making it suitable for storing diverse data types like users, educators, tournament results, badges, notifications, etc. 
+This flexibility allows for easy and quick modifications as the data requirements evolve over time.
+
+On the other hand, MySQL, a relational database, 
+excels in handling structured data and complex queries. 
+It’s used for storing tournaments, teams, and battles, which are likely to involve numerous queries, 
+especially during an ongoing tournament. The structured nature of SQL databases allows for efficient querying and retrieval of data, 
+ensuring smooth operation during high-load scenarios.
+
+The entity ‘Tournament’ is shared between both databases, 
+necessitating synchronization to ensure data consistency. 
+This dual-database approach combines the flexibility of MongoDB with the query efficiency of MySQL, 
+providing a robust and adaptable data management solution for CKB.
+
+\section{Other Design decisions}
+
+\textbf{Firewall}\newline
+A firewall is a network security system that monitors and controls incoming and outgoing traffic based on predetermined security rules. 
+The firewall sits between the CKB’s network and the larger internet, examining all network traffic and blocking any 
+that doesn’t meet its configured security rules. This can help protect CKB from various types of attacks, 
+such as SQL injection, cross-site scripting and other exploits that could take advantage of vulnerabilities in the web application. 
+Moreover, a firewall can prevent unauthorized data from leaving the web application, adding an extra layer of data protection. 
+This is particularly important for a platform like CKB, which might handle sensitive data such as coding challenge solutions and users’ info. 
+The firewall must be configured to allow WebSocket traffic, which is used for real-time updates in CKB.
+
+
+\textbf{Model-View-Controller (MVC)}\newline
+The Model-View-Controller (MVC) is a design pattern widely used in software development, particularly in object-oriented programming and web application. 
+It separates an application into three main logical components: the Model, the View, and the Controller\newline
+Model → The Model contains the methods for accessing data useful to the application. 
+In CKB, this could include data related to users, battles, tournaments, scores, etc. The Model directly manages the data, logic, and rules of the application\newline
+View → The View is responsible for displaying data to the user and managing the interaction between the user and the underlying infrastructure. 
+In CKB, this could include the user interfaces for viewing and joining battles, viewing scores, etc.\newline
+Controller → The Controller receives user commends through the View and reacts by performing operations that can affect the Model and 
+generally lead to a change of state in the View. In CKB, this could include operations like creating a new battle, etc.\newline
+The MVC pattern simplifies the code of applications by logically separation concerns. 
+This separation allows developers to focus on one aspect of the software at a time, making the code easier to understand, maintain, and expand. 
+It also improves efficiency by allowing different parts of the code to be developed and tested independently.
 
