@@ -205,6 +205,20 @@ Moreover, a firewall can prevent unauthorized data from leaving the web applicat
 This is particularly important for a platform like CKB, which might handle sensitive data such as coding challenge solutions and users’ info. 
 The firewall must be configured to allow WebSocket traffic, which is used for real-time updates in CKB.
 
+\textbf{Reverse Proxy}
+A reverse proxy is a server that sits between client devices and a web server, forwarding client requests to the web server and returning the server’s 
+responses back to the clients. In CKB, the reverse proxy plays a crucial role in managing and directing network traffic to multiple server replicas. 
+The reverse proxy receives client requests and intelligently distributes them across multiple server replicas, each equipped with its own worker pool. 
+This distribution is done in a manner that ensures an evenly balanced load across the network, preventing any single server from becoming a bottleneck. 
+This is particularly beneficial in high-load scenarios where numerous requests are coming in simultaneously.\newline
+
+Moreover, the reverse proxy provides an additional layer of abstraction and control to ensure smooth flow of network traffic between clients and servers. 
+It can provide additional features like SSL termination, HTTP/2 support, caching, and more. This not only enhances performance but also adds a layer of security, 
+shielding the servers from direct exposure to the internet.\newline
+
+In addition, the reverse proxy can provide other benefits such as masking the internal structure of the backend network, providing a single point of entry into the system, 
+and simplifying routing and network configuration. It can also provide resilience by detecting failure of a server replica and redirecting traffic to other healthy replicas
+
 
 \textbf{Model-View-Controller (MVC)}\newline
 The Model-View-Controller (MVC) is a design pattern widely used in software development, particularly in object-oriented programming and web application. 
@@ -219,3 +233,4 @@ The MVC pattern simplifies the code of applications by logically separation conc
 This separation allows developers to focus on one aspect of the software at a time, making the code easier to understand, maintain, and expand. 
 It also improves efficiency by allowing different parts of the code to be developed and tested independently.
 
+\textbf{}
