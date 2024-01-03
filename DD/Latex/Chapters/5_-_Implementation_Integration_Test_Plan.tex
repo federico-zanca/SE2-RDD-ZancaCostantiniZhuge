@@ -1,1 +1,80 @@
-Hey
+\section{Implementation}
+The implementation process begins with setting up the databases. MongoDB, a NoSQL database, is chosen for its flexibility and scalability, 
+making it ideal for storing diverse data types such as users, educators, tournament results, badges, notifications, and more. 
+This database will be designed with a schema-less structure, allowing for easy modifications as the data requirements evolve over time.\newline
+Concurrently, MySQL, a SQL database, is used for its strength in handling structured data and complex queries. 
+It will store data related to tournaments, teams, and battles. Given the nature of these data types, they are likely to involve numerous queries, 
+especially during an ongoing tournament. The structured nature of SQL databases allows for efficient querying and retrieval of data, 
+ensuring smooth operation during high-load scenarios.\newline
+Once the databases are set up, the backend development begins. 
+This involves creating core functionalities such as user manager, battle manager, tournament manager, badge manager, and the notification system. 
+Each of these components is crucial for the functioning of CKB and will involve interactions with the databases. 
+For instance, user manager will handle user registration, login, and profile management, interacting primarily with the MongoDB database. 
+Battle manager, on the other hand, will involve interaction with the MySQL database. The order in which each components needs to be developed is not a strict one. 
+Here, we present a suggestion on the order.\newline
+We first suggest creating the user manager, since this will allows us to immediately test subscription and login, as well as interaction with MongoDB. 
+Then, it would be auspicious to develop the Tournament manager. This entity relies on the existence of an Educator to create and manage the Tournament. 
+Therefore, this is purely a logical step in the development of the back end. 
+Once the Tournament manager is properly functioning, we can focus on the production of the Battle manager and Team manager, two entities strictly related to the 
+Tournament Manager. Then, all the other aspects can be creating without a specific order, since the core of the logic of the backend is already up.\newline
+Last steps for the backend development will be the integration of the CKB platform with all the external tools required to achieve the desired implementation. 
+This includes integrating the notification system with the mail system, the communication with GitHub, and the implementation with Google Spreadsheets and Universities 
+Authentication.\newline
+Following the completion of the backend, the focus shifts to frontend development. 
+This includes designing and implementing the user interface for various operations such as viewing and joining battles, 
+viewing scores, user registration, login, and profile management. 
+Additionally, real-time updates using WebSocket will be set up for live scoring and notifications of new battles or tournaments. 
+This feature is crucial for enhancing the user experience by providing immediate feedback and updates.\newline
+To ensure the security of the application, a firewall is set up to protect the servers from potential cyber attacks and unauthorized access. 
+The firewall is configured to allow WebSocket traffic. In addition, a reverse proxy is set up for load balancing, SSL termination, and simplified network routing. 
+These measures enhance the security and performance of the application.\newline
+Throughout the implementation process, careful management is required to handle data synchronization and maintain data integrity across both databases. 
+A reliable mechanism is implemented to keep the databases updated and consistent with each other. 
+This comprehensive implementation plan provides a robust and adaptable data management solution for CKB, ensuring its efficiency and reliability.
+
+\section{Integration}
+The integration phase is a critical step in the development process of CodeKataBattle (CKB), where the individual components of the system, 
+developed during the implementation phase, are combined and tested as a whole.\newline
+The integration process begins with the combination of the frontend and backend components of CKB. 
+This involves connecting the backend with the user interface elements in the frontend. 
+The WebSocket connection between the client and the server, set up during the implementation phase, is also integrated into the system to enable real-time updates.\newline
+Next, the databases are integrated with the backend. 
+This involves setting up the database connections and ensuring that the backend can correctly query the databases and handle the returned data. 
+The MongoDB database, which stores non-relational data such as users, educators, tournament results, badges, notifications, and more, 
+is integrated with the user management, badge management, and notification system components of the backend. 
+The MySQL database, which stores relational data related to tournaments, teams, and battles, is integrated with the battle management 
+and tournament management components of the backend.\newline
+The firewall and reverse proxy, set up during the implementation phase for security and performance enhancement, 
+are also integrated into the system. The firewall is configured to allow WebSocket traffic, 
+which is essential for the real-time updates in CKB. The reverse proxy is set up for load balancing, SSL termination, and simplified network routing.\newline
+The final step in the integration process is the integration of the various components of the backend. 
+This includes integrating the user management, battle management, tournament management, badge management, 
+and notification system components with each other. This ensures that these components can work together seamlessly to provide the core functionalities of CKB.
+
+\section{Testing}
+\subsection{Unit Testing}
+Unit testing is a critical process in software development, where individual components of a program are tested in isolation to ensure they function correctly. 
+This method focuses on the smallest units of code, like functions or methods, to identify issues early, enhancing overall software quality. 
+This type of test will be performed in the early stage of the development. In particular, 
+during the implementation of each manager, unit testing will be required in order to ensure that each component as a standalone works properly.
+
+\subsection{Integration Testing}
+Integration testing is a level of software testing where individual units are combined and tested as a group. 
+The goal is to identify any problems or bugs that arise when different components are combined and interact with each other.\newline
+The integration testing can follow the order of the implementation of the back end logic, and be conducted in parallel with it 
+(this means implementation, integration and testing steps for the back end are done simultaneously). 
+This will ensure that everything works properly and as intended. If an error arises at this point of the testing, it will be easier to spot and correct it, 
+instead of waiting for testing after the end of the implementation and integration.
+
+\subsection{System Testing}
+System testing validates the complete and fully integrated software product. 
+The purpose is to evaluate the end-to-end system specifications. 
+System testing will require to verify every input in the application to check for desired outputs, 
+users’ experience and integration as a whole including external services
+
+\subsection{Performance Testing}
+Performance testing ensures software applications perform properly under their expected workload. 
+It focuses on evaluating the performance and scalability of a system. 
+The goal is to identify bottlenecks, measure system performance under various loads and conditions, 
+and ensure the system can handle the expected number of users or transactions. 
+In particular, we want to make sure in this phase that even under stress, they system can still provide real time updates to the users, and that no data is lost.
