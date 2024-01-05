@@ -151,19 +151,15 @@ In this section, we hadn't presented all the RASD document use cases because we 
 \paragraph{Registered User Login}
 When a user WebApp wants to log in to the CKB platform, he calls the ``\verb|logIn|'' function from the \verb|UserManager| component through it's interface.
 The \verb|UserManager| component then requests the UserWebApp to display the login form from which, after the user inserted the credentials it sends the information to the
-\verb|AuthenticationService| to validate it's correctness. Based on the responce from the \verb|AuthenticationService| the \verb|UserManager| component will send a confirmation or an error to the client.
-
-% Sequence to be made
-\begin{comment}
+\verb|AuthenticationService| to validate it's correctness. Based on the response from the \verb|AuthenticationService| the \verb|UserManager| component will send a confirmation or an error to the client.
 
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-        \caption{Registered EVD logs in sequence diagram}
-        \label{fig:evd_logs_in}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_login.png}
+        \caption{Registered User logs in sequence diagram}
+        \label{fig:user_logs_in}
     \end{center}
 \end{figure}
-\end{comment}
 
 \paragraph{Student subscribe to a tournament}
 When a student wants to subscribe to a open tournament, the User WebApp after login knows that the user is a student so it shows the student the corresponding StudentDashboard.
@@ -171,17 +167,13 @@ In the StudentDashboard the student can select a tournament through the list of 
 With the interface \verb|TournamentI| the \verb|StudentDashboardManager| calls the subscribe function, the \verb|TournamentManager| will check if in the CKB data base the student has already subscribed.
 Only then the \verb|TournamentManager| will sends a corresponding confirmation or an error to the client.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_subscription.png}
+        \caption{Student subscribe sequence diagram}
+        \label{fig:student_subscribe}
+    \end{center}
+\end{figure}
 
 
 \paragraph{Student creates a team}
@@ -190,17 +182,13 @@ For students already subscribed in a tournament, they can call the \verb|createT
 will check the CKB database to ensure there are no teams with the same name already inside the DB. Then it will create the Team and norificate the student of the success or send an error.
 
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_teamcreation.png}
+        \caption{Student create team sequence diagram}
+        \label{fig:student_create_team}
+    \end{center}
+\end{figure}
 
 
 \paragraph{Student invites another student to the team}
@@ -208,53 +196,41 @@ After the team has been created, the student can invite other students to join t
 The student can call the \verb|inviteStudent| function through the \verb|TeamManagerI| interface.
 \verb|TeamManager| component will send a request to the \verb|StudentDashboardManager| for the email of the student to invite. 
 After the student has inputed the information, the \verb|TeamManager| will check the CKB database to ensure the student is not already in a team.
-Then it will send an email to the student to invite him to the team and norificate the student of the success or send an error.
+Then it will send an email to the student to invite him to the team and notificate the student of the success or send an error.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_invitation.png}
+        \caption{Student invitation sequence diagram}
+        \label{fig:student_invite}
+    \end{center}
+\end{figure}
 
 \paragraph{Student accepts or rejects an invitation to join a team}
 After receiving an invitation to join a team, a student can accept or reject this invitation by invoking the \verb|acceptInvitation| or \verb|rejectInvitation| function through the \verb|TeamManagerI| interface. 
-These functions require specific parameters such as the invitation ID and student ID. The \verb|TeamManager| component processes the request, either adding the student to the team or removing the invitation from the CKB database, depending on the student's decision. 
+The \verb|TeamManager| component processes the request, either adding the student to the team or removing the invitation from the CKB database, depending on the student's decision. 
 The \verb|TeamManager| then notifies the student of the outcome. If the operation is successful, a confirmation is sent. If an error occurs, an error message is returned, allowing the student to handle the error appropriately.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_invitationHandle.png}
+        \caption{Student handle invite sequence diagram}
+        \label{fig:student_handle_invite}
+    \end{center}
+\end{figure}
 
 \paragraph{Student join a battle}
 When a student, either individually or as part of a team, wishes to join a battle, they invoke the \verb|joinBattle| function from the \verb|BattleI| interface. This function requires specific parameters such as the battle ID and student or team ID. 
 The \verb|BattleManager| receives the request and checks the registration deadline. If the deadline has not passed, the \verb|BattleManager| admits the student or team to the battle and updates the CKB database accordingly. A confirmation is then sent to the client. 
 If the deadline has passed or if any other error occurs, an error message is returned to the client, allowing them to handle the error and provide appropriate feedback to the student.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_joinBattle.png}
+        \caption{Student join battle sequence diagram}
+        \label{fig:student_join_battle}
+    \end{center}
+\end{figure}
 
 \paragraph{Educator creates a tournament}
 To create a tournament, the \verb|EducatorDashboardManager| invokes the \verb|createTournament| function from the \verb|TournamentI| interface. 
@@ -262,35 +238,13 @@ This function requires specific parameters such as the tournament name, number o
 The \verb|TournamentManager| handles the creation of the tournament, including any necessary error checking, and inserts the tournament details into the database. If the tournament creation is successful, a confirmation is returned to the \verb|EducatorDashboardManager|. 
 If the creation fails, an error message is returned instead, allowing the \verb|EducatorDashboardManager| to handle the error and provide appropriate feedback to the educator.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
-
-\paragraph{Educator closes a tournament}
-When an educator needs to close a tournament, they can invoke the \verb|closeTournament| function from the \verb|TournamentI| interface. This function requires specific parameters such as the tournament ID. 
-The \verb|TournamentManager| component receives the request and processes it by marking the specified tournament as closed in the CKB database. 
-During this process, the \verb|TournamentManager| performs necessary checks, such as verifying that the tournament exists and is currently open. If the operation is successful, a confirmation is sent back to the \verb|EducatorDashboardManager|. 
-In case of an error, such as the tournament not existing or already being closed, an error message is returned, allowing the \verb|EducatorDashboardManager| to handle the error and provide appropriate feedback to the educator.
-
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_createTournament.png}
+        \caption{Educator create tournament sequence diagram}
+        \label{fig:Educator_create_tournament}
+    \end{center}
+\end{figure}
 
 \paragraph{Educator uploads a CKB}
 When an educator needs to upload a CKB, they can invoke the \verb|uploadCKB| function from the \verb|BattleI| interface. This function requires specific parameters such as the CKB file and its associated metadata. 
@@ -298,52 +252,43 @@ The \verb|BattleManager| component receives the request and processes it by vali
 During this process, the \verb|BattleManager| performs necessary checks, such as verifying the file format and integrity. If the operation is successful, a confirmation is sent back to the \verb|EducatorDashboardManager|. 
 In case of an error, such as the file being in an incorrect format or corrupted, an error message is returned, allowing the \verb|EducatorDashboardManager| to handle the error and provide appropriate feedback to the educator.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_uploadCKB.png}
+        \caption{Educator upload ckb sequence diagram}
+        \label{fig:Educator_upload_ckb}
+    \end{center}
+\end{figure}
 
 \paragraph{Educator grants permission to another educator}
 When an educator needs to grant permission to another educator, they can invoke the \verb|grantPermission| function from the \verb|TournamentI| interface. This function requires specific parameters such as the tournament ID and the educator ID.
 The \verb|TournamentManager| component receives the request and processes it by granting the specified educator permission to manage the specified tournament.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_grantPermission.png}
+        \caption{Educator grant permission sequence diagram}
+        \label{fig:Educator_grant_permission}
+    \end{center}
+\end{figure}
 
 
-\paragraph{Educator creates a new rule}
-When an educator needs to create a new bagde, they have to create new rules associated with the new badge. They can invoke the \verb|createRule| function from the \verb|GamificationRulesI| interface.
+\paragraph{Educator creates a new badge}
+When an educator needs to create a new bagde, they have to create new rules associated with the new badge. They can invoke the \verb|createBadge| function from the \verb|BadgeI| interface. This will required inputing the badge name, description and the rules associated with the badge.
+The \verb|BadgeManager| should display a form with various pre-built rules to choose from, but the educator can also invoke the \verb|createRule| function from the \verb|GamificationRulesI| interface.
 This function requires specific parameters such as the rule name, the rule description and the rule formula. The \verb|GamificationRulesManager| component receives the request and processes it by validating the rule formula and storing it in the CKB database.
 During this process, the \verb|GamificationRulesManager| performs necessary checks, such as verifying the formula syntax. If the operation is successful, a confirmation is sent back to the \verb|EducatorDashboardManager|.
 In case of an error, such as the formula being in an incorrect format or corrupted, an error message is returned, allowing the \verb|EducatorDashboardManager| to handle the error and provide appropriate feedback to the educator.
+Once the rules are created, the \verb|BadgeManager| can create the badge and store it in the CKB database. If the operation is successful, a confirmation is sent back to the \verb|EducatorDashboardManager|.
+In case of an error, such as the badge name being already used, an error message is returned, allowing the \verb|EducatorDashboardManager| to handle the error and provide appropriate feedback to the educator.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_badgeCreation.drawio.png}
+        \caption{Educator create badge sequence diagram}
+        \label{fig:Educator_create_badge}
+    \end{center}
+\end{figure}
 
 
 \paragraph{Educator manually evaluates a team}
@@ -351,17 +296,13 @@ When an educator needs to manually evaluate a team, they can invoke the \verb|ev
 The \verb|BattleManager| component receives the request and processes it by evaluating the specified team and updating the CKB database accordingly. If the operation is successful, a confirmation is sent back to the \verb|EducatorDashboardManager|.
 In case of an error, such as the team not existing or the battle not being closed, an error message is returned, allowing the \verb|EducatorDashboardManager| to handle the error and provide appropriate feedback to the educator.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_manualEvaluation.png}
+        \caption{Educator manually evaluate sequence diagram}
+        \label{fig:Educator_manually_evaluate}
+    \end{center}
+\end{figure}
 
 
 
@@ -369,17 +310,13 @@ In case of an error, such as the team not existing or the battle not being close
 When a user wants to visualize the rankings of a tournament, they can invoke the \verb|getTournamentRankings| function from the \verb|TournamentI| interface. This function requires specific parameters such as the tournament ID.
 The \verb|TournamentManager| component receives the request and processes it by retrieving the rankings of the specified tournament from the CKB database. If the operation is successful, the rankings are sent back to the client.
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_seeTournamentRanking.png}
+        \caption{User see tournament ranking sequence diagram}
+        \label{fig:user_see_tournament_ranking} 
+    \end{center}
+\end{figure}
 
 
 \paragraph{User visualize other users' profiles}
@@ -387,18 +324,13 @@ When a user wants to visualize the profile of another user, they can invoke the 
 The \verb|UserManager| component receives the request and processes it by retrieving the profile of the specified user from the CKB database. If the operation is successful, the profile is sent back to the client.
 
 
-% Sequence to be made
-\begin{comment}
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
-            \caption{Registered EVD logs in sequence diagram}
-            \label{fig:evd_logs_in}
-        \end{center}
-    \end{figure}
-\end{comment}
-
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{Images/sequence/Sd_seeUserProfile.png}
+        \caption{User see profile sequence diagram}
+        \label{fig:User_see_profile}
+    \end{center}
+\end{figure}
 \newpage
 
 \section{Selected architectural styles and patterns}
