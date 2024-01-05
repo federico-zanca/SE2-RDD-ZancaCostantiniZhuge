@@ -388,23 +388,30 @@ such as the possibility to visualize the leaderboard of a Tournament or adding m
 This way, the platform itself can keep running, and maintenance can be executed on the faulty microservices to bring them back up as quickly as possible
 
 \textbf{Database: NoSQL with SQL}\newline
-In the context of CodeKataBattle (CKB), the use of two different databases, MongoDB (a NoSQL database) and MySQL (a SQL database), 
-is a strategic decision aimed at leveraging the strengths of both types of databases to efficiently manage and access data.
-
-MongoDB, a document-oriented database, offers flexibility with its schema-less design, 
-making it suitable for storing diverse data types like users, educators, tournament results, badges, notifications, etc. 
-This flexibility allows for easy and quick modifications as the data requirements evolve over time.
-
-On the other hand, MySQL, a relational database, 
-excels in handling structured data and complex queries. 
-It’s used for storing tournaments, teams, and battles, which are likely to involve numerous queries, 
-especially during an ongoing tournament. The structured nature of SQL databases allows for efficient querying and retrieval of data, 
-ensuring smooth operation during high-load scenarios.
-
-The entity ‘Tournament’ is shared between both databases, 
-necessitating synchronization to ensure data consistency. 
-This dual-database approach combines the flexibility of MongoDB with the query efficiency of MySQL, 
-providing a robust and adaptable data management solution for CKB.
+In the context of CodeKataBattle (CKB), the use of two different databases, a NoSQL database (MongoDB) and a SQL database (MySQL), 
+is a strategic decision aimed at leveraging the strengths of both types of databases to efficiently manage and access data.\newline
+Let’s look at the strength of using a NoSQL database.\newline
+Scalability → NoSQL databases are more scalable than traditional relational databases. 
+They can spread out the data storage and computing processes over a cluster of computers. 
+This allows for almost unlimited growth as increasing capacity simply requires adding more computers to the cluster.\newline
+Flexible Data Model → Unlike relational databases, NoSQL databases can easily store and combine any type of data, both structured and unstructured. 
+They can dynamically update the schema to evolve with changing requirements without any interruption or downtime to an application.\newline
+Resilience → With NoSQL, data is distributed across multiple servers and regions, so there is no single point of failure. 
+As a result, NoSQL databases are more stable and resilient, with continuous availability and zero downtime.\newline
+Given these characteristics, a NoSQL database is suitable for storing most of the data from our CKB platform, like users, 
+educators, tournaments’ results, badges, notifications, etc. Infact, the platform should be able to deal with collecting a 
+big number of data and storing them for later retrieval. We aspect that the system won’t perform many queries on the data stored in the NoSQL database. 
+Thus, it’s main functionality is to store long time data to ensure that every user can check out past events without problem 
+(so for example, a user that wants to see the leaderboard of a Tournament ended months before, or when visiting the profile of another user)\newline
+On the other hand, we have the SQL database. While the system exploits the NoSQL database mostly for storing tons of data over time, 
+we are going to use the SQL database to store the data for which we expect a high number of queries will be performed. This is the case of an ongoing Tournament. 
+In fact, lot’s of user will access the battles of the tournament, push their solutions, form teams, and so on. 
+This requires the system to perform a high number of data retrieval from the database, and using a SQL database it ensures smooth operation. 
+Therefore, we will store data like Battles, teams, and Tournaments in the SQL database. Once a Tournament is closed, 
+we could free the memory of the SQL databases after updating the NoSQL one. This will allow to avoid saturation of the database and faster retrieval of data.\newline
+The entity ‘Tournament’ is shared between both databases, necessitating synchronization to ensure data consistency. 
+The decision between updating the NoSQL when a specific Tournament ends or while it is still on depends on the capacity of the system and the stress it can undergo. 
+As a best practice, periodic synchronization between the SQL database and the NoSQL database while a Tournament is on are suggested.
 
 \section{Other Design decisions}
 
@@ -416,6 +423,18 @@ such as SQL injection, cross-site scripting and other exploits that could take a
 Moreover, a firewall can prevent unauthorized data from leaving the web application, adding an extra layer of data protection. 
 This is particularly important for a platform like CKB, which might handle sensitive data such as coding challenge solutions and users’ info. 
 The firewall must be configured to allow WebSocket traffic, which is used for real-time updates in CKB.
+
+\textbf{Reverse Proxy}\newline
+A reverse proxy is a server that sits between client devices and a web server, forwarding client requests to the web server and returning the server’s 
+responses back to the clients. In CKB, the reverse proxy plays a crucial role in managing and directing network traffic to multiple server replicas. 
+The reverse proxy receives client requests and intelligently distributes them across multiple server replicas, each equipped with its own worker pool. 
+This distribution is done in a manner that ensures an evenly balanced load across the network, preventing any single server from becoming a bottleneck. 
+This is particularly beneficial in high-load scenarios where numerous requests are coming in simultaneously.\newline
+Moreover, the reverse proxy provides an additional layer of abstraction and control to ensure smooth flow of network traffic between clients and servers. 
+It can provide additional features like SSL termination, HTTP/2 support, caching, and more. This not only enhances performance but also adds a layer of security, 
+shielding the servers from direct exposure to the internet.\newline
+In addition, the reverse proxy can provide other benefits such as masking the internal structure of the backend network, providing a single point of entry into the system, 
+and simplifying routing and network configuration. It can also provide resilience by detecting failure of a server replica and redirecting traffic to other healthy replicas
 
 
 \textbf{Model-View-Controller (MVC)}\newline
@@ -431,3 +450,15 @@ The MVC pattern simplifies the code of applications by logically separation conc
 This separation allows developers to focus on one aspect of the software at a time, making the code easier to understand, maintain, and expand. 
 It also improves efficiency by allowing different parts of the code to be developed and tested independently.
 
+\textbf{Factory pattern}\newline
+The factory pattern is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to 
+alter the type of objects that will be created. In the context of CodeKataBattle (CKB), the Factory pattern can be effectively used for badge creation, 
+providing a robust and flexible solution for creating different types of badges. It simplifies the badge creation process, 
+makes it easy to add new types of badges, and decouples the badge creation logic from the resto of the application
+
+\textbf{Decorator pattern}\newline
+The decorator pattern is a design pattern that allows behavior to be added to an individual object, dynamically, without affecting the behavior of other instances of the same class. 
+In the context of CKB, the decorator pattern can be effectively used for the score system. 
+The base Score component defines the interface for objects that can have responsibilities added to them dynamically. 
+Decorators wrap a Score component and define a new behavior for the methods that calculate the score.\newline
+The Decorator patten provides a flexible alternative to subclassing for extending functionality
