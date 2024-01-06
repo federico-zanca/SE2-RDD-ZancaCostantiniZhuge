@@ -1,1 +1,156 @@
-hey
+This chapter shows how the functional and non-functional requirements of the CKB platform described in the RASD are met.
+Firstly, we describe the mapping between the requirements listed in the 3.2.1 \textit{Requirements} section in the RASD
+and the components identified in section 2.2 of this document.
+Then, we comment on how \textit{Performance Requirements} and \textit{Software System Attributes} described in the 3.3
+and 3.5 sections of the RASD are met thanks to the design adopted for the CKB platform.
+
+
+\section{Functional Requirements Traceability}
+\label{sec: functional_requirements_traceability}%
+The following table lists all the requirements that are satisfied by the components.
+Texts of the requirements are inserted in the table to facilitate comprehension.
+\begin{center}
+    \begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+        \hline
+        User WebApp & R1. The CKB platform shall allow educators to create an account. \\
+        & R2. The CKB platform shall allow educators to log in. \\
+        \hline
+        UserManager & R1. The CKB platform shall allow educators to create an account. \\
+        & R2. The CKB platform shall allow educators to log in. \\
+        \hline
+        Educator Dashboard Manager & R3. The CKB platform shall allow educators to create a new tournament. \\
+        & R4. The CKB platform shall allow educators to set the minimum and maximum number of students per group for a tournament. \\
+        & R5. The CKB platform shall allow educators to upload a code kata battle. \\
+        & R6. The CKB platform shall allow educators to grant permissions to other educators to create battles within a specific tournament. \\
+        & R7. The CKB platform shall enable educators to include a battle to a specific tournament. \\
+        & R8. The CKB platform shall allow educators to include a description for a battle. \\
+        & R9. The CKB platform shall allow educators to include a software project with test cases. \\
+        & R10. The CKB platform shall allow educators to set a registration deadline for a battle within a tournament. \\
+        & R11. The CKB platform shall allow educators to set a final submission deadline for a battle within a tournament. \\
+        & R12. The CKB platform shall allow educators to set additional configurations for scoring, including functional aspects and quality level criteria. \\
+        & R13. The CKB platform shall allow educators to close a tournament. \\
+        & R14. The CKB platform shall allow an educator to define optional manual evaluation criteria for score assignment in battles. \\
+        & R15. The CKB platform shall allow educators to manually evaluate and assign scores to teams. \\
+        & R17. The CKB platform shall allow educators to define new badges for gamification. \\
+        & R18. The CKB platform shall allow educators to define new rules associated with the badges. \\
+        & R19. The CKB platform shall allow educators to define new variables associated with the badges. \\
+        \hline
+        Badge Manager & R17. The CKB platform shall allow educators to define new badges for gamification. \\
+        & R18. The CKB platform shall allow educators to define new rules associated with the badges. \\
+        & R19. The CKB platform shall allow educators to define new variables associated with the badges. \\
+        \hline
+        Gamification Rules Manager & R18. The CKB platform shall allow educators to define new rules associated with the badges. \\
+        & R19. The CKB platform shall allow educators to define new variables associated with the badges. \\
+        \hline
+        Student Dashboard Manager & R21. The CKB platform shall not allow students to participate in a tournament after the registration deadline. \\
+        & R22. The CKB platform shall not allow students to participate in a battle after the registration deadline. \\
+        & R23. The CKB platform shall allow students to subscribe to a tournament within a specified deadline. \\
+        & R24. The CKB platform shall allow students to create teams for a specific battle within a tournament. \\
+        & R25. The CKB platform shall allow students to join teams for a specific battle within a tournament. \\
+        & R26. The CKB platform shall allow students to invite other participants to the same group. \\
+        & R27. The CKB platform shall allow students to accept an invitation. \\
+        & R28. The CKB platform shall allow students to reject an invitation. \\
+        & R29. The CKB platform shall allow students to join a battle without a team. \\
+        \hline
+        Battle Manager & R3. The CKB platform shall allow educators to create a new tournament. \\
+        & R5. The CKB platform shall allow educators to upload a code kata battle. \\
+        & R7. The CKB platform shall enable educators to include a battle to a specific tournament. \\
+        & R8. The CKB platform shall allow educators to include a description for a battle. \\
+        & R9. The CKB platform shall allow educators to include a software project with test cases. \\
+        \hline
+        Tournament Manager & R3. The CKB platform shall allow educators to create a new tournament. \\
+        & R4. The CKB platform shall allow educators to set the minimum and maximum number of students per group for a tournament. \\
+        & R10. The CKB platform shall allow educators to set a registration deadline for a battle within a tournament. \\
+        & R11. The CKB platform shall allow educators to set a final submission deadline for a battle within a tournament. \\
+        & R12. The CKB platform shall allow educators to set additional configurations for scoring, including functional aspects and quality level criteria. \\
+        & R13. The CKB platform shall allow educators to close a tournament. \\
+        & R20. The CKB platform shall allow all students and educators to see the ranking of each ongoing tournament with the score of each student subscribed. \\
+        \hline
+        Automated Evaluation Manager & R36. The CKB platform shall be able to run the test cases on the code uploaded by students and determine if the code is a valid solution for the exercise. \\
+        & R37. The CKB platform shall inform students of the mandatory automated evaluation criteria, including functional aspects, timeliness, and source code quality. \\
+        & R38. The CKB platform shall automatically update the battle score of a team based on GitHub commits and test results. \\
+        & R39. The CKB platform shall automatically close a finished battle. \\
+        & R40. The CKB platform shall assign or update battle scores to each team of the battle. \\
+        & R41. The CKB platform shall calculate and update the personal tournament score of each student based on their performance in battles. \\
+        & R42. The CKB platform shall be able to create a ranking of teams for every tournament. \\
+        & R44. The CKB platform shall be able to use static analysis tools to evaluate the quality of the code submitted by teams in terms of security, reliability, maintainability and other aspects defined by the educator who created the battle. \\
+        \hline
+        Team Manager & R24. The CKB platform shall allow students to create teams for a specific battle within a tournament. \\
+        & R25. The CKB platform shall allow students to join teams for a specific battle within a tournament. \\
+        & R26. The CKB platform shall allow students to invite other participants to the same group. \\
+        \hline
+        Invitation Manager & R26. The CKB platform shall allow students to invite other participants to the same group. \\
+        & R27. The CKB platform shall allow students to accept an invitation. \\
+        & R28. The CKB platform shall allow students to reject an invitation. \\
+        \hline
+        CKB Notification System & R30. The CKB platform shall notify all subscribed students of a new battle and its details within a specific tournament. \\
+        & R31. The CKB platform shall notify all subscribed students of a new tournament and its details. \\
+        & R45. The CKB platform shall notify all students involved in a tournament when it is closed and the final ranking is available. \\
+        \hline
+        \caption{Mapping between components and requirements.}
+        \label{tab: map_comp_req}%
+    \end{longtable}
+\end{center}
+
+\newpage
+
+
+\section{Non Functional Requirements Traceability}
+\label{sec: non_functional_requirements_traceability}%
+
+\subsection{Performance Requirements}
+\label{subsec:performance_requirements}%
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Performance Requirement} & \textbf{Architectural Component} \\
+    \hline
+    Response Time (2s avg) & Presentation Tier, Logic Tier, WebSocket with Pub/Sub Pattern \\
+    \hline
+    Concurrent Users (1000 users) & Logic Tier, Data Tier, Worker Pooling, Reverse Proxy \\
+    \hline
+    GitHub Integration (5 mins) & Logic Tier, Microservices \\
+    \hline
+    Automated Evaluation (1 min) & Automated Evaluation Manager, Microservices \\
+    \hline
+    Data Retrieval Time (3s) & Data Tier, Database (NoSQL with SQL) \\
+    \hline
+    Consolidation Stage (3 days) & Logic Tier, Educator Dashboard Manager \\
+    \hline
+    Badge Assignment (1 day) & Badge Manager, Gamification Rules Manager, Factory Pattern \\
+    \hline
+    Platform Uptime (99.9\%) & All Tiers, Microservices Architecture \\
+    \hline
+    Notification Latency (1 min) & CKB Notification System, WebSocket with Pub/Sub Pattern \\
+    \hline
+    Gamification Features (3s) & Gamification Rules Manager, Decorator Pattern \\
+    \hline
+    \end{tabular}
+    \caption{Traceability Matrix for Performance Requirements}
+    \label{table:performance-req-traceability}
+    \end{table}
+    
+\subsection{Software System Attributes}
+\label{subsec:software_system_attributes}%
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{System Attribute} & \textbf{Architectural Component/Design Choice} \\
+    \hline
+    Reliability & Automated Evaluation Manager, Microservices Architecture, Worker Pooling \\
+    \hline
+    Availability & All Tiers (Presentation, Logic, Data), Reverse Proxy, Cloud Hosting/Infrastructure \\
+    \hline
+    Security & HTTPS Implementation, Encryption of Stored Data, Firewall and Reverse Proxy \\
+    \hline
+    Maintainability & Modular Architecture, Clear Documentation, MVC Pattern \\
+    \hline
+    Portability & Cross-Platform Web and Mobile Accessibility, Separate Implementations for Android and iOS \\
+    \hline
+    \end{tabular}
+    \caption{Traceability Matrix for Software System Attributes}
+    \label{table:software-system-attributes-traceability}
+    \end{table}
+    
