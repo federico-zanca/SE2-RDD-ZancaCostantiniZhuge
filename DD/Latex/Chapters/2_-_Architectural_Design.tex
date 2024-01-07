@@ -139,6 +139,120 @@ This is a NoSQL database, specifically MongoDB, which is designed for storing un
 This artifact within both database nodes represents the database management software that's part of the CodeKataBattle platform. It is likely the collection of schemas, 
 tables, queries, reports, views, and other objects associated with the platform's database management.
 
+\section{Component Interfaces}
+
+\textbf{Invitation Notification Manager}
+\begin{verbatim}
+sendMail(n: Notification): JSONObject
+listenEvent(e: InvitationEvent): boolean
+updateInvitationNotification(n: set<Notification>): boolean
+getNotifications(userId: Long): set<Notification>
+\end{verbatim}
+
+\textbf{Battle Notification Manager}
+\begin{verbatim}
+sendMail(n: Notification): JSONObject
+listenEvent(e: battleEvent): boolean
+updateBattleNotification(n: set<Notification>): boolean
+getNotifications(userId: Long): set<Notification>
+\end{verbatim}
+
+\textbf{Tournament Notification Manager}
+\begin{verbatim}
+sendMail(n: Notification): JSONObject
+listenEvent(e: tournamentEvent): boolean
+updateTournamentNotification(n: set<Notification>): boolean
+getNotifications(userId: Long): set<Notification>
+\end{verbatim}
+
+\textbf{Tournament Manager}
+\begin{verbatim}
+AddBadges(tId: Long, b: set<Badges>): boolean
+AddBattle(tId: Long,e: Educator, b: Battle): boolean
+AddStudent(tId: Long, s: Student): boolean
+notifyStudents(tId: Long, e: Event): JSONObject
+getBattles(tId: Long,): set<Battle>
+getLeaderBoard(tId: Long,): map<int, Student>
+updateLeaderBoard(tId: Long,): boolean
+createTournament(e: Educator, b: set<Badges>): JSONObject
+closeTournament(tId: Long,): boolean
+notifyStudents(tId: Long, event: JSONObject): boolean
+addEducator(tId: Long, e: Educator): boolean
+getBadges(tId: Long): set<Badge>
+\end{verbatim}
+
+\textbf{Student Dashboard Manager}
+\begin{verbatim}
+getBadges(id: Long): set<Badge>
+getTournaments(id: Long): set <Tournament>
+answerInvitation(id: Long, in: InvitationNotification): boolean
+getTeams(id: Long): set<Team>
+\end{verbatim}
+
+\textbf{User Manager}
+\begin{verbatim}
+getNotifications(id: Long): set<Notification>
+deleteNotification(id: Long, n: Notification): boolean
+createUser(username: String, role: userType): boolean
+deleteUser(userId: Long): boolean
+\end{verbatim}
+
+\textbf{Invitation Manager}
+\begin{verbatim}
+sendInvitation(userId: Long, info: JSONObject): boolean
+answerInvitation(userId: Long, info: JSONObject): boolean
+\end{verbatim}
+
+\textbf{Team Manager}
+\begin{verbatim}
+createTeam(name: String, s: set<Student>, b: Battle): boolean
+addMember(tId: Long, s: Student): boolean
+getMembers(tId: Long): set<Student>
+getScore(tId: Long): int
+setGitHubRepo(tId: Long, url: String): boolean
+\end{verbatim}
+
+\textbf{Educator Dashboard Manager}
+\begin{verbatim}
+getTorunaments(eId: Long): set<Tournaments>
+grantPermissionToEducatorForTournament(eId: Long, tId: Long, 
+                                        receiverId: Long): boolean
+\end{verbatim}
+
+\textbf{Badge Manager}
+\begin{verbatim}
+createBadge(rules: JSONObject): boolean
+getBadge(bId: Long): Badge
+getBadges(): set<Badge>
+\end{verbatim}
+
+\textbf{Battle Manager}
+\begin{verbatim}
+addTeam(bId: Long, t: Team): boolean
+getLeaderBoard(bId: Long): map<int, Team>
+updateLeaderboard(bId: Long): boolean
+createBattle(e: Educator, battleInfo: JSONObject): boolean
+notifyTeams(bId: Long, event: JSONObject): boolean
+\end{verbatim}
+
+\textbf{Automated Evaluation Manager}
+\begin{verbatim}
+evaluateTeam(b: Battle, t: Team): int
+\end{verbatim}
+
+\textbf{Gamification Rules Manager}
+\begin{verbatim}
+createRule(rule: JSONObject): boolean
+createVariable(var: JSONObject): boolean
+getRules(): JSONObject
+getVariables(): JSONObject
+\end{verbatim}
+
+
+    
+
+
+
 \section{Runtime View}
 \label{sec:runtime_view}%
 Here we present the dynamic of our system through sequence diagrams.
