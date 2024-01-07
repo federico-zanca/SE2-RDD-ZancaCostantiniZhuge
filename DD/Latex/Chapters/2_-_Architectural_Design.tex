@@ -1,15 +1,17 @@
 \section{Overview}
-\label{sec: overview}%
-In this section, a general description of the architecture of the \verb|CKB| system is provided.
-The main aspects of the design are:
-\begin{itemize}
-    \item \textbf{Client-Server architecture. } It consists of a presentation tier, an application and a data tier.
-    The firsts one allow the user to communicate with the server and shows him through the UI the answers it receives back from the application tier.
-    The second one receives requests from users, elaborates answers, changes the status communicating with the data tier and sends back the needed information to users.
-    Finally, the data tier stores, updates, and handles the information.
-    \item \textbf{Microservices. } Functionalities of the system are divided into several services in order to reduce dependencies between
-    modules and to increase scalability, availability and maintainability of the system.
-\end{itemize}
+This section provides a comprehensive overview of the design and architecture of CodeKataBattle (CKB). 
+The component view subsection illustrates the logical structure of the system, including the components, their relationships, 
+and responsibilities. The runtime view, on the other hand, depicts the dynamic behavior of the system, including the scenarios, 
+interactions, and state changes of the components. 
+Here, we also delve into the specifics of component interfaces, detailing the methods, parameters, and structure of each system component, 
+such as the user manager, battle manager, tournament manager, badge manager, notification manager, among others. 
+The document also sheds light on the selected architectural styles and patterns, explaining the rationale behind the design choices, 
+including the use of 3-tier architecture, WebSocket with Pub/Sub pattern, worker pooling, microservices, NoSQL with SQL databases, 
+firewall, reverse proxy, and more. The integration, implementation, and testing section outlines the development, combination, and 
+verification processes of the system components, along with the tools and technologies employed. The deployment view provides a 
+glimpse into the physical configuration of the system, showcasing the hardware and software components, their distribution, and interconnections. 
+This comprehensive section, therefore, serves as a detailed guide to the intricate 
+workings of the CodeKataBattle platform.
 
 \newpage
 \section{Component View}
